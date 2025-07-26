@@ -81,6 +81,7 @@ body {
   margin-right: 0; /* Cambiado de 1rem a 0 */
 }
 
+
 .nav-link {
   color: white;
   text-decoration: none;
@@ -88,19 +89,36 @@ body {
   font-weight: 500;
   padding: 0.5rem 1rem;
   border-radius: 6px;
-  transition: all 0.3s ease;
+  transition: color 0.3s ease;
   position: relative;
 }
 
 .nav-link:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: transparent;
   color: var(--color-primary);
-  transform: translateY(-1px);
+  transform: none;
 }
 
 .nav-link:active {
-  transform: translateY(0);
+  transform: none;
 }
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-primary);
+  transition: width 0.3s ease, transform 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+  width: 80%;
+}
+
 
 /* Efecto de subrayado en hover */
 .nav-link::after {
@@ -139,10 +157,44 @@ body {
     width: 120px;
   }
 
-  .nav-link {
-    font-size: 0.85rem;
-    padding: 0.4rem 0.8rem;
-  }
+  
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.nav-link:hover {
+  background-color: transparent;
+  color: var(--color-primary);
+  transform: none;
+}
+
+.nav-link:active {
+  transform: none;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-primary);
+  transition: width 0.3s ease, transform 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+  width: 80%;
+}
+
 
   .header-content {
     gap: 2rem; /* Reducir gap en móviles */
@@ -167,10 +219,44 @@ body {
     gap: 20px; /* Más compacto en móviles pequeños */
   }
 
-  .nav-link {
-    font-size: 0.8rem;
-    padding: 0.3rem 0.6rem;
-  }
+  
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.nav-link:hover {
+  background-color: transparent;
+  color: var(--color-primary);
+  transform: none;
+}
+
+.nav-link:active {
+  transform: none;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-primary);
+  transition: width 0.3s ease, transform 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+  width: 80%;
+}
+
 
   /* En móviles muy pequeños, ocultar algunos enlaces */
   .nav-link:nth-child(2),
@@ -893,10 +979,44 @@ body {
     gap: 20px; /* Más compacto en móviles pequeños */
   }
 
-  .nav-link {
-    font-size: 0.8rem;
-    padding: 0.3rem 0.6rem;
-  }
+  
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.nav-link:hover {
+  background-color: transparent;
+  color: var(--color-primary);
+  transform: none;
+}
+
+.nav-link:active {
+  transform: none;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-primary);
+  transition: width 0.3s ease, transform 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+  width: 80%;
+}
+
 
   /* En móviles muy pequeños, ocultar algunos enlaces */
   .nav-link:nth-child(2),
