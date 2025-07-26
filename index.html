@@ -3,26 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora Solar - Sistema de Ahorro Fotovoltaico</title>
+    <title>Sistema de Ahorro Fotovoltaico - Marriott Solutions</title>
+    <link rel="icon" type="image/png" href="https://images.grupomarriott.com/wp-content/uploads/2022/11/17141425/cropped-favicon-32x32-1-32x32.png">
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <!-- jsPDF Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header Negro con Logo y Navegación -->
     <header class="header">
         <div class="container">
             <div class="header-content">
-                <div class="logo-section">
-                    <div class="logo-placeholder">
-                        <i class="fas fa-sun"></i>
-                    </div>
-                    <div class="header-text">
-                        <h1>Calculadora Solar</h1>
-                        <p>Sistema de Ahorro Fotovoltaico</p>
-                    </div>
+                <!-- Logo de la empresa -->
+                <div class="logo-container">
+                    <img src="https://images.grupomarriott.com/wp-content/uploads/2022/10/31083332/LOGO_SOLAR-1.png" 
+                         alt="Marriott Solutions - Energía Solar" 
+                         class="company-logo">
                 </div>
+                
+                <!-- Navegación -->
+                <nav class="header-nav">
+                    <a href="https://www.grupomarriott.com/solution/#mste-nosotros" 
+                       target="_blank" 
+                       class="nav-link">Nosotros</a>
+                    <a href="https://b2b.grupomarriott.com/shop/category/equipos-fotovoltaicos-1292" 
+                       target="_blank" 
+                       class="nav-link">Productos</a>
+                    <a href="https://almacenesmarriott.com/locales/" 
+                       target="_blank" 
+                       class="nav-link">Puntos de Venta</a>
+                    <a href="https://www.grupomarriott.com/solution/#mste-contactenos" 
+                       target="_blank" 
+                       class="nav-link">Contáctanos</a>
+                </nav>
             </div>
         </div>
     </header>
@@ -33,8 +47,8 @@
             <!-- Formulario -->
             <div class="form-card">
                 <div class="card-header">
-                    <h2><i class="fas fa-calculator"></i> Datos del Cliente</h2>
-                    <p>Ingresa la información para calcular tu potencial de ahorro energético</p>
+                    <h2><i class="fas fa-calculator"></i> Calculadora de Ahorro Solar</h2>
+                    <p>Descubre cuánto puedes ahorrar con energía fotovoltaica</p>
                 </div>
                 <div class="card-content">
                     <!-- Alertas de Error -->
@@ -102,7 +116,13 @@
                     <div class="modal-body">
                         <p>En tu planilla de luz, busca el valor de <strong>"Consumo kWh"</strong> o <strong>"Energía Consumida"</strong>:</p>
                         <div class="image-container">
-                            <img src="/images/FOTO_DE_PLANILLA.png" alt="Ejemplo de planilla de luz mostrando consumo en kWh" id="planillaImage">
+                            <img src="/placeholder.svg?height=400&width=600&text=Ejemplo+de+Planilla+de+Luz+-+Busca+el+valor+en+kWh" 
+                                 alt="Ejemplo de planilla de luz mostrando consumo en kWh" 
+                                 id="planillaImage">
+                            <p class="image-note">
+                                <i class="fas fa-info-circle"></i>
+                                <strong>Busca en tu planilla:</strong> El consumo aparece como "kWh" o "Energía Consumida"
+                            </p>
                         </div>
                         <div class="help-tips">
                             <div class="tip-item">
@@ -255,7 +275,7 @@
                         <i class="fas fa-file-pdf"></i> Descargar Informe PDF
                     </button>
                     <button id="whatsappBtn" class="btn-whatsapp">
-                        <i class="fab fa-whatsapp"></i> Obtener Más Información
+                        <i class="fab fa-whatsapp"></i> Contáctanos
                     </button>
                 </div>
             </div>

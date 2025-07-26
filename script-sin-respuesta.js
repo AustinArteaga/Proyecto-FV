@@ -51,7 +51,7 @@ async function enviarDatosAPowerAutomate(datos) {
     })
       .then(() => {
         console.log("✅ Datos enviados a Power Automate")
-        mostrarNotificacion("✅ Cotización guardada exitosamente", "success")
+        mostrarNotificacion("", "success")
       })
       .catch((error) => {
         console.error("❌ Error al enviar datos:", error)
@@ -59,7 +59,7 @@ async function enviarDatosAPowerAutomate(datos) {
       })
 
     // 🎯 MOSTRAR NOTIFICACIÓN INMEDIATA (sin esperar confirmación)
-    mostrarNotificacion("📤 Guardando cotización...", "info")
+    mostrarNotificacion("", "info")
   } catch (error) {
     console.error("❌ Error de conexión:", error)
     mostrarNotificacion("⚠️ Error de conexión al guardar", "error")
