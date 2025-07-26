@@ -153,7 +153,7 @@ function cerrarModalConsumo() {
   document.body.style.overflow = "auto" // Restaurar scroll del body
 }
 
-// 📄 FUNCIÓN PARA GENERAR PDF
+// 📄 FUNCIÓN PARA GENERAR PDF CON MARCA DE AGUA
 function generarPDF() {
   if (!datosCalculados) {
     mostrarNotificacion("❌ No hay datos para generar el PDF", "error")
@@ -165,6 +165,42 @@ function generarPDF() {
 
     const { jsPDF } = window.jspdf
     const doc = new jsPDF()
+
+    // 🎨 AGREGAR MARCA DE AGUA MARRIOTT SOLUTIONS
+    function agregarMarcaDeAgua() {
+      doc.saveGraphicsState()
+
+      // Configurar marca de agua - TAMAÑOS AÚN MÁS GRANDES
+      doc.setTextColor(240, 240, 240) // Gris un poco más visible
+      doc.setFontSize(80) // Aumentado de 70 a 80
+      doc.setFont("helvetica", "bold")
+
+      // Centrar la marca de agua
+      const pageWidth = doc.internal.pageSize.width
+      const pageHeight = doc.internal.pageSize.height
+      const centerX = pageWidth / 2
+      const centerY = pageHeight / 2
+
+      // Rotar 45 grados
+      const angle = -45 * (Math.PI / 180)
+
+      // Texto principal - MÁS GRANDE
+      doc.text("MARRIOTT", centerX, centerY - 14, {
+        angle: angle,
+        align: "center",
+      })
+
+      doc.setFontSize(58) // Aumentado de 50 a 58
+      doc.text("SOLUTIONS", centerX, centerY + 14, {
+        angle: angle,
+        align: "center",
+      })
+
+      doc.restoreGraphicsState()
+    }
+
+    // Aplicar marca de agua
+    agregarMarcaDeAgua()
 
     // Configuración de colores
     const primaryColor = [255, 158, 26] // Naranja
@@ -179,7 +215,7 @@ function generarPDF() {
     doc.setTextColor(255, 255, 255)
     doc.setFontSize(24)
     doc.setFont("helvetica", "bold")
-    doc.text("☀️ INFORME SOLAR", 20, 25)
+    doc.text("INFORME DE MARRIOTT SOLUTIONS", 20, 25)
 
     doc.setFontSize(12)
     doc.setFont("helvetica", "normal")
@@ -276,7 +312,7 @@ function generarPDF() {
     doc.setTextColor(...primaryColor)
     doc.setFontSize(18)
     doc.setFont("helvetica", "bold")
-    doc.text("⏰ TIEMPO DE RETORNO", 20, yPos + 5)
+    doc.text(" TIEMPO DE RETORNO", 20, yPos + 5)
 
     doc.setFontSize(24)
     doc.text(`${formatearNumero(datosCalculados.tiempoRetorno, 1)} AÑOS`, 20, yPos + 15)
@@ -294,14 +330,14 @@ function generarPDF() {
     doc.text(`Nuevo consumo mensual: ${formatearNumero(datosCalculados.nuevoConsumoMensual, 0)} kWh`, 20, yPos)
     doc.text(`Nuevo costo mensual: ${formatearMoneda(datosCalculados.nuevoCostoMensualSFV)}`, 110, yPos)
 
-    // FOOTER
+    // FOOTER CON MARRIOTT SOLUTIONS
     yPos = 280
     doc.setFillColor(...primaryColor)
     doc.rect(0, yPos, 210, 17, "F")
 
     doc.setTextColor(255, 255, 255)
     doc.setFontSize(10)
-    doc.text("Para más información, contáctanos al +593 98 091 0905", 20, yPos + 10)
+    doc.text("MARRIOTT SOLUTIONS - Para más información: +593 98 091 0905", 20, yPos + 10)
     doc.text("¡Invierte en energía solar y ahorra desde el primer día!", 110, yPos + 10)
 
     // GUARDAR PDF
