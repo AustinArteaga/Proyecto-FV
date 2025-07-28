@@ -28,6 +28,15 @@ const WHATSAPP_MESSAGE =
 // Variables globales para elementos DOM
 let elementos = {}
 let datosCalculados = null
+let autoSaveTimeout = null
+let registroGuardado = false // Para evitar múltiples guardados del mismo usuario
+const gtag = window.gtag || (() => {}) // Declaración de gtag // Declaración de gtag
+
+// Función para mostrar notificaciones
+function mostrarNotificacion(mensaje, tipo) {
+  // Implementación de la función mostrarNotificacion
+  console.log(`Notificación (${tipo}): ${mensaje}`)
+}
 
 // Inicialización cuando el DOM está listo
 document.addEventListener("DOMContentLoaded", () => {
@@ -91,6 +100,25 @@ function configurarEventListeners() {
   elementos.generarPdfBtn.addEventListener("click", generarPDF)
   elementos.whatsappBtn.addEventListener("click", abrirWhatsApp)
 
+  // 🚀 AUTO-GUARDADO INMEDIATO AL ESCRIBIR EL NOMBRE (SIN CALCULAR)
+  elementos.nombre.addEventListener("input", (e) => {
+    const nombre = e.target.value.trim()
+
+    // Limpiar timeout anterior
+    if (autoSaveTimeout) {
+      clearTimeout(autoSaveTimeout)
+    }
+
+    // Si hay nombre válido y no se ha guardado aún
+    if (nombre.length >= 3 && !registroGuardado) {
+      autoSaveTimeout = setTimeout(() => {
+        guardarRegistroInmediato(nombre)
+      }, 2000) // Esperar 2 segundos después de que deje de escribir
+    } else if (nombre.length < 3) {
+      registroGuardado = false // Resetear si borra el nombre
+    }
+  })
+
   // Modal de ayuda para consumo
   elementos.verConsumoLink.addEventListener("click", (e) => {
     e.preventDefault()
@@ -134,220 +162,77 @@ function configurarEventListeners() {
   elementos.ciudad.addEventListener("keypress", (e) => {
     if (e.key === "Enter") calcularAhorro()
   })
-
-  // Validación en tiempo real para el celular
-  elementos.celular.addEventListener("input", (e) => {
-    // Solo permitir números
-    e.target.value = e.target.value.replace(/[^0-9]/g, "")
-  })
 }
 
-// 🖼️ FUNCIONES DEL MODAL DE AYUDA
-function mostrarModalConsumo() {
-  elementos.consumoModal.style.display = "block"
-  document.body.style.overflow = "hidden" // Prevenir scroll del body
-}
-
-function cerrarModalConsumo() {
-  elementos.consumoModal.style.display = "none"
-  document.body.style.overflow = "auto" // Restaurar scroll del body
-}
-
-// 📄 FUNCIÓN PARA GENERAR PDF CON MARCA DE AGUA
-function generarPDF() {
-  if (!datosCalculados) {
-    mostrarNotificacion("❌ No hay datos para generar el PDF", "error")
-    return
-  }
+// 💾 FUNCIÓN PARA GUARDAR REGISTRO INMEDIATO (SOLO CON NOMBRE) - CORREGIDA PARA TIPOS NUMÉRICOS
+async function guardarRegistroInmediato(nombre) {
+  if (registroGuardado) return // Evitar duplicados
 
   try {
-    mostrarNotificacion("📄 Generando informe PDF...", "info")
-
-    const { jsPDF } = window.jspdf
-    const doc = new jsPDF()
-
-    // 🎨 AGREGAR MARCA DE AGUA MARRIOTT SOLUTIONS
-    function agregarMarcaDeAgua() {
-      doc.saveGraphicsState()
-
-      // Configurar marca de agua - TAMAÑOS AÚN MÁS GRANDES
-      doc.setTextColor(240, 240, 240) // Gris un poco más visible
-      doc.setFontSize(80) // Aumentado de 70 a 80
-      doc.setFont("helvetica", "bold")
-
-      // Centrar la marca de agua
-      const pageWidth = doc.internal.pageSize.width
-      const pageHeight = doc.internal.pageSize.height
-      const centerX = pageWidth / 2
-      const centerY = pageHeight / 2
-
-      // Rotar 45 grados
-      const angle = -45 * (Math.PI / 180)
-
-      // Texto principal - MÁS GRANDE
-      doc.text("MARRIOTT", centerX, centerY - 14, {
-        angle: angle,
-        align: "center",
-      })
-
-      doc.setFontSize(58) // Aumentado de 50 a 58
-      doc.text("SOLUTIONS", centerX, centerY + 14, {
-        angle: angle,
-        align: "center",
-      })
-
-      doc.restoreGraphicsState()
+    // JSON que coincide EXACTAMENTE con el esquema de Power Automate - TIPOS CORREGIDOS SEGÚN ESQUEMA
+    const registroInmediato = {
+      fechaCalculo: new Date().toISOString(), // string
+      nombre: nombre, // string
+      tipoCliente: elementos.tipoCliente.value || "No especificado", // string
+      celular: elementos.celular.value.trim() || "593000000000", // STRING, no número
+      email: elementos.email.value.trim() || "no-email@ejemplo.com", // string
+      ciudad: elementos.ciudad.value.trim() || "No especificado", // string
+      consumoMensual: Number.parseInt(elementos.consumoMensual.value) || 0, // integer
+      consumoAnual: 0, // integer
+      costoMensualActual: 0.0, // number
+      costoAnualActual: 0, // integer
+      tamanoSistema: 0.0, // number
+      precioInversion: 0, // integer
+      produccionAnual: 0, // integer
+      produccionMensual: 0, // integer
+      cantidadPaneles: 0, // integer
+      areaRequerida: 0.0, // number
+      nuevoConsumoMensual: 0, // integer
+      nuevoCostoMensual: 0.0, // number
+      ahorroMensual: 0.0, // number
+      ahorroAnual: 0.0, // number
+      ahorroAnualPorcentaje: 0.0, // number
+      tiempoRetorno: 0.0, // number
     }
 
-    // Aplicar marca de agua
-    agregarMarcaDeAgua()
+    console.log("🔄 Guardando registro automáticamente:", registroInmediato)
 
-    // Configuración de colores
-    const primaryColor = [255, 158, 26] // Naranja
-    const textColor = [55, 65, 81] // Gris oscuro
-    const accentColor = [16, 185, 129] // Verde
-
-    // HEADER DEL PDF
-    doc.setFillColor(...primaryColor)
-    doc.rect(0, 0, 210, 40, "F")
-
-    // Logo y título
-    doc.setTextColor(255, 255, 255)
-    doc.setFontSize(24)
-    doc.setFont("helvetica", "bold")
-    doc.text("INFORME DE MARRIOTT SOLUTIONS", 20, 25)
-
-    doc.setFontSize(12)
-    doc.setFont("helvetica", "normal")
-    doc.text("Sistema de Ahorro Fotovoltaico", 20, 32)
-
-    // Fecha
-    const fecha = new Date().toLocaleDateString("es-EC", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
+    const response = await fetch(POWER_AUTOMATE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(registroInmediato),
     })
-    doc.text(`Fecha: ${fecha}`, 140, 32)
 
-    // INFORMACIÓN DEL CLIENTE
-    let yPos = 55
-    doc.setTextColor(...textColor)
-    doc.setFontSize(16)
-    doc.setFont("helvetica", "bold")
-    doc.text("INFORMACIÓN DEL CLIENTE", 20, yPos)
+    console.log("📡 Respuesta del servidor:", response.status, response.statusText)
 
-    yPos += 10
-    doc.setFontSize(11)
-    doc.setFont("helvetica", "normal")
-    doc.text(`Nombre: ${datosCalculados.nombre}`, 20, yPos)
-    doc.text(`Tipo: ${datosCalculados.tipoCliente}`, 110, yPos)
+    if (response.ok) {
+      // Marcar como guardado para evitar duplicados
+      registroGuardado = true
+      console.log("✅ LEAD CAPTURADO - Registro automático guardado:", nombre)
 
-    yPos += 7
-    doc.text(`Celular: ${datosCalculados.celular}`, 20, yPos)
-    doc.text(`Ciudad: ${datosCalculados.ciudad}`, 110, yPos)
-
-    yPos += 7
-    doc.text(`Email: ${datosCalculados.email}`, 20, yPos)
-
-    // SITUACIÓN ACTUAL
-    yPos += 20
-    doc.setFontSize(16)
-    doc.setFont("helvetica", "bold")
-    doc.text("SITUACIÓN ENERGÉTICA ACTUAL", 20, yPos)
-
-    yPos += 10
-    doc.setFontSize(11)
-    doc.setFont("helvetica", "normal")
-    doc.text(`Consumo mensual: ${formatearNumero(datosCalculados.consumo, 0)} kWh`, 20, yPos)
-    doc.text(`Consumo anual: ${formatearNumero(datosCalculados.consumoAnualSinSFV, 0)} kWh`, 110, yPos)
-
-    yPos += 7
-    doc.text(`Costo mensual: ${formatearMoneda(datosCalculados.costoMensualSinSFV)}`, 20, yPos)
-    doc.text(`Costo anual: ${formatearMoneda(datosCalculados.costoAnualSinSFV)}`, 110, yPos)
-
-    // SISTEMA FOTOVOLTAICO PROPUESTO
-    yPos += 20
-    doc.setFontSize(16)
-    doc.setFont("helvetica", "bold")
-    doc.text("SISTEMA FOTOVOLTAICO PROPUESTO", 20, yPos)
-
-    yPos += 10
-    doc.setFontSize(11)
-    doc.setFont("helvetica", "normal")
-    doc.text(`Tamaño del sistema: ${formatearNumero(datosCalculados.tamanoSFV)} kWp`, 20, yPos)
-    doc.text(`Cantidad de paneles: ${datosCalculados.cantidadPaneles} unidades`, 110, yPos)
-
-    yPos += 7
-    doc.text(`Área requerida: ${formatearNumero(datosCalculados.areaRequerida)} m²`, 20, yPos)
-    doc.text(`Producción anual: ${formatearNumero(datosCalculados.produccionAnualSFV, 0)} kWh`, 110, yPos)
-
-    yPos += 7
-    doc.text(`Producción mensual: ${formatearNumero(datosCalculados.produccionMensualSFV, 0)} kWh`, 20, yPos)
-
-    // INVERSIÓN Y AHORROS
-    yPos += 20
-    doc.setFontSize(16)
-    doc.setFont("helvetica", "bold")
-    doc.text("INVERSIÓN Y AHORROS", 20, yPos)
-
-    yPos += 10
-    doc.setFontSize(14)
-    doc.setTextColor(...primaryColor)
-    doc.text(`Inversión estimada: ${formatearMoneda(datosCalculados.precioInversion)}`, 20, yPos)
-
-    yPos += 10
-    doc.setFontSize(11)
-    doc.setTextColor(...accentColor)
-    doc.text(`Ahorro mensual: ${formatearMoneda(datosCalculados.ahorroMensual)}`, 20, yPos)
-    doc.text(`Ahorro anual: ${formatearMoneda(datosCalculados.ahorroAnual)}`, 110, yPos)
-
-    yPos += 7
-    doc.text(`Porcentaje de ahorro: ${formatearNumero(datosCalculados.ahorroAnualPorcentaje, 1)}%`, 20, yPos)
-
-    // TIEMPO DE RETORNO - DESTACADO
-    yPos += 20
-    doc.setFillColor(255, 247, 237)
-    doc.rect(15, yPos - 5, 180, 25, "F")
-
-    doc.setTextColor(...primaryColor)
-    doc.setFontSize(18)
-    doc.setFont("helvetica", "bold")
-    doc.text(" TIEMPO DE RETORNO", 20, yPos + 5)
-
-    doc.setFontSize(24)
-    doc.text(`${formatearNumero(datosCalculados.tiempoRetorno, 1)} AÑOS`, 20, yPos + 15)
-
-    // NUEVA SITUACIÓN CON SISTEMA SOLAR
-    yPos += 35
-    doc.setTextColor(...textColor)
-    doc.setFontSize(16)
-    doc.setFont("helvetica", "bold")
-    doc.text("NUEVA SITUACIÓN CON SISTEMA SOLAR", 20, yPos)
-
-    yPos += 10
-    doc.setFontSize(11)
-    doc.setFont("helvetica", "normal")
-    doc.text(`Nuevo consumo mensual: ${formatearNumero(datosCalculados.nuevoConsumoMensual, 0)} kWh`, 20, yPos)
-    doc.text(`Nuevo costo mensual: ${formatearMoneda(datosCalculados.nuevoCostoMensualSFV)}`, 110, yPos)
-
-    // FOOTER CON MARRIOTT SOLUTIONS
-    yPos = 280
-    doc.setFillColor(...primaryColor)
-    doc.rect(0, yPos, 210, 17, "F")
-
-    doc.setTextColor(255, 255, 255)
-    doc.setFontSize(10)
-    doc.text("MARRIOTT SOLUTIONS - Para más información: +593 98 091 0905", 20, yPos + 10)
-    doc.text("¡Invierte en energía solar y ahorra desde el primer día!", 110, yPos + 10)
-
-    // GUARDAR PDF
-    const nombreArchivo = `Informe_Solar_${datosCalculados.nombre.replace(/\s+/g, "_")}_${new Date().toISOString().split("T")[0]}.pdf`
-    doc.save(nombreArchivo)
-
-    mostrarNotificacion("✅ PDF generado exitosamente", "success")
+      // Opcional: Enviar evento de tracking
+      gtag("event", "lead_captured", {
+        event_category: "Solar Calculator",
+        event_label: "Auto Save Name",
+        value: 1,
+      })
+    } else {
+      const errorText = await response.text()
+      console.error("❌ Error del servidor:", response.status, response.statusText, errorText)
+      throw new Error(`Error ${response.status}: ${response.statusText} - ${errorText}`)
+    }
   } catch (error) {
-    console.error("Error generando PDF:", error)
-    mostrarNotificacion("❌ Error al generar el PDF", "error")
+    console.error("❌ Error detallado al guardar registro automático:", error)
+
+    // Reintentar una vez después de 3 segundos
+    setTimeout(() => {
+      console.log("🔄 Reintentando guardado automático...")
+      registroGuardado = false
+      guardarRegistroInmediato(nombre)
+    }, 3000)
   }
 }
 
@@ -374,183 +259,243 @@ function validarEmail(email) {
   return regex.test(email)
 }
 
-// 📤 FUNCIÓN PARA ENVIAR DATOS A POWER AUTOMATE
-async function enviarDatosAPowerAutomate(datos) {
+// 📄 FUNCIÓN PARA GENERAR PDF CON LOGO Y MARCA DE AGUA
+function generarPDF() {
+  if (!datosCalculados) {
+    mostrarNotificacion("❌ No hay datos para generar el PDF", "error")
+    return
+  }
+
   try {
-    const payload = {
-      fechaCalculo: new Date().toISOString(),
-      nombre: datos.nombre || "Prueba",
-      tipoCliente: datos.tipoCliente || "Residencial",
-      celular: datos.celular || "593999999999",
-      email: datos.email || "prueba@test.com",
-      ciudad: datos.ciudad || "Quito",
-      consumoMensual: datos.consumo || 0,
-      ahorroAnual: datos.ahorroAnual || 0,
-      tiempoRetorno: datos.tiempoRetorno || 0,
-      timestampPrueba: Date.now(),
+    mostrarNotificacion("📄 Generando informe PDF...", "info")
+
+    const { jsPDF } = window.jspdf
+    const doc = new jsPDF()
+
+    // 🎨 AGREGAR MARCA DE AGUA MARRIOTT SOLUTIONS
+    function agregarMarcaDeAgua() {
+      doc.saveGraphicsState()
+
+      // Configurar marca de agua
+      doc.setTextColor(245, 245, 245) // Gris muy claro
+      doc.setFontSize(70)
+      doc.setFont("helvetica", "bold")
+
+      // Centrar la marca de agua
+      const pageWidth = doc.internal.pageSize.width
+      const pageHeight = doc.internal.pageSize.height
+      const centerX = pageWidth / 2
+      const centerY = pageHeight / 2
+
+      // Rotar 45 grados
+      const angle = -45 * (Math.PI / 180)
+
+      // Texto principal
+      doc.text("MARRIOTT", centerX, centerY - 10, {
+        angle: angle,
+        align: "center",
+      })
+
+      doc.setFontSize(50)
+      doc.text("SOLUTIONS", centerX, centerY + 10, {
+        angle: angle,
+        align: "center",
+      })
+
+      doc.restoreGraphicsState()
     }
 
-    mostrarNotificacion("📤 Guardando cotización...", "info")
+    // Aplicar marca de agua
+    agregarMarcaDeAgua()
 
-    fetch(POWER_AUTOMATE_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify(payload),
-    })
-      .then(async (response) => {
-        if (response.ok) {
-          mostrarNotificacion("✅ Cotización guardada exitosamente", "success")
-        } else {
-          mostrarNotificacion("⚠️ Error al guardar cotización", "error")
-        }
+    // Configuración de colores
+    const primaryColor = [255, 158, 26] // Naranja
+    const textColor = [55, 65, 81] // Gris oscuro
+    const accentColor = [16, 185, 129] // Verde
+
+    // HEADER DEL PDF CON LOGO
+    doc.setFillColor(...primaryColor)
+    doc.rect(0, 0, 210, 50, "F")
+
+    // Cargar y agregar logo
+    const logoImg = new Image()
+    logoImg.crossOrigin = "anonymous"
+    logoImg.onload = () => {
+      // Agregar logo en la esquina superior izquierda del header
+      doc.addImage(logoImg, "PNG", 15, 10, 60, 30)
+
+      // Título del documento
+      doc.setTextColor(255, 255, 255)
+      doc.setFontSize(20)
+      doc.setFont("helvetica", "bold")
+      doc.text("INFORME DE ANÁLISIS SOLAR", 85, 25)
+
+      doc.setFontSize(12)
+      doc.setFont("helvetica", "normal")
+      doc.text("Sistema de Ahorro Fotovoltaico", 85, 32)
+
+      // Fecha
+      const fecha = new Date().toLocaleDateString("es-EC", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
       })
-      .catch((error) => {
-        console.error("Error:", error)
-        mostrarNotificacion("⚠️ Error de conexión al guardar", "error")
+      doc.text(`Fecha: ${fecha}`, 85, 39)
+
+      // Continuar con el resto del PDF
+      continuarGeneracionPDF()
+    }
+
+    logoImg.onerror = () => {
+      // Si no se puede cargar el logo, continuar sin él
+      console.warn("No se pudo cargar el logo, continuando sin él")
+
+      // Header sin logo
+      doc.setTextColor(255, 255, 255)
+      doc.setFontSize(24)
+      doc.setFont("helvetica", "bold")
+      doc.text("MARRIOTT SOLUTIONS", 20, 25)
+
+      doc.setFontSize(12)
+      doc.setFont("helvetica", "normal")
+      doc.text("Sistema de Ahorro Fotovoltaico", 20, 32)
+
+      // Fecha
+      const fecha = new Date().toLocaleDateString("es-EC", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
       })
+      doc.text(`Fecha: ${fecha}`, 140, 32)
+
+      continuarGeneracionPDF()
+    }
+
+    // Intentar cargar el logo
+    logoImg.src = "https://images.grupomarriott.com/wp-content/uploads/2022/10/31083332/LOGO_SOLAR-1.png"
+
+    function continuarGeneracionPDF() {
+      // INFORMACIÓN DEL CLIENTE
+      let yPos = 65
+      doc.setTextColor(...textColor)
+      doc.setFontSize(16)
+      doc.setFont("helvetica", "bold")
+      doc.text("INFORMACIÓN DEL CLIENTE", 20, yPos)
+
+      yPos += 10
+      doc.setFontSize(11)
+      doc.setFont("helvetica", "normal")
+      doc.text(`Nombre: ${datosCalculados.nombre}`, 20, yPos)
+      doc.text(`Tipo: ${datosCalculados.tipoCliente}`, 110, yPos)
+
+      yPos += 7
+      doc.text(`Celular: ${datosCalculados.celular}`, 20, yPos)
+      doc.text(`Ciudad: ${datosCalculados.ciudad}`, 110, yPos)
+
+      yPos += 7
+      doc.text(`Email: ${datosCalculados.email}`, 20, yPos)
+
+      // SITUACIÓN ACTUAL
+      yPos += 20
+      doc.setFontSize(16)
+      doc.setFont("helvetica", "bold")
+      doc.text("SITUACIÓN ENERGÉTICA ACTUAL", 20, yPos)
+
+      yPos += 10
+      doc.setFontSize(11)
+      doc.setFont("helvetica", "normal")
+      doc.text(`Consumo mensual: ${formatearNumero(datosCalculados.consumo, 0)} kWh`, 20, yPos)
+      doc.text(`Consumo anual: ${formatearNumero(datosCalculados.consumoAnualSinSFV, 0)} kWh`, 110, yPos)
+
+      yPos += 7
+      doc.text(`Costo mensual: ${formatearMoneda(datosCalculados.costoMensualSinSFV)}`, 20, yPos)
+      doc.text(`Costo anual: ${formatearMoneda(datosCalculados.costoAnualSinSFV)}`, 110, yPos)
+
+      // SISTEMA FOTOVOLTAICO PROPUESTO
+      yPos += 20
+      doc.setFontSize(16)
+      doc.setFont("helvetica", "bold")
+      doc.text("SISTEMA FOTOVOLTAICO PROPUESTO", 20, yPos)
+
+      yPos += 10
+      doc.setFontSize(11)
+      doc.setFont("helvetica", "normal")
+      doc.text(`Tamaño del sistema: ${formatearNumero(datosCalculados.tamanoSFV)} kWp`, 20, yPos)
+      doc.text(`Cantidad de paneles: ${datosCalculados.cantidadPaneles} unidades`, 110, yPos)
+
+      yPos += 7
+      doc.text(`Área requerida: ${formatearNumero(datosCalculados.areaRequerida)} m²`, 20, yPos)
+      doc.text(`Producción anual: ${formatearNumero(datosCalculados.produccionAnualSFV, 0)} kWh`, 110, yPos)
+
+      yPos += 7
+      doc.text(`Producción mensual: ${formatearNumero(datosCalculados.produccionMensualSFV, 0)} kWh`, 20, yPos)
+
+      // INVERSIÓN Y AHORROS
+      yPos += 20
+      doc.setFontSize(16)
+      doc.setFont("helvetica", "bold")
+      doc.text("INVERSIÓN Y AHORROS", 20, yPos)
+
+      yPos += 10
+      doc.setFontSize(14)
+      doc.setTextColor(...primaryColor)
+      doc.text(`Inversión estimada: ${formatearMoneda(datosCalculados.precioInversion)}`, 20, yPos)
+
+      yPos += 10
+      doc.setFontSize(11)
+      doc.setTextColor(...accentColor)
+      doc.text(`Ahorro mensual: ${formatearMoneda(datosCalculados.ahorroMensual)}`, 20, yPos)
+      doc.text(`Ahorro anual: ${formatearMoneda(datosCalculados.ahorroAnual)}`, 110, yPos)
+
+      yPos += 7
+      doc.text(`Porcentaje de ahorro: ${formatearNumero(datosCalculados.ahorroAnualPorcentaje, 1)}%`, 20, yPos)
+
+      // TIEMPO DE RETORNO - DESTACADO
+      yPos += 20
+      doc.setFillColor(255, 247, 237)
+      doc.rect(15, yPos - 5, 180, 25, "F")
+
+      doc.setTextColor(...primaryColor)
+      doc.setFontSize(18)
+      doc.setFont("helvetica", "bold")
+      doc.text(" TIEMPO DE RETORNO", 20, yPos + 5)
+
+      doc.setFontSize(24)
+      doc.text(`${formatearNumero(datosCalculados.tiempoRetorno, 1)} AÑOS`, 20, yPos + 15)
+
+      // NUEVA SITUACIÓN CON SISTEMA SOLAR
+      yPos += 35
+      doc.setTextColor(...textColor)
+      doc.setFontSize(16)
+      doc.setFont("helvetica", "bold")
+      doc.text("NUEVA SITUACIÓN CON SISTEMA SOLAR", 20, yPos)
+
+      yPos += 10
+      doc.setFontSize(11)
+      doc.setFont("helvetica", "normal")
+      doc.text(`Nuevo consumo mensual: ${formatearNumero(datosCalculados.nuevoConsumoMensual, 0)} kWh`, 20, yPos)
+      doc.text(`Nuevo costo mensual: ${formatearMoneda(datosCalculados.nuevoCostoMensualSFV)}`, 110, yPos)
+
+      // FOOTER CON MARRIOTT SOLUTIONS
+      yPos = 280
+      doc.setFillColor(...primaryColor)
+      doc.rect(0, yPos, 210, 17, "F")
+
+      doc.setTextColor(255, 255, 255)
+      doc.setFontSize(10)
+      doc.text("MARRIOTT SOLUTIONS - Para más información: +593 98 091 0905", 20, yPos + 10)
+      doc.text("¡Invierte en energía solar y ahorra desde el primer día!", 110, yPos + 10)
+
+      // GUARDAR PDF
+      const nombreArchivo = `Informe_Solar_${datosCalculados.nombre.replace(/\s+/g, "_")}_${new Date().toISOString().split("T")[0]}.pdf`
+      doc.save(nombreArchivo)
+
+      mostrarNotificacion("✅ PDF generado exitosamente", "success")
+    }
   } catch (error) {
-    console.error("Error general:", error)
-    mostrarNotificacion("❌ Error general en el proceso", "error")
+    console.error("Error generando PDF:", error)
+    mostrarNotificacion("❌ Error al generar el PDF", "error")
   }
-}
-
-// 🔔 FUNCIÓN PARA MOSTRAR NOTIFICACIONES
-function mostrarNotificacion(mensaje, tipo) {
-  const notificacion = document.createElement("div")
-  notificacion.className = `notificacion notificacion-${tipo}`
-  notificacion.innerHTML = `
-    <div class="notificacion-content">
-      <span>${mensaje}</span>
-      <button class="notificacion-close">&times;</button>
-    </div>
-  `
-
-  document.body.appendChild(notificacion)
-
-  setTimeout(() => {
-    if (notificacion.parentNode) {
-      notificacion.parentNode.removeChild(notificacion)
-    }
-  }, 5000)
-
-  notificacion.querySelector(".notificacion-close").addEventListener("click", () => {
-    if (notificacion.parentNode) {
-      notificacion.parentNode.removeChild(notificacion)
-    }
-  })
-}
-
-function calcularCostoProgresivo(consumo) {
-  if (consumo <= 0) return 0
-  if (consumo < 50) return 0
-
-  for (let i = 0; i < TARIFAS_EXACTAS.length; i++) {
-    const tramo = TARIFAS_EXACTAS[i]
-    if (consumo >= tramo.desde && consumo <= tramo.hasta) {
-      let costoTotal = 0
-      let rangoAnterior = 0
-
-      if (tramo.desde === 50) {
-        costoTotal = consumo * tramo.tarifa
-      } else if (tramo.desde === 100) {
-        rangoAnterior = 50
-        const consumoEnRango = consumo - rangoAnterior
-        costoTotal = consumoEnRango * tramo.tarifa + tramo.costoBase
-      } else if (tramo.desde === 150) {
-        rangoAnterior = 100
-        const consumoEnRango = consumo - rangoAnterior
-        costoTotal = consumoEnRango * tramo.tarifa + tramo.costoBase
-      } else if (tramo.desde === 200) {
-        rangoAnterior = 150
-        const consumoEnRango = consumo - rangoAnterior
-        costoTotal = consumoEnRango * tramo.tarifa + tramo.costoBase
-      } else if (tramo.desde === 250) {
-        rangoAnterior = 200
-        const consumoEnRango = consumo - rangoAnterior
-        costoTotal = consumoEnRango * tramo.tarifa + tramo.costoBase
-      } else if (tramo.desde === 300) {
-        rangoAnterior = 250
-        const consumoEnRango = consumo - rangoAnterior
-        costoTotal = consumoEnRango * tramo.tarifa + tramo.costoBase
-      } else if (tramo.desde === 350) {
-        rangoAnterior = 300
-        const consumoEnRango = consumo - rangoAnterior
-        costoTotal = consumoEnRango * tramo.tarifa + tramo.costoBase
-      } else if (tramo.desde === 405) {
-        rangoAnterior = 350
-        const consumoEnRango = consumo - rangoAnterior
-        costoTotal = consumoEnRango * tramo.tarifa + tramo.costoBase
-      } else {
-        const consumoEnRango = consumo - tramo.desde
-        costoTotal = tramo.costoBase + consumoEnRango * tramo.tarifa
-      }
-
-      return costoTotal
-    }
-  }
-
-  return 0
-}
-
-function validarFormulario() {
-  const errores = []
-
-  if (!elementos.nombre.value.trim()) {
-    errores.push("El nombre del cliente es obligatorio")
-  }
-
-  if (!elementos.tipoCliente.value) {
-    errores.push("Debe seleccionar el tipo de cliente")
-  }
-
-  const celular = elementos.celular.value.trim()
-  if (!celular) {
-    errores.push("El número celular es obligatorio")
-  } else if (!validarCelular(celular)) {
-    errores.push("El número celular debe tener 12 dígitos y empezar con 593 (ej: 593987654321)")
-  }
-
-  const email = elementos.email.value.trim()
-  if (!email) {
-    errores.push("El correo electrónico es obligatorio")
-  } else if (!validarEmail(email)) {
-    errores.push("El correo electrónico no tiene un formato válido")
-  }
-
-  if (!elementos.ciudad.value.trim()) {
-    errores.push("La ciudad es obligatoria")
-  }
-
-  const consumo = Number.parseFloat(elementos.consumoMensual.value)
-  if (!elementos.consumoMensual.value || isNaN(consumo) || consumo <= 0) {
-    errores.push("El consumo mensual debe ser mayor a 0")
-  }
-
-  if (errores.length > 0) {
-    mostrarErrores(errores)
-    return false
-  } else {
-    ocultarErrores()
-    return true
-  }
-}
-
-function mostrarErrores(errores) {
-  elementos.errorList.innerHTML = ""
-  errores.forEach((error) => {
-    const li = document.createElement("li")
-    li.textContent = error
-    elementos.errorList.appendChild(li)
-  })
-  elementos.errorAlert.style.display = "block"
-  elementos.errorAlert.scrollIntoView({ behavior: "smooth", block: "center" })
-}
-
-function ocultarErrores() {
-  elementos.errorAlert.style.display = "none"
 }
 
 async function calcularAhorro() {
@@ -691,3 +636,221 @@ function formatearNumero(valor, decimales = 2) {
     maximumFractionDigits: decimales,
   }).format(valor)
 }
+
+// 📤 FUNCIÓN PARA ENVIAR DATOS A POWER AUTOMATE (CÁLCULO COMPLETO) - TIPOS CORREGIDOS
+async function enviarDatosAPowerAutomate(datos) {
+  try {
+    // JSON que coincide EXACTAMENTE con el esquema de Power Automate - TIPOS CORREGIDOS
+    const payload = {
+      fechaCalculo: new Date().toISOString(), // string
+      nombre: datos.nombre, // string
+      tipoCliente: datos.tipoCliente, // string
+      celular: datos.celular.toString(), // STRING, no número
+      email: datos.email, // string
+      ciudad: datos.ciudad, // string
+      consumoMensual: Number.parseInt(datos.consumo), // integer
+      consumoAnual: Number.parseInt(datos.consumoAnualSinSFV), // integer
+      costoMensualActual: Number.parseFloat(datos.costoMensualSinSFV), // number
+      costoAnualActual: Number.parseInt(datos.costoAnualSinSFV), // integer
+      tamanoSistema: Number.parseFloat(datos.tamanoSFV), // number
+      precioInversion: Number.parseInt(datos.precioInversion), // integer
+      produccionAnual: Number.parseInt(datos.produccionAnualSFV), // integer
+      produccionMensual: Number.parseInt(datos.produccionMensualSFV), // integer
+      cantidadPaneles: Number.parseInt(datos.cantidadPaneles), // integer
+      areaRequerida: Number.parseFloat(datos.areaRequerida), // number
+      nuevoConsumoMensual: Number.parseInt(datos.nuevoConsumoMensual), // integer
+      nuevoCostoMensual: Number.parseFloat(datos.nuevoCostoMensualSFV), // number
+      ahorroMensual: Number.parseFloat(datos.ahorroMensual), // number
+      ahorroAnual: Number.parseFloat(datos.ahorroAnual), // number
+      ahorroAnualPorcentaje: Number.parseFloat(datos.ahorroAnualPorcentaje), // number
+      tiempoRetorno: Number.parseFloat(datos.tiempoRetorno), // number
+    }
+
+    console.log("🔄 Enviando cálculo completo con tipos corregidos:", payload)
+
+    const response = await fetch(POWER_AUTOMATE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(payload),
+    })
+
+    console.log("📡 Respuesta cálculo completo:", response.status, response.statusText)
+
+    if (response.ok) {
+      console.log("✅ Cotización completa guardada exitosamente")
+    } else {
+      const errorText = await response.text()
+      console.error("❌ Error al guardar cálculo completo:", response.status, errorText)
+      console.log("⚠️ Error al guardar cotización completa")
+    }
+  } catch (error) {
+    console.error("❌ Error general al enviar cálculo completo:", error)
+    console.log("❌ Error de conexión al guardar cotización")
+  }
+}
+
+// 🖼️ FUNCIONES DEL MODAL DE AYUDA
+function mostrarModalConsumo() {
+  elementos.consumoModal.style.display = "block"
+  document.body.style.overflow = "hidden" // Prevenir scroll del body
+}
+
+function cerrarModalConsumo() {
+  elementos.consumoModal.style.display = "none"
+  document.body.style.overflow = "auto" // Restaurar scroll del body
+}
+
+function calcularCostoProgresivo(consumo) {
+  if (consumo <= 0) return 0
+  if (consumo < 50) return 0
+
+  for (let i = 0; i < TARIFAS_EXACTAS.length; i++) {
+    const tramo = TARIFAS_EXACTAS[i]
+    if (consumo >= tramo.desde && consumo <= tramo.hasta) {
+      let costoTotal = 0
+      let rangoAnterior = 0
+
+      if (tramo.desde === 50) {
+        costoTotal = consumo * tramo.tarifa
+      } else if (tramo.desde === 100) {
+        rangoAnterior = 50
+        const consumoEnRango = consumo - rangoAnterior
+        costoTotal = consumoEnRango * tramo.tarifa + tramo.costoBase
+      } else if (tramo.desde === 150) {
+        rangoAnterior = 100
+        const consumoEnRango = consumo - rangoAnterior
+        costoTotal = consumoEnRango * tramo.tarifa + tramo.costoBase
+      } else if (tramo.desde === 200) {
+        rangoAnterior = 150
+        const consumoEnRango = consumo - rangoAnterior
+        costoTotal = consumoEnRango * tramo.tarifa + tramo.costoBase
+      } else if (tramo.desde === 250) {
+        rangoAnterior = 200
+        const consumoEnRango = consumo - rangoAnterior
+        costoTotal = consumoEnRango * tramo.tarifa + tramo.costoBase
+      } else if (tramo.desde === 300) {
+        rangoAnterior = 250
+        const consumoEnRango = consumo - rangoAnterior
+        costoTotal = consumoEnRango * tramo.tarifa + tramo.costoBase
+      } else if (tramo.desde === 350) {
+        rangoAnterior = 300
+        const consumoEnRango = consumo - rangoAnterior
+        costoTotal = consumoEnRango * tramo.tarifa + tramo.costoBase
+      } else if (tramo.desde === 405) {
+        rangoAnterior = 350
+        const consumoEnRango = consumo - rangoAnterior
+        costoTotal = consumoEnRango * tramo.tarifa + tramo.costoBase
+      } else {
+        const consumoEnRango = consumo - tramo.desde
+        costoTotal = tramo.costoBase + consumoEnRango * tramo.tarifa
+      }
+
+      return costoTotal
+    }
+  }
+
+  return 0
+}
+
+function validarFormulario() {
+  const errores = []
+
+  if (!elementos.nombre.value.trim()) {
+    errores.push("El nombre del cliente es obligatorio")
+  }
+
+  if (!elementos.tipoCliente.value) {
+    errores.push("Debe seleccionar el tipo de cliente")
+  }
+
+  const celular = elementos.celular.value.trim()
+  if (!celular) {
+    errores.push("El número celular es obligatorio")
+  } else if (!validarCelular(celular)) {
+    errores.push("El número celular debe tener 12 dígitos y empezar con 593 (ej: 593987654321)")
+  }
+
+  const email = elementos.email.value.trim()
+  if (!email) {
+    errores.push("El correo electrónico es obligatorio")
+  } else if (!validarEmail(email)) {
+    errores.push("El correo electrónico no tiene un formato válido")
+  }
+
+  if (!elementos.ciudad.value.trim()) {
+    errores.push("La ciudad es obligatoria")
+  }
+
+  const consumo = Number.parseFloat(elementos.consumoMensual.value)
+  if (!elementos.consumoMensual.value || isNaN(consumo) || consumo <= 0) {
+    errores.push("El consumo mensual debe ser mayor a 0")
+  }
+
+  if (errores.length > 0) {
+    mostrarErrores(errores)
+    return false
+  } else {
+    ocultarErrores()
+    return true
+  }
+}
+
+function mostrarErrores(errores) {
+  elementos.errorList.innerHTML = ""
+  errores.forEach((error) => {
+    const li = document.createElement("li")
+    li.textContent = error
+    elementos.errorList.appendChild(li)
+  })
+  elementos.errorAlert.style.display = "block"
+  elementos.errorAlert.scrollIntoView({ behavior: "smooth", block: "center" })
+}
+
+function ocultarErrores() {
+  elementos.errorAlert.style.display = "none"
+}
+
+// ========== MOBILE MENU FUNCTIONALITY ==========
+document.addEventListener("DOMContentLoaded", () => {
+  // ... código existente ...
+
+  // Mobile menu toggle
+  const mobileMenuBtn = document.getElementById("mobileMenuBtn")
+  const mobileMenu = document.getElementById("mobileMenu")
+
+  if (mobileMenuBtn && mobileMenu) {
+    mobileMenuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("active")
+
+      // Change icon
+      const icon = mobileMenuBtn.querySelector("i")
+      if (mobileMenu.classList.contains("active")) {
+        icon.className = "fas fa-times"
+      } else {
+        icon.className = "fas fa-bars"
+      }
+    })
+
+    // Close mobile menu when clicking on a link
+    const mobileLinks = mobileMenu.querySelectorAll("a")
+    mobileLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.remove("active")
+        const icon = mobileMenuBtn.querySelector("i")
+        icon.className = "fas fa-bars"
+      })
+    })
+
+    // Close mobile menu when clicking outside
+    document.addEventListener("click", (e) => {
+      if (!mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+        mobileMenu.classList.remove("active")
+        const icon = mobileMenuBtn.querySelector("i")
+        icon.className = "fas fa-bars"
+      }
+    })
+  }
+})
