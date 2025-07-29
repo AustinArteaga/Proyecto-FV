@@ -743,7 +743,7 @@ function mostrarContenedorAhorro(datos) {
           </div>
           <div class="result-item">
             <span>Cantidad de paneles:</span>
-            <span>${datos.sistema.cantidadPaneles} unidades</span>
+            <span>${datos.sistema.cantidadPaneles <= 4 ? "No requerido" : datos.sistema.cantidadPaneles + " unidades"}</span>
           </div>
           <div class="result-item">
             <span>Área requerida:</span>
@@ -860,7 +860,7 @@ function mostrarContenedorRespaldo(datos) {
           </div>
           <div class="result-item">
             <span>Cantidad de paneles:</span>
-            <span>${datos.sistema.cantidadPaneles} unidades</span>
+            <span>${datos.sistema.cantidadPaneles <= 4 ? "No requerido" : datos.sistema.cantidadPaneles + " unidades"}</span>
           </div>
           <div class="result-item">
             <span>Área requerida:</span>
@@ -989,7 +989,7 @@ function mostrarContenedorHibrido(datos) {
           </div>
           <div class="result-item">
             <span>Cantidad de paneles:</span>
-            <span>${datos.sistema.cantidadPaneles} unidades</span>
+            <span>${datos.sistema.cantidadPaneles <= 4 ? "No requerido" : datos.sistema.cantidadPaneles + " unidades"}</span>
           </div>
           <div class="result-item">
             <span>Área requerida:</span>
