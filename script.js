@@ -52,7 +52,7 @@ const SISTEMAS_MARRIOTT = [
   {
     rangoMin: 201,
     rangoMax: 600,
-    nombre: "BLUESUN 3KW OFF GRID",
+    nombre: "3KW OFF GRID",
     tipo: "OFF_GRID",
     potencia: 3.0,
     precio: 1899.0,
@@ -66,7 +66,7 @@ const SISTEMAS_MARRIOTT = [
   {
     rangoMin: 601,
     rangoMax: 900,
-    nombre: "BLUESUN 5KW OFF GRID",
+    nombre: "5KW OFF GRID",
     tipo: "OFF_GRID",
     potencia: 5.0,
     precio: 3299.0,
@@ -140,7 +140,7 @@ const SISTEMAS_MARRIOTT = [
   {
     rangoMin: 1201,
     rangoMax: 1500,
-    nombre: "SOSEN 10KW + 10 PANELES HÍBRIDO",
+    nombre: "10KW + 10 PANELES HÍBRIDO",
     tipo: "HIBRIDO",
     potencia: 10.0,
     precio: 7049.0,
@@ -154,7 +154,7 @@ const SISTEMAS_MARRIOTT = [
   {
     rangoMin: 1501,
     rangoMax: 1800,
-    nombre: "SOSEN FOX 11KW + 15 PANELES HÍBRIDO",
+    nombre: "11KW + 15 PANELES HÍBRIDO",
     tipo: "HIBRIDO",
     potencia: 11.0,
     precio: 7974.0,
@@ -168,7 +168,7 @@ const SISTEMAS_MARRIOTT = [
   {
     rangoMin: 1801,
     rangoMax: 2500,
-    nombre: "SOSEN 15KW + 20 PANELES HÍBRIDO",
+    nombre: "15KW + 20 PANELES HÍBRIDO",
     tipo: "HIBRIDO",
     potencia: 15.0,
     precio: 11499.0,
@@ -826,7 +826,7 @@ function mostrarContenedorRespaldo(datos) {
         <i class="fas fa-battery-full"></i>
         <div>
           <h4>Sistema de Respaldo Energético</h4>
-          <p>Este sistema <strong>NO genera ahorro</strong> en tu factura eléctrica, pero te proporciona <strong>energía de respaldo</strong> durante cortes de luz y emergencias.</p>
+          <p>Tu consumo actual es bastante bajo. En este caso, te recomendamos un <strong>Sistema de Respaldo Energético</strong>, ideal para mantener tu hogar protegido ante cortes de energía y garantizar continuidad en tus actividades.</p>
         </div>
       </div>
     </div>
@@ -853,10 +853,6 @@ function mostrarContenedorRespaldo(datos) {
           <div class="result-item">
             <span>Inversión:</span>
             <span class="cost-primary">${formatearMoneda(datos.sistema.precioConIVA || datos.sistema.precio)}</span>
-          </div>
-          <div class="result-item">
-            <span>Autonomía:</span>
-            <span><strong>${datos.sistema.autonomiaHoras} horas</strong></span>
           </div>
           <div class="result-item">
             <span>Cantidad de paneles:</span>
@@ -982,10 +978,6 @@ function mostrarContenedorHibrido(datos) {
           <div class="result-item">
             <span>Producción mensual:</span>
             <span>${formatearNumero(datos.sistema.produccionMensual, 0)} kWh</span>
-          </div>
-          <div class="result-item">
-            <span>Autonomía:</span>
-            <span><strong>${datos.sistema.autonomiaHoras} horas</strong></span>
           </div>
           <div class="result-item">
             <span>Cantidad de paneles:</span>
@@ -1300,3 +1292,36 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   }
 })
+
+
+// 🧮 CÁLCULO DE CANTIDAD DE PANELES (para consumo ≥ 201 kWh)
+function calcularCantidadPaneles(consumoKwh) {
+  if (consumoKwh < 201) return null;
+
+  const tamanoSugeridoExacto = Math.ceil(((consumoKwh / 30) / 4) * 100) / 100;
+  const cantidadPaneles = Math.ceil((tamanoSugeridoExacto * 1000) / 2.60);
+  const espacioRequerido = cantidadPaneles * 2.60 * 1.3;
+
+  return {
+    tamanoSugeridoExacto,
+    cantidadPaneles,
+    espacioRequerido: Math.ceil(espacioRequerido * 100) / 100
+  };
+}
+
+// 🔍 Prueba de cálculo en consola para confirmar funcionamiento
+console.log("🧪 Test consumo 300kWh:", calcularCantidadPaneles(300));
+
+// Renderizar tarjetas horizontalmente
+const contenedor = document.getElementById("resultado-sistemas");
+contenedor.innerHTML = "";
+sistemasDisponibles.forEach(sistema => {
+    contenedor.innerHTML += `
+    <div class="tarjeta-sistema ${sistema.tipo === 'ON GRID' ? 'on-grid-destacado' : ''}">
+        <h3>${sistema.nombre}</h3>
+        <p>${sistema.descripcion}</p>
+        <p>Precio: $${sistema.precio}</p>
+        <p>Tipo: ${sistema.tipo}</p>
+        <p>${sistema.roi ? 'ROI: ' + sistema.roi + ' años' : 'Sin retorno de inversión'}</p>
+    </div>`;
+});
