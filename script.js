@@ -60,7 +60,7 @@ const SISTEMAS_MARRIOTT = [
     produccionMensual: 300,
     cantidadPaneles: 6,
     areaRequerida: 13.2,
-    autonomiaHoras: 16,
+   
     descripcion: "Sistema completo de respaldo para hogares medianos",
   },
   {
@@ -74,7 +74,7 @@ const SISTEMAS_MARRIOTT = [
     produccionMensual: 450,
     cantidadPaneles: 10,
     areaRequerida: 22.0,
-    autonomiaHoras: 20,
+
     descripcion: "Sistema robusto de respaldo para hogares grandes",
   },
 
@@ -148,7 +148,7 @@ const SISTEMAS_MARRIOTT = [
     produccionMensual: 900,
     cantidadPaneles: 10,
     areaRequerida: 22.0,
-    autonomiaHoras: 12,
+ 
     descripcion: "Sistema híbrido con ahorro y respaldo incluido",
   },
   {
@@ -162,7 +162,7 @@ const SISTEMAS_MARRIOTT = [
     produccionMensual: 1100,
     cantidadPaneles: 15,
     areaRequerida: 33.0,
-    autonomiaHoras: 14,
+
     descripcion: "Sistema híbrido avanzado para máximo aprovechamiento",
   },
   {
@@ -176,7 +176,7 @@ const SISTEMAS_MARRIOTT = [
     produccionMensual: 1500,
     cantidadPaneles: 20,
     areaRequerida: 44.0,
-    autonomiaHoras: 16,
+
     descripcion: "Sistema híbrido de alta capacidad",
   },
 ]
@@ -527,7 +527,7 @@ function generarPDF() {
       doc.setFontSize(14)
       doc.setTextColor(...primaryColor)
       const precioMostrar = datosCalculados.sistema.precioConIVA || datosCalculados.sistema.precio
-      doc.text(`Inversión: ${formatearMoneda(precioMostrar)}`, 20, yPos)
+      doc.text(`Inversión${datos.consumo > 201 ? ' (Incluye mano de obra)' : ''}: ${formatearMoneda(precioMostrar)}`, 20, yPos)
 
       // INFORMACIÓN ESPECÍFICA SEGÚN TIPO
       yPos += 20
@@ -558,7 +558,7 @@ function generarPDF() {
 
         doc.setFontSize(11)
         doc.setTextColor(...textColor)
-        doc.text(`Autonomía: ${datosCalculados.sistema.autonomiaHoras} horas`, 20, yPos + 15)
+       
       } else if (datosCalculados.sistema.tipo === "HIBRIDO") {
         // Mostrar ambos
         doc.setFontSize(16)
@@ -734,7 +734,7 @@ function mostrarContenedorAhorro(datos) {
             <span>${datos.sistema.potencia} kW</span>
           </div>
           <div class="result-item">
-            <span>Inversión:</span>
+            <span>${datos.consumo > 201 ? 'Inversión <em style="color:gray;font-weight:normal;">(Incluye mano de obra)</em>:' : 'Inversión:'}</span>
             <span class="cost-primary">${formatearMoneda(datos.sistema.precioConIVA || datos.sistema.precio)}</span>
           </div>
           <div class="result-item">
@@ -826,7 +826,7 @@ function mostrarContenedorRespaldo(datos) {
         <i class="fas fa-battery-full"></i>
         <div>
           <h4>Sistema de Respaldo Energético</h4>
-          <p>Tu consumo actual es bastante bajo. En este caso, te recomendamos un <strong>Sistema de Respaldo Energético</strong>, ideal para mantener tu hogar protegido ante cortes de energía y garantizar continuidad en tus actividades.</p>
+          <p>Tu consumo actual es bajo. Te recomendamos un <strong>Sistema de Respaldo Energético</strong>, ideal para mantener tu hogar protegido ante cortes de energía.</p>
         </div>
       </div>
     </div>
@@ -838,105 +838,28 @@ function mostrarContenedorRespaldo(datos) {
           <h3><i class="fas fa-battery-full"></i> Sistema de Respaldo</h3>
         </div>
         <div class="card-content">
-          <div class="result-item">
-            <span>Sistema:</span>
-            <span><strong>${datos.sistema.nombre}</strong></span>
-          </div>
-          <div class="result-item">
-            <span>Tipo:</span>
-            <span>Independiente (OFF GRID)</span>
-          </div>
-          <div class="result-item">
-            <span>Potencia:</span>
-            <span>${datos.sistema.potencia} kW</span>
-          </div>
-          <div class="result-item">
-            <span>Inversión:</span>
-            <span class="cost-primary">${formatearMoneda(datos.sistema.precioConIVA || datos.sistema.precio)}</span>
-          </div>
-          <div class="result-item">
-            <span>Cantidad de paneles:</span>
-            <span>${datos.sistema.cantidadPaneles <= 4 ? "No requerido" : datos.sistema.cantidadPaneles + " unidades"}</span>
-          </div>
-          <div class="result-item">
-            <span>Área requerida:</span>
-            <span>${formatearNumero(datos.sistema.areaRequerida)} m²</span>
-          </div>
+          <div class="result-item"><span>Sistema:</span><span><strong>${datos.sistema.nombre}</strong></span></div>
+          <div class="result-item"><span>Tipo:</span><span>Independiente (OFF GRID)</span></div>
+          <div class="result-item"><span>Potencia:</span><span>${datos.sistema.potencia} kW</span></div>
+          <div class="result-item"><span>Inversión:</span><span class="cost-primary">${formatearMoneda(datos.sistema.precioConIVA || datos.sistema.precio)}</span></div>
+          <div class="result-item"><span>Cantidad de paneles:</span><span>${datos.sistema.cantidadPaneles <= 4 ? "No requerido" : datos.sistema.cantidadPaneles + " unidades"}</span></div>
+          <div class="result-item"><span>Área requerida:</span><span>${formatearNumero(datos.sistema.areaRequerida)} m²</span></div>
         </div>
       </div>
 
-      <!-- Beneficios del Sistema -->
+      <!-- Beneficios -->
       <div class="result-card">
-        <div class="card-header">
-          <h3><i class="fas fa-shield-alt"></i> Beneficios del Sistema</h3>
-        </div>
+        <div class="card-header"><h3><i class="fas fa-shield-alt"></i> Beneficios del Sistema</h3></div>
         <div class="card-content">
-          <div class="benefit-item">
-            <i class="fas fa-bolt"></i>
-            <div>
-              <strong>Energía durante cortes</strong>
-              <p>Mantén tus equipos funcionando durante apagones</p>
-            </div>
-          </div>
-          <div class="benefit-item">
-            <i class="fas fa-home"></i>
-            <div>
-              <strong>Independencia energética</strong>
-              <p>No dependes completamente de la red eléctrica</p>
-            </div>
-          </div>
-          <div class="benefit-item">
-            <i class="fas fa-leaf"></i>
-            <div>
-              <strong>Energía limpia</strong>
-              <p>Reduces tu huella de carbono</p>
-            </div>
-          </div>
-          <div class="benefit-item">
-            <i class="fas fa-tools"></i>
-            <div>
-              <strong>Sistema completo</strong>
-              <p>Incluye paneles, baterías e inversor</p>
-            </div>
-          </div>
+          <div class="benefit-item"><i class="fas fa-bolt"></i><div><strong>Energía durante cortes</strong><p>Mantén tus equipos funcionando durante apagones</p></div></div>
+          <div class="benefit-item"><i class="fas fa-home"></i><div><strong>Independencia energética</strong><p>No dependes completamente de la red eléctrica</p></div></div>
+          <div class="benefit-item"><i class="fas fa-leaf"></i><div><strong>Energía limpia</strong><p>Reduces tu huella de carbono</p></div></div>
+          <div class="benefit-item"><i class="fas fa-tools"></i><div><strong>Sistema completo</strong><p>Incluye paneles, baterías e inversor</p></div></div>
         </div>
       </div>
     </div>
-
-    <!-- Información Importante -->
-    <div class="info-card">
-      <div class="info-content">
-        <div class="info-header">
-          <i class="fas fa-info-circle"></i>
-          <h3>Información Importante</h3>
-        </div>
-        <div class="info-grid">
-          <div class="info-item">
-            <i class="fas fa-exclamation-triangle"></i>
-            <div>
-              <strong>No reduce tu factura</strong>
-              <p>Este sistema funciona independiente de la red eléctrica</p>
-            </div>
-          </div>
-          <div class="info-item">
-            <i class="fas fa-clock"></i>
-            <div>
-              <strong>Autonomía de ${datos.sistema.autonomiaHoras} horas</strong>
-              <p>Tiempo de respaldo con carga completa</p>
-            </div>
-          </div>
-          <div class="info-item">
-            <i class="fas fa-cog"></i>
-            <div>
-              <strong>Instalación especializada</strong>
-              <p>Requiere instalación por técnicos certificados</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  `
-  elementos.contenedorRespaldo.style.display = "block"
+  `;
+  elementos.contenedorRespaldo.style.display = "block";
 }
 
 // ⚡ MOSTRAR CONTENEDOR HÍBRIDO
@@ -946,129 +869,49 @@ function mostrarContenedorHibrido(datos) {
       <div class="alert-content">
         <i class="fas fa-star"></i>
         <div>
-          <h4>¡Sistema Híbrido - Lo Mejor de Ambos Mundos!</h4>
-          <p>Este sistema te permite <strong>ahorrar en tu factura eléctrica</strong> Y tener <strong>energía de respaldo</strong> durante cortes de luz.</p>
+          <h4>¡Sistema Híbrido!</h4>
+          <p>Este sistema te permite <strong>ahorrar en tu factura eléctrica</strong> y mantener un suministro estable de energía.</p>
         </div>
       </div>
     </div>
 
     <div class="results-grid">
-      <!-- Sistema Recomendado -->
       <div class="result-card">
-        <div class="card-header">
-          <h3><i class="fas fa-star"></i> Sistema Híbrido</h3>
-        </div>
+        <div class="card-header"><h3><i class="fas fa-star"></i> Sistema Híbrido</h3></div>
         <div class="card-content">
-          <div class="result-item">
-            <span>Sistema:</span>
-            <span><strong>${datos.sistema.nombre}</strong></span>
-          </div>
-          <div class="result-item">
-            <span>Tipo:</span>
-            <span>Híbrido (Ahorro + Respaldo)</span>
-          </div>
-          <div class="result-item">
-            <span>Potencia:</span>
-            <span>${datos.sistema.potencia} kW</span>
-          </div>
-          <div class="result-item">
-            <span>Inversión:</span>
-            <span class="cost-primary">${formatearMoneda(datos.sistema.precioConIVA || datos.sistema.precio)}</span>
-          </div>
-          <div class="result-item">
-            <span>Producción mensual:</span>
-            <span>${formatearNumero(datos.sistema.produccionMensual, 0)} kWh</span>
-          </div>
-          <div class="result-item">
-            <span>Cantidad de paneles:</span>
-            <span>${datos.sistema.cantidadPaneles <= 4 ? "No requerido" : datos.sistema.cantidadPaneles + " unidades"}</span>
-          </div>
-          <div class="result-item">
-            <span>Área requerida:</span>
-            <span>${formatearNumero(datos.sistema.areaRequerida)} m²</span>
-          </div>
+          <div class="result-item"><span>Sistema:</span><span><strong>${datos.sistema.nombre}</strong></span></div>
+          <div class="result-item"><span>Tipo:</span><span>Híbrido</span></div>
+          <div class="result-item"><span>Potencia:</span><span>${datos.sistema.potencia} kW</span></div>
+          <div class="result-item"><span>Inversión:</span><span class="cost-primary">${formatearMoneda(datos.sistema.precioConIVA || datos.sistema.precio)}</span></div>
+          <div class="result-item"><span>Producción mensual:</span><span>${formatearNumero(datos.sistema.produccionMensual, 0)} kWh</span></div>
+          <div class="result-item"><span>Cantidad de paneles:</span><span>${datos.sistema.cantidadPaneles} unidades</span></div>
+          <div class="result-item"><span>Área requerida:</span><span>${formatearNumero(datos.sistema.areaRequerida)} m²</span></div>
         </div>
       </div>
 
       <!-- Análisis de Ahorro -->
       <div class="result-card">
-        <div class="card-header">
-          <h3><i class="fas fa-piggy-bank"></i> Análisis de Ahorro</h3>
-        </div>
+        <div class="card-header"><h3><i class="fas fa-piggy-bank"></i> Análisis de Ahorro</h3></div>
         <div class="card-content">
-          <div class="result-item">
-            <span>Consumo actual:</span>
-            <span>${formatearNumero(datos.consumo, 0)} kWh/mes</span>
-          </div>
-          <div class="result-item">
-            <span>Costo actual:</span>
-            <span class="cost-negative">${formatearMoneda(datos.costoMensualSinSFV)}/mes</span>
-          </div>
-          <div class="result-item">
-            <span>Nuevo consumo:</span>
-            <span>${formatearNumero(datos.nuevoConsumoMensual, 0)} kWh/mes</span>
-          </div>
-          <div class="result-item">
-            <span>Nuevo costo:</span>
-            <span>${formatearMoneda(datos.nuevoCostoMensualSFV)}/mes</span>
-          </div>
-          <div class="result-item">
-            <span><strong>Ahorro mensual:</strong></span>
-            <span class="cost-positive"><strong>${formatearMoneda(datos.ahorroMensual)}</strong></span>
-          </div>
-          <div class="result-item">
-            <span><strong>Ahorro anual:</strong></span>
-            <span class="cost-positive"><strong>${formatearMoneda(datos.ahorroAnual)}</strong></span>
-          </div>
+          <div class="result-item"><span>Consumo actual:</span><span>${formatearNumero(datos.consumo, 0)} kWh/mes</span></div>
+          <div class="result-item"><span>Costo actual:</span><span class="cost-negative">${formatearMoneda(datos.costoMensualSinSFV)}/mes</span></div>
+          <div class="result-item"><span>Nuevo consumo:</span><span>${formatearNumero(datos.nuevoConsumoMensual, 0)} kWh/mes</span></div>
+          <div class="result-item"><span>Nuevo costo:</span><span>${formatearMoneda(datos.nuevoCostoMensualSFV)}/mes</span></div>
+          <div class="result-item"><span><strong>Ahorro mensual:</strong></span><span class="cost-positive"><strong>${formatearMoneda(datos.ahorroMensual)}</strong></span></div>
+          <div class="result-item"><span><strong>Ahorro anual:</strong></span><span class="cost-positive"><strong>${formatearMoneda(datos.ahorroAnual)}</strong></span></div>
         </div>
       </div>
     </div>
 
-    <!-- Tiempo de Retorno + Respaldo -->
-    <div class="hybrid-benefits">
-      <div class="retorno-section">
-        <div class="retorno-header">
-          <i class="fas fa-clock"></i>
-          <h3>Retorno de Inversión</h3>
-        </div>
+    <div class="retorno-card">
+      <div class="retorno-content">
+        <div class="retorno-header"><i class="fas fa-clock"></i><h3>Tiempo de Retorno</h3></div>
         <div class="retorno-value">${formatearNumero(datos.tiempoRetorno, 1)} años</div>
-        <p>Se recupera en <strong>${datos.tiempoRetorno.toFixed(1)} años</strong></p>
-      </div>
-      
-      <div class="respaldo-section">
-        <div class="respaldo-header">
-          <i class="fas fa-battery-full"></i>
-          <h3>Respaldo Incluido</h3>
-        </div>
-        <div class="respaldo-value">${datos.sistema.autonomiaHoras}h</div>
-        <p>Autonomía durante cortes</p>
+        <p>Tu inversión se recuperará en aproximadamente <strong>${datos.tiempoRetorno.toFixed(1)} años</strong>.</p>
       </div>
     </div>
-
-    <div class="metrics-grid">
-      <div class="metric-item">
-        <i class="fas fa-percentage"></i>
-        <div class="metric-value">${formatearNumero(datos.ahorroAnualPorcentaje, 1)}%</div>
-        <div class="metric-label">Ahorro Anual</div>
-      </div>
-      <div class="metric-item">
-        <i class="fas fa-dollar-sign"></i>
-        <div class="metric-value">${formatearMoneda(datos.ahorroAnual)}</div>
-        <div class="metric-label">USD/año</div>
-      </div>
-      <div class="metric-item">
-        <i class="fas fa-shield-alt"></i>
-        <div class="metric-value">${datos.sistema.autonomiaHoras}h</div>
-        <div class="metric-label">Respaldo</div>
-      </div>
-      <div class="metric-item">
-        <i class="fas fa-home"></i>
-        <div class="metric-value">${formatearNumero(datos.sistema.areaRequerida)} m²</div>
-        <div class="metric-label">Área Necesaria</div>
-      </div>
-    </div>
-  `
-  elementos.contenedorHibrido.style.display = "block"
+  `;
+  elementos.contenedorHibrido.style.display = "block";
 }
 
 function formatearMoneda(valor) {
@@ -1311,17 +1154,3 @@ function calcularCantidadPaneles(consumoKwh) {
 
 // 🔍 Prueba de cálculo en consola para confirmar funcionamiento
 console.log("🧪 Test consumo 300kWh:", calcularCantidadPaneles(300));
-
-// Renderizar tarjetas horizontalmente
-const contenedor = document.getElementById("resultado-sistemas");
-contenedor.innerHTML = "";
-sistemasDisponibles.forEach(sistema => {
-    contenedor.innerHTML += `
-    <div class="tarjeta-sistema ${sistema.tipo === 'ON GRID' ? 'on-grid-destacado' : ''}">
-        <h3>${sistema.nombre}</h3>
-        <p>${sistema.descripcion}</p>
-        <p>Precio: $${sistema.precio}</p>
-        <p>Tipo: ${sistema.tipo}</p>
-        <p>${sistema.roi ? 'ROI: ' + sistema.roi + ' años' : 'Sin retorno de inversión'}</p>
-    </div>`;
-});
