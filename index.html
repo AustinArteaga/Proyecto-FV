@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Ahorro Fotovoltaico - Marriott Solutions</title>
+    <title>Solutions - Grupo Marriott</title>
     <link rel="icon" type="image/png" href="https://images.grupomarriott.com/wp-content/uploads/2022/11/17141425/cropped-favicon-32x32-1-32x32.png">
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -11,33 +11,40 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
-    <!-- Header Negro con Logo y Navegación -->
-    <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <!-- Logo de la empresa -->
-                <div class="logo-container">
-                    <img src="https://images.grupomarriott.com/wp-content/uploads/2022/10/31083332/LOGO_SOLAR-1.png" 
-                         alt="Marriott Solutions - Energía Solar" 
-                         class="company-logo">
-                </div>
-                
-                <!-- Navegación -->
-                <nav class="header-nav">
-                    <a href="https://www.grupomarriott.com/solution/#mste-nosotros" 
-                       target="_blank" 
-                       class="nav-link">Nosotros</a>
-                    <a href="https://b2b.grupomarriott.com/shop/category/equipos-fotovoltaicos-1292" 
-                       target="_blank" 
-                       class="nav-link">Productos</a>
-                    <a href="https://almacenesmarriott.com/locales/" 
-                       target="_blank" 
-                       class="nav-link">Puntos de Venta</a>
-                    <a href="https://www.grupomarriott.com/solution/#mste-contactenos" 
-                       target="_blank" 
-                       class="nav-link">Contáctanos</a>
-                </nav>
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="header-container">
+            <!-- Logo Section -->
+            <div class="header-logo">
+                <a href="https://www.grupomarriott.com/solution/">
+                <img src="https://images.grupomarriott.com/wp-content/uploads/2022/10/31083332/LOGO_SOLAR-1.png" height="56" width="115" alt="Logo Marriott Solar">
+                </a>
             </div>
+            
+            <!-- Navigation Menu -->
+            <nav class="header-nav">
+                <ul class="nav-menu">
+                    <li><a href="https://www.grupomarriott.com/solution/#mste-nosotros">NOSOTROS</a></li>
+                    <li><a href="https://b2b.grupomarriott.com/shop/category/equipos-fotovoltaicos-1292">PRODUCTOS</a></li>
+                    <li><a href="https://almacenesmarriott.com/locales/">PUNTOS DE VENTA</a></li>
+                    <li><a href="https://www.grupomarriott.com/solution/#mste-contactenos">CONTÁCTENOS</a></li>
+                </ul>
+                
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobileMenu">
+            <ul class="mobile-nav-menu">
+                <li><a href="#nosotros">NOSOTROS</a></li>
+                <li><a href="#productos">PRODUCTOS</a></li>
+                <li><a href="#puntos-venta">PUNTOS DE VENTA</a></li>
+                <li><a href="#contactenos">CONTÁCTENOS</a></li>
+            </ul>
         </div>
     </header>
 
@@ -47,8 +54,8 @@
             <!-- Formulario -->
             <div class="form-card">
                 <div class="card-header">
-                    <h2><i class="fas fa-calculator"></i> Calculadora de Ahorro Solar</h2>
-                    <p>Descubre cuánto puedes ahorrar con energía fotovoltaica</p>
+                    <h2><i class="fas fa-user"></i> Datos del Cliente</h2>
+                    <p>Ingresa la información para calcular tu potencial de ahorro energético</p>
                 </div>
                 <div class="card-content">
                     <!-- Alertas de Error -->
@@ -115,9 +122,9 @@
                     </div>
                     <div class="modal-body">
                         <p>En tu planilla de luz, busca el valor de <strong>"Consumo kWh"</strong> o <strong>"Energía Consumida"</strong>:</p>
-                        <div class="image-container">
-                            <img src="/placeholder.svg?height=400&width=600&text=Ejemplo+de+Planilla+de+Luz+-+Busca+el+valor+en+kWh" 
-                                 alt="Ejemplo de planilla de luz mostrando consumo en kWh" 
+                        <div class="image-container" >
+                            <img src="https://i.ibb.co/svG6mTSF/FOTO-DE-PLANILLA.png" alt="FOTO-DE-PLANILLA" 
+                                 alt="FOTO DE PLANILLA.png"
                                  id="planillaImage">
                             <p class="image-note">
                                 <i class="fas fa-info-circle"></i>
@@ -125,18 +132,7 @@
                             </p>
                         </div>
                         <div class="help-tips">
-                            <div class="tip-item">
-                                <i class="fas fa-lightbulb"></i>
-                                <span>El consumo aparece en <strong>kWh</strong> (kilovatios hora)</span>
-                            </div>
-                            <div class="tip-item">
-                                <i class="fas fa-calendar-alt"></i>
-                                <span>Usa el consumo del <strong>último mes completo</strong></span>
-                            </div>
-                            <div class="tip-item">
-                                <i class="fas fa-search"></i>
-                                <span>Busca en la sección de <strong>"Detalle del Consumo"</strong></span>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -146,127 +142,23 @@
             <div id="resultados" class="resultados" style="display: none;">
                 <!-- Header de Resultados -->
                 <div class="result-header">
-                    <h2><i class="fas fa-chart-line"></i> Análisis de Ahorro Fotovoltaico</h2>
+                    <h2><i class="fas fa-chart-line"></i> Análisis de Sistema Solar</h2>
                     <div id="cliente-info"></div>
                 </div>
 
-                <!-- Grid de Resultados -->
-                <div class="results-grid">
-                    <!-- Situación Actual -->
-                    <div class="result-card">
-                        <div class="card-header">
-                            <h3><i class="fas fa-lightbulb"></i> Situación Actual</h3>
-                        </div>
-                        <div class="card-content">
-                            <div class="result-item">
-                                <span>Consumo mensual:</span>
-                                <span id="consumo-mensual-display"></span>
-                            </div>
-                            <div class="result-item">
-                                <span>Costo mensual sin SFV:</span>
-                                <span id="costo-mensual-sin-sfv" class="cost-negative"></span>
-                            </div>
-                            <div class="result-item">
-                                <span>Consumo anual:</span>
-                                <span id="consumo-anual"></span>
-                            </div>
-                            <div class="result-item">
-                                <span>Costo anual sin SFV:</span>
-                                <span id="costo-anual-sin-sfv" class="cost-negative"></span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Sistema Fotovoltaico -->
-                    <div class="result-card">
-                        <div class="card-header">
-                            <h3><i class="fas fa-sun"></i> Sistema Fotovoltaico</h3>
-                        </div>
-                        <div class="card-content">
-                            <div class="result-item">
-                                <span>Tamaño sugerido:</span>
-                                <span id="tamano-sfv"></span>
-                            </div>
-                            <div class="result-item">
-                                <span>Inversión estimada:</span>
-                                <span id="precio-inversion" class="cost-primary"></span>
-                            </div>
-                            <div class="result-item">
-                                <span>Producción anual:</span>
-                                <span id="produccion-anual"></span>
-                            </div>
-                            <div class="result-item">
-                                <span>Producción mensual:</span>
-                                <span id="produccion-mensual"></span>
-                            </div>
-                            <div class="result-item">
-                                <span>Cantidad de paneles:</span>
-                                <span id="cantidad-paneles"></span>
-                            </div>
-                            <div class="result-item">
-                                <span>Área requerida:</span>
-                                <span id="area-requerida"></span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Con Sistema Solar -->
-                    <div class="result-card">
-                        <div class="card-header">
-                            <h3><i class="fas fa-piggy-bank"></i> Con Sistema Solar</h3>
-                        </div>
-                        <div class="card-content">
-                            <div class="result-item">
-                                <span>Nuevo consumo mensual:</span>
-                                <span id="nuevo-consumo-mensual"></span>
-                            </div>
-                            <div class="result-item">
-                                <span>Nuevo costo mensual:</span>
-                                <span id="nuevo-costo-mensual"></span>
-                            </div>
-                            <div class="result-item">
-                                <span>Ahorro mensual:</span>
-                                <span id="ahorro-mensual" class="cost-positive"></span>
-                            </div>
-                            <div class="result-item">
-                                <span>Ahorro anual:</span>
-                                <span id="ahorro-anual" class="cost-positive"></span>
-                            </div>
-                            <div class="result-item">
-                                <span>Ahorro anual (%):</span>
-                                <span id="ahorro-porcentaje" class="cost-positive"></span>
-                            </div>
-                        </div>
-                    </div>
+                <!-- CONTENEDOR PARA SISTEMAS DE AHORRO (ON GRID) -->
+                <div id="contenedor-ahorro" style="display: none;">
+                    <!-- El contenido se genera dinámicamente en JavaScript -->
                 </div>
 
-                <!-- Tiempo de Retorno -->
-                <div class="retorno-card">
-                    <div class="retorno-content">
-                        <div class="retorno-header">
-                            <i class="fas fa-clock"></i>
-                            <h3>Tiempo Estimado de Retorno</h3>
-                        </div>
-                        <div class="retorno-value" id="tiempo-retorno"></div>
-                        <p id="retorno-description"></p>
-                        <div class="metrics-grid">
-                            <div class="metric-item">
-                                <i class="fas fa-chart-bar"></i>
-                                <div class="metric-value" id="metric-porcentaje"></div>
-                                <div class="metric-label">Ahorro Anual</div>
-                            </div>
-                            <div class="metric-item">
-                                <i class="fas fa-dollar-sign"></i>
-                                <div class="metric-value" id="metric-ahorro"></div>
-                                <div class="metric-label">Ahorro USD/año</div>
-                            </div>
-                            <div class="metric-item">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <div class="metric-value" id="metric-area"></div>
-                                <div class="metric-label">Área Requerida</div>
-                            </div>
-                        </div>
-                    </div>
+                <!-- CONTENEDOR PARA SISTEMAS DE RESPALDO (OFF GRID) -->
+                <div id="contenedor-respaldo" style="display: none;">
+                    <!-- El contenido se genera dinámicamente en JavaScript -->
+                </div>
+
+                <!-- CONTENEDOR PARA SISTEMAS HÍBRIDOS -->
+                <div id="contenedor-hibrido" style="display: none;">
+                    <!-- El contenido se genera dinámicamente en JavaScript -->
                 </div>
 
                 <!-- Botones de Acción -->

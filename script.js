@@ -16,6 +16,171 @@ const TARIFAS_EXACTAS = [
   { desde: 3501, hasta: Number.POSITIVE_INFINITY, tarifa: 0.6812, costoBase: 1244.06 },
 ]
 
+// 🏷️ CATÁLOGO DE SISTEMAS MARRIOTT - BASADO EN LA TABLA PROPORCIONADA
+const SISTEMAS_MARRIOTT = [
+  // POWER STATIONS (0-200 kWh)
+  {
+    rangoMin: 0,
+    rangoMax: 100,
+    nombre: "Power Station 1000W",
+    tipo: "OFF_GRID",
+    potencia: 1.0,
+    precio: 770.75,
+    precioConIVA: 886.36,
+    produccionMensual: 80, // Estimado para respaldo
+    cantidadPaneles: 2,
+    areaRequerida: 4.4,
+    autonomiaHoras: 8,
+    descripcion: "Sistema portátil de respaldo para equipos básicos",
+  },
+  {
+    rangoMin: 101,
+    rangoMax: 200,
+    nombre: "Power Station 2400W",
+    tipo: "OFF_GRID",
+    potencia: 2.4,
+    precio: 1250.0,
+    precioConIVA: 1437.5,
+    produccionMensual: 180,
+    cantidadPaneles: 4,
+    areaRequerida: 8.8,
+    autonomiaHoras: 12,
+    descripcion: "Sistema de respaldo para equipos esenciales del hogar",
+  },
+
+  // SISTEMAS OFF GRID (201-900 kWh)
+  {
+    rangoMin: 201,
+    rangoMax: 600,
+    nombre: "3KW OFF GRID",
+    tipo: "OFF_GRID",
+    potencia: 3.0,
+    precio: 1899.0,
+    precioConIVA: null, // NO APLICA según tabla
+    produccionMensual: 300,
+    cantidadPaneles: 6,
+    areaRequerida: 13.2,
+   
+    descripcion: "Sistema completo de respaldo para hogares medianos",
+  },
+  {
+    rangoMin: 601,
+    rangoMax: 900,
+    nombre: "5KW OFF GRID",
+    tipo: "OFF_GRID",
+    potencia: 5.0,
+    precio: 3299.0,
+    precioConIVA: null,
+    produccionMensual: 450,
+    cantidadPaneles: 10,
+    areaRequerida: 22.0,
+
+    descripcion: "Sistema robusto de respaldo para hogares grandes",
+  },
+
+  // SISTEMAS ON GRID (901-3500 kWh)
+  {
+    rangoMin: 901,
+    rangoMax: 1000,
+    nombre: "ON GRID 3KW + 6 PANELES",
+    tipo: "ON_GRID",
+    potencia: 3.0,
+    precio: 1860.0,
+    precioConIVA: 2081.6,
+    produccionMensual: 360,
+    cantidadPaneles: 6,
+    areaRequerida: 13.2,
+    autonomiaHoras: 0, // ON GRID no tiene respaldo
+    descripcion: "Sistema conectado a la red para ahorro en factura eléctrica",
+  },
+  {
+    rangoMin: 1001,
+    rangoMax: 1200,
+    nombre: "ON GRID 5KW + 10 PANELES",
+    tipo: "ON_GRID",
+    potencia: 5.0,
+    precio: 2970.0,
+    precioConIVA: 3325.6,
+    produccionMensual: 600,
+    cantidadPaneles: 10,
+    areaRequerida: 22.0,
+    autonomiaHoras: 0,
+    descripcion: "Sistema de ahorro para consumos medios-altos",
+  },
+  {
+    rangoMin: 2501,
+    rangoMax: 3000,
+    nombre: "ON GRID 10KW + 24 PANELES",
+    tipo: "ON_GRID",
+    potencia: 10.0,
+    precio: 6010.0,
+    precioConIVA: 6731.2,
+    produccionMensual: 1200,
+    cantidadPaneles: 24,
+    areaRequerida: 52.8,
+    autonomiaHoras: 0,
+    descripcion: "Sistema de alto rendimiento para grandes consumos",
+  },
+  {
+    rangoMin: 3001,
+    rangoMax: 4000,
+    nombre: "2 X (ON GRID 10KW + 24 PANELES)",
+    tipo: "ON_GRID",
+    potencia: 20.0,
+    precio: 8060.0,
+    precioConIVA: 9027.2,
+    produccionMensual: 2400,
+    cantidadPaneles: 48,
+    areaRequerida: 105.6,
+    autonomiaHoras: 0,
+    descripcion: "Sistema doble para consumos industriales o comerciales grandes",
+  },
+
+  // SISTEMAS HÍBRIDOS (1201-2500 kWh)
+  {
+    rangoMin: 1201,
+    rangoMax: 1500,
+    nombre: "10KW + 10 PANELES HÍBRIDO",
+    tipo: "HIBRIDO",
+    potencia: 10.0,
+    precio: 7049.0,
+    precioConIVA: null,
+    produccionMensual: 900,
+    cantidadPaneles: 10,
+    areaRequerida: 22.0,
+ 
+    descripcion: "Sistema híbrido con ahorro y respaldo incluido",
+  },
+  {
+    rangoMin: 1501,
+    rangoMax: 1800,
+    nombre: "11KW + 15 PANELES HÍBRIDO",
+    tipo: "HIBRIDO",
+    potencia: 11.0,
+    precio: 7974.0,
+    precioConIVA: null,
+    produccionMensual: 1100,
+    cantidadPaneles: 15,
+    areaRequerida: 33.0,
+
+    descripcion: "Sistema híbrido avanzado para máximo aprovechamiento",
+  },
+  {
+    rangoMin: 1801,
+    rangoMax: 2500,
+    nombre: "15KW + 20 PANELES HÍBRIDO",
+    tipo: "HIBRIDO",
+    potencia: 15.0,
+    precio: 11499.0,
+    precioConIVA: null,
+    produccionMensual: 1500,
+    cantidadPaneles: 20,
+    areaRequerida: 44.0,
+
+    descripcion: "Sistema híbrido de alta capacidad",
+  },
+]
+
 // ⚡ CONFIGURACIÓN DE POWER AUTOMATE - URL CORREGIDA
 const POWER_AUTOMATE_URL =
   "https://default7235b983940447368527b8c69d3ffe.77.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/b87208e2a51c40489cbc3acd2fb8358a/triggers/manual/paths/invoke/?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=xnRomK-ltbqgaIBOYCWDNE0udC8m6551o6hACuG9CKY"
@@ -28,6 +193,25 @@ const WHATSAPP_MESSAGE =
 // Variables globales para elementos DOM
 let elementos = {}
 let datosCalculados = null
+let autoSaveTimeout = null
+let registroGuardado = false
+const gtag = window.gtag || (() => {})
+
+// Función para mostrar notificaciones
+function mostrarNotificacion(mensaje, tipo) {
+  console.log(`Notificación (${tipo}): ${mensaje}`)
+}
+
+// 🔍 FUNCIÓN PARA ENCONTRAR SISTEMA RECOMENDADO
+function encontrarSistemaRecomendado(consumo) {
+  for (const sistema of SISTEMAS_MARRIOTT) {
+    if (consumo >= sistema.rangoMin && consumo <= sistema.rangoMax) {
+      return sistema
+    }
+  }
+  // Si no encuentra sistema, devolver el más grande
+  return SISTEMAS_MARRIOTT[SISTEMAS_MARRIOTT.length - 1]
+}
 
 // Inicialización cuando el DOM está listo
 document.addEventListener("DOMContentLoaded", () => {
@@ -51,30 +235,10 @@ function inicializarElementos() {
     // Resultados
     resultados: document.getElementById("resultados"),
     clienteInfo: document.getElementById("cliente-info"),
-    // Situación Actual
-    consumoMensualDisplay: document.getElementById("consumo-mensual-display"),
-    costoMensualSinSfv: document.getElementById("costo-mensual-sin-sfv"),
-    consumoAnual: document.getElementById("consumo-anual"),
-    costoAnualSinSfv: document.getElementById("costo-anual-sin-sfv"),
-    // Sistema Fotovoltaico
-    tamanoSfv: document.getElementById("tamano-sfv"),
-    precioInversion: document.getElementById("precio-inversion"),
-    produccionAnual: document.getElementById("produccion-anual"),
-    produccionMensual: document.getElementById("produccion-mensual"),
-    cantidadPaneles: document.getElementById("cantidad-paneles"),
-    areaRequerida: document.getElementById("area-requerida"),
-    // Con Sistema Solar
-    nuevoConsumoMensual: document.getElementById("nuevo-consumo-mensual"),
-    nuevoCostoMensual: document.getElementById("nuevo-costo-mensual"),
-    ahorroMensual: document.getElementById("ahorro-mensual"),
-    ahorroAnual: document.getElementById("ahorro-anual"),
-    ahorroporcentaje: document.getElementById("ahorro-porcentaje"),
-    // Tiempo de Retorno
-    tiempoRetorno: document.getElementById("tiempo-retorno"),
-    retornoDescription: document.getElementById("retorno-description"),
-    metricPorcentaje: document.getElementById("metric-porcentaje"),
-    metricAhorro: document.getElementById("metric-ahorro"),
-    metricArea: document.getElementById("metric-area"),
+    // Contenedores específicos por tipo
+    contenedorAhorro: document.getElementById("contenedor-ahorro"),
+    contenedorRespaldo: document.getElementById("contenedor-respaldo"),
+    contenedorHibrido: document.getElementById("contenedor-hibrido"),
     // Botones de acción
     generarPdfBtn: document.getElementById("generarPdfBtn"),
     whatsappBtn: document.getElementById("whatsappBtn"),
@@ -91,6 +255,23 @@ function configurarEventListeners() {
   elementos.generarPdfBtn.addEventListener("click", generarPDF)
   elementos.whatsappBtn.addEventListener("click", abrirWhatsApp)
 
+  // 🚀 AUTO-GUARDADO INMEDIATO AL ESCRIBIR EL NOMBRE
+  elementos.nombre.addEventListener("input", (e) => {
+    const nombre = e.target.value.trim()
+
+    if (autoSaveTimeout) {
+      clearTimeout(autoSaveTimeout)
+    }
+
+    if (nombre.length >= 3 && !registroGuardado) {
+      autoSaveTimeout = setTimeout(() => {
+        guardarRegistroInmediato(nombre)
+      }, 2000)
+    } else if (nombre.length < 3) {
+      registroGuardado = false
+    }
+  })
+
   // Modal de ayuda para consumo
   elementos.verConsumoLink.addEventListener("click", (e) => {
     e.preventDefault()
@@ -99,21 +280,18 @@ function configurarEventListeners() {
 
   elementos.closeModal.addEventListener("click", cerrarModalConsumo)
 
-  // Cerrar modal al hacer clic fuera
   elementos.consumoModal.addEventListener("click", (e) => {
     if (e.target === elementos.consumoModal) {
       cerrarModalConsumo()
     }
   })
 
-  // Cerrar modal con ESC
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && elementos.consumoModal.style.display === "block") {
       cerrarModalConsumo()
     }
   })
 
-  // Ampliar imagen al hacer clic
   elementos.planillaImage.addEventListener("click", () => {
     window.open("/images/FOTO_DE_PLANILLA.png", "_blank")
   })
@@ -134,26 +312,93 @@ function configurarEventListeners() {
   elementos.ciudad.addEventListener("keypress", (e) => {
     if (e.key === "Enter") calcularAhorro()
   })
-
-  // Validación en tiempo real para el celular
-  elementos.celular.addEventListener("input", (e) => {
-    // Solo permitir números
-    e.target.value = e.target.value.replace(/[^0-9]/g, "")
-  })
 }
 
-// 🖼️ FUNCIONES DEL MODAL DE AYUDA
-function mostrarModalConsumo() {
-  elementos.consumoModal.style.display = "block"
-  document.body.style.overflow = "hidden" // Prevenir scroll del body
+// 💾 FUNCIÓN PARA GUARDAR REGISTRO INMEDIATO
+async function guardarRegistroInmediato(nombre) {
+  if (registroGuardado) return
+
+  try {
+    const registroInmediato = {
+      fechaCalculo: new Date().toISOString(),
+      nombre: nombre,
+      tipoCliente: elementos.tipoCliente.value || "No especificado",
+      celular: elementos.celular.value.trim() || "593000000000",
+      email: elementos.email.value.trim() || "no-email@ejemplo.com",
+      ciudad: elementos.ciudad.value.trim() || "No especificado",
+      consumoMensual: Number.parseInt(elementos.consumoMensual.value) || 0,
+      consumoAnual: 0,
+      costoMensualActual: 0.0,
+      costoAnualActual: 0,
+      tamanoSistema: 0.0,
+      precioInversion: 0,
+      produccionAnual: 0,
+      produccionMensual: 0,
+      cantidadPaneles: 0,
+      areaRequerida: 0.0,
+      nuevoConsumoMensual: 0,
+      nuevoCostoMensual: 0.0,
+      ahorroMensual: 0.0,
+      ahorroAnual: 0.0,
+      ahorroAnualPorcentaje: 0.0,
+      tiempoRetorno: 0.0,
+    }
+
+    console.log("🔄 Guardando registro automáticamente:", registroInmediato)
+
+    const response = await fetch(POWER_AUTOMATE_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(registroInmediato),
+    })
+
+    if (response.ok) {
+      registroGuardado = true
+      console.log("✅ LEAD CAPTURADO - Registro automático guardado:", nombre)
+
+      gtag("event", "lead_captured", {
+        event_category: "Solar Calculator",
+        event_label: "Auto Save Name",
+        value: 1,
+      })
+    } else {
+      const errorText = await response.text()
+      console.error("❌ Error del servidor:", response.status, response.statusText, errorText)
+      throw new Error(`Error ${response.status}: ${response.statusText} - ${errorText}`)
+    }
+  } catch (error) {
+    console.error("❌ Error detallado al guardar registro automático:", error)
+
+    setTimeout(() => {
+      console.log("🔄 Reintentando guardado automático...")
+      registroGuardado = false
+      guardarRegistroInmediato(nombre)
+    }, 3000)
+  }
 }
 
-function cerrarModalConsumo() {
-  elementos.consumoModal.style.display = "none"
-  document.body.style.overflow = "auto" // Restaurar scroll del body
+// 📱 FUNCIÓN PARA ABRIR WHATSAPP
+function abrirWhatsApp() {
+  const mensajeCodificado = encodeURIComponent(WHATSAPP_MESSAGE)
+  const urlWhatsApp = `https://wa.me/${WHATSAPP_NUMBER}?text=${mensajeCodificado}`
+  window.open(urlWhatsApp, "_blank")
+  mostrarNotificacion("📱 Redirigiendo a WhatsApp...", "info")
 }
 
-// 📄 FUNCIÓN PARA GENERAR PDF CON MARCA DE AGUA
+function validarCelular(celular) {
+  const regex = /^593\d{9}$/
+  return regex.test(celular)
+}
+
+function validarEmail(email) {
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  return regex.test(email)
+}
+
+// 📄 FUNCIÓN PARA GENERAR PDF
 function generarPDF() {
   if (!datosCalculados) {
     mostrarNotificacion("❌ No hay datos para generar el PDF", "error")
@@ -166,32 +411,26 @@ function generarPDF() {
     const { jsPDF } = window.jspdf
     const doc = new jsPDF()
 
-    // 🎨 AGREGAR MARCA DE AGUA MARRIOTT SOLUTIONS
+    // Agregar marca de agua
     function agregarMarcaDeAgua() {
       doc.saveGraphicsState()
-
-      // Configurar marca de agua - TAMAÑOS AÚN MÁS GRANDES
-      doc.setTextColor(240, 240, 240) // Gris un poco más visible
-      doc.setFontSize(80) // Aumentado de 70 a 80
+      doc.setTextColor(245, 245, 245)
+      doc.setFontSize(70)
       doc.setFont("helvetica", "bold")
 
-      // Centrar la marca de agua
       const pageWidth = doc.internal.pageSize.width
       const pageHeight = doc.internal.pageSize.height
       const centerX = pageWidth / 2
       const centerY = pageHeight / 2
-
-      // Rotar 45 grados
       const angle = -45 * (Math.PI / 180)
 
-      // Texto principal - MÁS GRANDE
-      doc.text("MARRIOTT", centerX, centerY - 14, {
+      doc.text("MARRIOTT", centerX, centerY - 10, {
         angle: angle,
         align: "center",
       })
 
-      doc.setFontSize(58) // Aumentado de 50 a 58
-      doc.text("SOLUTIONS", centerX, centerY + 14, {
+      doc.setFontSize(50)
+      doc.text("SOLUTIONS", centerX, centerY + 10, {
         angle: angle,
         align: "center",
       })
@@ -199,179 +438,495 @@ function generarPDF() {
       doc.restoreGraphicsState()
     }
 
-    // Aplicar marca de agua
     agregarMarcaDeAgua()
 
-    // Configuración de colores
-    const primaryColor = [255, 158, 26] // Naranja
-    const textColor = [55, 65, 81] // Gris oscuro
-    const accentColor = [16, 185, 129] // Verde
+    const primaryColor = [255, 158, 26]
+    const textColor = [55, 65, 81]
+    const accentColor = [16, 185, 129]
 
     // HEADER DEL PDF
     doc.setFillColor(...primaryColor)
     doc.rect(0, 0, 210, 40, "F")
 
-    // Logo y título
-    doc.setTextColor(255, 255, 255)
-    doc.setFontSize(24)
-    doc.setFont("helvetica", "bold")
-    doc.text("INFORME DE MARRIOTT SOLUTIONS", 20, 25)
+    const logoImg = new Image()
+    logoImg.crossOrigin = "anonymous"
+    logoImg.onload = () => {
+      doc.addImage(logoImg, "PNG", 10, 5, 50, 25)
 
-    doc.setFontSize(12)
-    doc.setFont("helvetica", "normal")
-    doc.text("Sistema de Ahorro Fotovoltaico", 20, 32)
+      doc.setTextColor(255, 255, 255)
+      doc.setFontSize(18)
+      doc.setFont("helvetica", "bold")
+      doc.text("INFORME DE ANÁLISIS SOLAR", 70, 20)
 
-    // Fecha
-    const fecha = new Date().toLocaleDateString("es-EC", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    })
-    doc.text(`Fecha: ${fecha}`, 140, 32)
+      doc.setFontSize(10)
+      doc.setFont("helvetica", "normal")
+      doc.text(`Sistema: ${datosCalculados.sistema.nombre}`, 70, 27)
 
-    // INFORMACIÓN DEL CLIENTE
-    let yPos = 55
-    doc.setTextColor(...textColor)
-    doc.setFontSize(16)
-    doc.setFont("helvetica", "bold")
-    doc.text("INFORMACIÓN DEL CLIENTE", 20, yPos)
+      const fecha = new Date().toLocaleDateString("es-EC", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })
+      doc.text(`Fecha: ${fecha}`, 70, 34)
 
-    yPos += 10
-    doc.setFontSize(11)
-    doc.setFont("helvetica", "normal")
-    doc.text(`Nombre: ${datosCalculados.nombre}`, 20, yPos)
-    doc.text(`Tipo: ${datosCalculados.tipoCliente}`, 110, yPos)
+      continuarGeneracionPDF()
+    }
 
-    yPos += 7
-    doc.text(`Celular: ${datosCalculados.celular}`, 20, yPos)
-    doc.text(`Ciudad: ${datosCalculados.ciudad}`, 110, yPos)
+    logoImg.onerror = () => {
+      console.warn("No se pudo cargar el logo, continuando sin él")
+      continuarGeneracionPDF()
+    }
 
-    yPos += 7
-    doc.text(`Email: ${datosCalculados.email}`, 20, yPos)
+    logoImg.src = "https://images.grupomarriott.com/wp-content/uploads/2022/10/31083332/LOGO_SOLAR-1.png"
 
-    // SITUACIÓN ACTUAL
-    yPos += 20
-    doc.setFontSize(16)
-    doc.setFont("helvetica", "bold")
-    doc.text("SITUACIÓN ENERGÉTICA ACTUAL", 20, yPos)
+    function continuarGeneracionPDF() {
+      let yPos = 55
 
-    yPos += 10
-    doc.setFontSize(11)
-    doc.setFont("helvetica", "normal")
-    doc.text(`Consumo mensual: ${formatearNumero(datosCalculados.consumo, 0)} kWh`, 20, yPos)
-    doc.text(`Consumo anual: ${formatearNumero(datosCalculados.consumoAnualSinSFV, 0)} kWh`, 110, yPos)
+      // INFORMACIÓN DEL CLIENTE
+      doc.setTextColor(...textColor)
+      doc.setFontSize(16)
+      doc.setFont("helvetica", "bold")
+      doc.text("INFORMACIÓN DEL CLIENTE", 20, yPos)
 
-    yPos += 7
-    doc.text(`Costo mensual: ${formatearMoneda(datosCalculados.costoMensualSinSFV)}`, 20, yPos)
-    doc.text(`Costo anual: ${formatearMoneda(datosCalculados.costoAnualSinSFV)}`, 110, yPos)
+      yPos += 10
+      doc.setFontSize(11)
+      doc.setFont("helvetica", "normal")
+      doc.text(`Nombre: ${datosCalculados.nombre}`, 20, yPos)
+      doc.text(`Tipo: ${datosCalculados.tipoCliente}`, 110, yPos)
 
-    // SISTEMA FOTOVOLTAICO PROPUESTO
-    yPos += 20
-    doc.setFontSize(16)
-    doc.setFont("helvetica", "bold")
-    doc.text("SISTEMA FOTOVOLTAICO PROPUESTO", 20, yPos)
+      yPos += 7
+      doc.text(`Celular: ${datosCalculados.celular}`, 20, yPos)
+      doc.text(`Ciudad: ${datosCalculados.ciudad}`, 110, yPos)
 
-    yPos += 10
-    doc.setFontSize(11)
-    doc.setFont("helvetica", "normal")
-    doc.text(`Tamaño del sistema: ${formatearNumero(datosCalculados.tamanoSFV)} kWp`, 20, yPos)
-    doc.text(`Cantidad de paneles: ${datosCalculados.cantidadPaneles} unidades`, 110, yPos)
+      yPos += 7
+      doc.text(`Email: ${datosCalculados.email}`, 20, yPos)
 
-    yPos += 7
-    doc.text(`Área requerida: ${formatearNumero(datosCalculados.areaRequerida)} m²`, 20, yPos)
-    doc.text(`Producción anual: ${formatearNumero(datosCalculados.produccionAnualSFV, 0)} kWh`, 110, yPos)
+      // SISTEMA RECOMENDADO
+      yPos += 20
+      doc.setFontSize(16)
+      doc.setFont("helvetica", "bold")
+      doc.text("SISTEMA RECOMENDADO", 20, yPos)
 
-    yPos += 7
-    doc.text(`Producción mensual: ${formatearNumero(datosCalculados.produccionMensualSFV, 0)} kWh`, 20, yPos)
+      yPos += 10
+      doc.setFontSize(14)
+      doc.setTextColor(...primaryColor)
+      doc.text(`${datosCalculados.sistema.nombre}`, 20, yPos)
 
-    // INVERSIÓN Y AHORROS
-    yPos += 20
-    doc.setFontSize(16)
-    doc.setFont("helvetica", "bold")
-    doc.text("INVERSIÓN Y AHORROS", 20, yPos)
+      yPos += 7
+      doc.setFontSize(11)
+      doc.setTextColor(...textColor)
+      doc.text(`Tipo: ${datosCalculados.sistema.tipo.replace("_", " ")}`, 20, yPos)
+      doc.text(`Potencia: ${datosCalculados.sistema.potencia} kW`, 110, yPos)
 
-    yPos += 10
-    doc.setFontSize(14)
-    doc.setTextColor(...primaryColor)
-    doc.text(`Inversión estimada: ${formatearMoneda(datosCalculados.precioInversion)}`, 20, yPos)
+      yPos += 7
+      doc.text(`Paneles: ${datosCalculados.sistema.cantidadPaneles} unidades`, 20, yPos)
+      doc.text(`Área: ${datosCalculados.sistema.areaRequerida} m²`, 110, yPos)
 
-    yPos += 10
-    doc.setFontSize(11)
-    doc.setTextColor(...accentColor)
-    doc.text(`Ahorro mensual: ${formatearMoneda(datosCalculados.ahorroMensual)}`, 20, yPos)
-    doc.text(`Ahorro anual: ${formatearMoneda(datosCalculados.ahorroAnual)}`, 110, yPos)
+      // INVERSIÓN
+      yPos += 15
+      doc.setFontSize(14)
+      doc.setTextColor(...primaryColor)
+      const precioMostrar = datosCalculados.sistema.precioConIVA || datosCalculados.sistema.precio
+      doc.text(`Inversión${datos.consumo > 201 ? ' (Incluye mano de obra)' : ''}: ${formatearMoneda(precioMostrar)}`, 20, yPos)
 
-    yPos += 7
-    doc.text(`Porcentaje de ahorro: ${formatearNumero(datosCalculados.ahorroAnualPorcentaje, 1)}%`, 20, yPos)
+      // INFORMACIÓN ESPECÍFICA SEGÚN TIPO
+      yPos += 20
+      if (datosCalculados.sistema.tipo === "ON_GRID") {
+        // Mostrar información de ahorro
+        doc.setFontSize(16)
+        doc.setFont("helvetica", "bold")
+        doc.setTextColor(...textColor)
+        doc.text("ANÁLISIS DE AHORRO", 20, yPos)
 
-    // TIEMPO DE RETORNO - DESTACADO
-    yPos += 20
-    doc.setFillColor(255, 247, 237)
-    doc.rect(15, yPos - 5, 180, 25, "F")
+        yPos += 10
+        doc.setFontSize(11)
+        doc.setFont("helvetica", "normal")
+        doc.text(`Ahorro mensual: ${formatearMoneda(datosCalculados.ahorroMensual)}`, 20, yPos)
+        doc.text(`Ahorro anual: ${formatearMoneda(datosCalculados.ahorroAnual)}`, 110, yPos)
 
-    doc.setTextColor(...primaryColor)
-    doc.setFontSize(18)
-    doc.setFont("helvetica", "bold")
-    doc.text(" TIEMPO DE RETORNO", 20, yPos + 5)
+        yPos += 7
+        doc.text(`Tiempo de retorno: ${formatearNumero(datosCalculados.tiempoRetorno, 1)} años`, 20, yPos)
+      } else if (datosCalculados.sistema.tipo === "OFF_GRID") {
+        // Mostrar información de respaldo
+        doc.setFillColor(255, 243, 205)
+        doc.rect(15, yPos - 5, 180, 25, "F")
 
-    doc.setFontSize(24)
-    doc.text(`${formatearNumero(datosCalculados.tiempoRetorno, 1)} AÑOS`, 20, yPos + 15)
+        doc.setTextColor(...primaryColor)
+        doc.setFontSize(16)
+        doc.setFont("helvetica", "bold")
+        doc.text("SISTEMA DE RESPALDO", 20, yPos + 5)
 
-    // NUEVA SITUACIÓN CON SISTEMA SOLAR
-    yPos += 35
-    doc.setTextColor(...textColor)
-    doc.setFontSize(16)
-    doc.setFont("helvetica", "bold")
-    doc.text("NUEVA SITUACIÓN CON SISTEMA SOLAR", 20, yPos)
+        doc.setFontSize(11)
+        doc.setTextColor(...textColor)
+       
+      } else if (datosCalculados.sistema.tipo === "HIBRIDO") {
+        // Mostrar ambos
+        doc.setFontSize(16)
+        doc.setFont("helvetica", "bold")
+        doc.setTextColor(...textColor)
+        doc.text("SISTEMA HÍBRIDO - AHORRO + RESPALDO", 20, yPos)
 
-    yPos += 10
-    doc.setFontSize(11)
-    doc.setFont("helvetica", "normal")
-    doc.text(`Nuevo consumo mensual: ${formatearNumero(datosCalculados.nuevoConsumoMensual, 0)} kWh`, 20, yPos)
-    doc.text(`Nuevo costo mensual: ${formatearMoneda(datosCalculados.nuevoCostoMensualSFV)}`, 110, yPos)
+        yPos += 10
+        doc.setFontSize(11)
+        doc.setFont("helvetica", "normal")
+        doc.text(`Ahorro mensual: ${formatearMoneda(datosCalculados.ahorroMensual)}`, 20, yPos)
+        doc.text(`Autonomía: ${datosCalculados.sistema.autonomiaHoras} horas`, 110, yPos)
+      }
 
-    // FOOTER CON MARRIOTT SOLUTIONS
-    yPos = 280
-    doc.setFillColor(...primaryColor)
-    doc.rect(0, yPos, 210, 17, "F")
+      // FOOTER
+      yPos = 285
+      doc.setFillColor(...primaryColor)
+      doc.rect(0, yPos, 210, 17, "F")
 
-    doc.setTextColor(255, 255, 255)
-    doc.setFontSize(10)
-    doc.text("MARRIOTT SOLUTIONS - Para más información: +593 98 091 0905", 20, yPos + 10)
-    doc.text("¡Invierte en energía solar y ahorra desde el primer día!", 110, yPos + 10)
+      doc.setTextColor(255, 255, 255)
+      doc.setFontSize(10)
+      doc.text("MARRIOTT SOLUTIONS - Para más información: +593 98 091 0905", 20, yPos + 10)
 
-    // GUARDAR PDF
-    const nombreArchivo = `Informe_Solar_${datosCalculados.nombre.replace(/\s+/g, "_")}_${new Date().toISOString().split("T")[0]}.pdf`
-    doc.save(nombreArchivo)
+      const nombreArchivo = `Informe_Solar_${datosCalculados.nombre.replace(/\s+/g, "_")}_${new Date().toISOString().split("T")[0]}.pdf`
+      doc.save(nombreArchivo)
 
-    mostrarNotificacion("✅ PDF generado exitosamente", "success")
+      mostrarNotificacion("✅ PDF generado exitosamente", "success")
+    }
   } catch (error) {
     console.error("Error generando PDF:", error)
     mostrarNotificacion("❌ Error al generar el PDF", "error")
   }
 }
 
-// 📱 FUNCIÓN PARA ABRIR WHATSAPP
-function abrirWhatsApp() {
-  const mensajeCodificado = encodeURIComponent(WHATSAPP_MESSAGE)
-  const urlWhatsApp = `https://wa.me/${WHATSAPP_NUMBER}?text=${mensajeCodificado}`
+// 🧮 FUNCIÓN PRINCIPAL DE CÁLCULO
+async function calcularAhorro() {
+  if (!validarFormulario()) return
 
-  // Abrir en nueva ventana
-  window.open(urlWhatsApp, "_blank")
+  const nombre = elementos.nombre.value.trim()
+  const tipoCliente = elementos.tipoCliente.value
+  const celular = elementos.celular.value.trim()
+  const email = elementos.email.value.trim()
+  const ciudad = elementos.ciudad.value.trim()
+  const consumo = Number.parseFloat(elementos.consumoMensual.value)
 
-  mostrarNotificacion("📱 Redirigiendo a WhatsApp...", "info")
+  // 🔍 ENCONTRAR SISTEMA RECOMENDADO
+  const sistemaRecomendado = encontrarSistemaRecomendado(consumo)
+
+  // Cálculos básicos
+  const costoMensualSinSFV = calcularCostoProgresivo(consumo)
+  const consumoAnualSinSFV = consumo * 12
+  const costoAnualSinSFV = costoMensualSinSFV * 12
+
+  // Cálculos específicos según tipo de sistema
+  let ahorroMensual = 0
+  let ahorroAnual = 0
+  let ahorroAnualPorcentaje = 0
+  let tiempoRetorno = 0
+  let nuevoConsumoMensual = consumo
+  let nuevoCostoMensualSFV = costoMensualSinSFV
+
+  if (sistemaRecomendado.tipo === "ON_GRID" || sistemaRecomendado.tipo === "HIBRIDO") {
+    // Solo calcular ahorros para sistemas conectados a la red
+    nuevoConsumoMensual = Math.max(0, consumo - sistemaRecomendado.produccionMensual)
+    nuevoCostoMensualSFV = calcularCostoProgresivo(nuevoConsumoMensual)
+    ahorroMensual = costoMensualSinSFV - nuevoCostoMensualSFV
+    ahorroAnual = ahorroMensual * 12
+    ahorroAnualPorcentaje = costoAnualSinSFV > 0 ? (ahorroAnual / costoAnualSinSFV) * 100 : 0
+
+    const precioInversion = sistemaRecomendado.precioConIVA || sistemaRecomendado.precio
+    tiempoRetorno = ahorroAnual > 0 ? precioInversion / ahorroAnual : 0
+  }
+
+  // Guardar datos calculados globalmente
+  datosCalculados = {
+    nombre,
+    tipoCliente,
+    celular,
+    email,
+    ciudad,
+    consumo,
+    costoMensualSinSFV,
+    consumoAnualSinSFV,
+    costoAnualSinSFV,
+    nuevoConsumoMensual,
+    nuevoCostoMensualSFV,
+    ahorroMensual,
+    ahorroAnual,
+    ahorroAnualPorcentaje,
+    tiempoRetorno,
+    sistema: sistemaRecomendado,
+  }
+
+  // Enviar datos a Power Automate
+  await enviarDatosAPowerAutomate(datosCalculados)
+
+  // Mostrar resultados según tipo de sistema
+  mostrarResultados(datosCalculados)
 }
 
-function validarCelular(celular) {
-  // Debe tener exactamente 12 dígitos y empezar con 593
-  const regex = /^593\d{9}$/
-  return regex.test(celular)
+// 🎨 FUNCIÓN PARA MOSTRAR RESULTADOS SEGÚN TIPO DE SISTEMA
+function mostrarResultados(datos) {
+  // Header con información del cliente
+  elementos.clienteInfo.innerHTML = `
+    <div style="margin-bottom: 0.5rem;">
+      <strong>${datos.nombre}</strong> - Cliente ${datos.tipoCliente}
+    </div>
+    <div class="cliente-info-grid">
+      <div class="cliente-info-item">
+        <div class="cliente-info-label">Celular</div>
+        <div class="cliente-info-value">${datos.celular}</div>
+      </div>
+      <div class="cliente-info-item">
+        <div class="cliente-info-label">Email</div>
+        <div class="cliente-info-value">${datos.email}</div>
+      </div>
+      <div class="cliente-info-item">
+        <div class="cliente-info-label">Ciudad</div>
+        <div class="cliente-info-value">${datos.ciudad}</div>
+      </div>
+    </div>
+  `
+
+  // Ocultar todos los contenedores
+  elementos.contenedorAhorro.style.display = "none"
+  elementos.contenedorRespaldo.style.display = "none"
+  elementos.contenedorHibrido.style.display = "none"
+
+  // Mostrar contenedor específico según tipo de sistema
+  if (datos.sistema.tipo === "ON_GRID") {
+    mostrarContenedorAhorro(datos)
+  } else if (datos.sistema.tipo === "OFF_GRID") {
+    mostrarContenedorRespaldo(datos)
+  } else if (datos.sistema.tipo === "HIBRIDO") {
+    mostrarContenedorHibrido(datos)
+  }
+
+  // Mostrar sección de resultados
+  elementos.resultados.style.display = "block"
+  elementos.resultados.scrollIntoView({ behavior: "smooth", block: "start" })
 }
 
-function validarEmail(email) {
-  // Validación básica de email
-  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-  return regex.test(email)
+// 💰 MOSTRAR CONTENEDOR DE AHORRO (ON GRID)
+function mostrarContenedorAhorro(datos) {
+  elementos.contenedorAhorro.innerHTML = `
+    <div class="system-alert system-alert-success">
+      <div class="alert-content">
+        <i class="fas fa-piggy-bank"></i>
+        <div>
+          <h4>¡Sistema de Ahorro Energético!</h4>
+          <p>Este sistema te permitirá <strong>reducir significativamente</strong> tu factura eléctrica mensual conectándose directamente a la red eléctrica.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="results-grid">
+      <!-- Sistema Recomendado -->
+      <div class="result-card">
+        <div class="card-header">
+          <h3><i class="fas fa-solar-panel"></i> Sistema Recomendado</h3>
+        </div>
+        <div class="card-content">
+          <div class="result-item">
+            <span>Sistema:</span>
+            <span><strong>${datos.sistema.nombre}</strong></span>
+          </div>
+          <div class="result-item">
+            <span>Tipo:</span>
+            <span>Conectado a Red (ON GRID)</span>
+          </div>
+          <div class="result-item">
+            <span>Potencia:</span>
+            <span>${datos.sistema.potencia} kW</span>
+          </div>
+          <div class="result-item">
+            <span>${datos.consumo > 201 ? 'Inversión <em style="color:gray;font-weight:normal;">(Incluye mano de obra)</em>:' : 'Inversión:'}</span>
+            <span class="cost-primary">${formatearMoneda(datos.sistema.precioConIVA || datos.sistema.precio)}</span>
+          </div>
+          <div class="result-item">
+            <span>Producción mensual:</span>
+            <span>${formatearNumero(datos.sistema.produccionMensual, 0)} kWh</span>
+          </div>
+          <div class="result-item">
+            <span>Cantidad de paneles:</span>
+            <span>${datos.sistema.cantidadPaneles <= 4 ? "No requerido" : datos.sistema.cantidadPaneles + " unidades"}</span>
+          </div>
+          <div class="result-item">
+            <span>Área requerida:</span>
+            <span>${formatearNumero(datos.sistema.areaRequerida)} m²</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Situación Actual vs Nueva -->
+      <div class="result-card">
+        <div class="card-header">
+          <h3><i class="fas fa-chart-line"></i> Comparación de Costos</h3>
+        </div>
+        <div class="card-content">
+          <div class="result-item">
+            <span>Consumo actual:</span>
+            <span>${formatearNumero(datos.consumo, 0)} kWh/mes</span>
+          </div>
+          <div class="result-item">
+            <span>Costo actual:</span>
+            <span class="cost-negative">${formatearMoneda(datos.costoMensualSinSFV)}/mes</span>
+          </div>
+          <div class="result-item">
+            <span>Nuevo consumo:</span>
+            <span>${formatearNumero(datos.nuevoConsumoMensual, 0)} kWh/mes</span>
+          </div>
+          <div class="result-item">
+            <span>Nuevo costo:</span>
+            <span>${formatearMoneda(datos.nuevoCostoMensualSFV)}/mes</span>
+          </div>
+          <div class="result-item">
+            <span><strong>Ahorro mensual:</strong></span>
+            <span class="cost-positive"><strong>${formatearMoneda(datos.ahorroMensual)}</strong></span>
+          </div>
+          <div class="result-item">
+            <span><strong>Ahorro anual:</strong></span>
+            <span class="cost-positive"><strong>${formatearMoneda(datos.ahorroAnual)}</strong></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tiempo de Retorno -->
+    <div class="retorno-card">
+      <div class="retorno-content">
+        <div class="retorno-header">
+          <i class="fas fa-clock"></i>
+          <h3>Tiempo de Retorno de Inversión</h3>
+        </div>
+        <div class="retorno-value">${formatearNumero(datos.tiempoRetorno, 1)} años</div>
+        <p>Tu inversión se recuperará en aproximadamente <strong>${datos.tiempoRetorno.toFixed(1)} años</strong>, después de eso será puro ahorro.</p>
+        <div class="metrics-grid">
+          <div class="metric-item">
+            <i class="fas fa-percentage"></i>
+            <div class="metric-value">${formatearNumero(datos.ahorroAnualPorcentaje, 1)}%</div>
+            <div class="metric-label">Ahorro Anual</div>
+          </div>
+          <div class="metric-item">
+            <i class="fas fa-dollar-sign"></i>
+            <div class="metric-value">${formatearMoneda(datos.ahorroAnual)}</div>
+            <div class="metric-label">USD/año</div>
+          </div>
+          <div class="metric-item">
+            <i class="fas fa-home"></i>
+            <div class="metric-value">${formatearNumero(datos.sistema.areaRequerida)} m²</div>
+            <div class="metric-label">Área Necesaria</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `
+  elementos.contenedorAhorro.style.display = "block"
+}
+
+// 🔋 MOSTRAR CONTENEDOR DE RESPALDO (OFF GRID)
+function mostrarContenedorRespaldo(datos) {
+  elementos.contenedorRespaldo.innerHTML = `
+    <div class="system-alert system-alert-warning">
+      <div class="alert-content">
+        <i class="fas fa-battery-full"></i>
+        <div>
+          <h4>Sistema de Respaldo Energético</h4>
+          <p>Tu consumo actual es bajo. Te recomendamos un <strong>Sistema de Respaldo Energético</strong>, ideal para mantener tu hogar protegido ante cortes de energía.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="results-grid">
+      <!-- Sistema Recomendado -->
+      <div class="result-card">
+        <div class="card-header">
+          <h3><i class="fas fa-battery-full"></i> Sistema de Respaldo</h3>
+        </div>
+        <div class="card-content">
+          <div class="result-item"><span>Sistema:</span><span><strong>${datos.sistema.nombre}</strong></span></div>
+          <div class="result-item"><span>Tipo:</span><span>Independiente (OFF GRID)</span></div>
+          <div class="result-item"><span>Potencia:</span><span>${datos.sistema.potencia} kW</span></div>
+          <div class="result-item"><span>Inversión:</span><span class="cost-primary">${formatearMoneda(datos.sistema.precioConIVA || datos.sistema.precio)}</span></div>
+          <div class="result-item"><span>Cantidad de paneles:</span><span>${datos.sistema.cantidadPaneles <= 4 ? "No requerido" : datos.sistema.cantidadPaneles + " unidades"}</span></div>
+          <div class="result-item"><span>Área requerida:</span><span>${formatearNumero(datos.sistema.areaRequerida)} m²</span></div>
+        </div>
+      </div>
+
+      <!-- Beneficios -->
+      <div class="result-card">
+        <div class="card-header"><h3><i class="fas fa-shield-alt"></i> Beneficios del Sistema</h3></div>
+        <div class="card-content">
+          <div class="benefit-item"><i class="fas fa-bolt"></i><div><strong>Energía durante cortes</strong><p>Mantén tus equipos funcionando durante apagones</p></div></div>
+          <div class="benefit-item"><i class="fas fa-home"></i><div><strong>Independencia energética</strong><p>No dependes completamente de la red eléctrica</p></div></div>
+          <div class="benefit-item"><i class="fas fa-leaf"></i><div><strong>Energía limpia</strong><p>Reduces tu huella de carbono</p></div></div>
+          <div class="benefit-item"><i class="fas fa-tools"></i><div><strong>Sistema completo</strong><p>Incluye paneles, baterías e inversor</p></div></div>
+        </div>
+      </div>
+    </div>
+  `;
+  elementos.contenedorRespaldo.style.display = "block";
+}
+
+// ⚡ MOSTRAR CONTENEDOR HÍBRIDO
+function mostrarContenedorHibrido(datos) {
+  elementos.contenedorHibrido.innerHTML = `
+    <div class="system-alert system-alert-hybrid">
+      <div class="alert-content">
+        <i class="fas fa-star"></i>
+        <div>
+          <h4>¡Sistema Híbrido!</h4>
+          <p>Este sistema te permite <strong>ahorrar en tu factura eléctrica</strong> y mantener un suministro estable de energía.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="results-grid">
+      <div class="result-card">
+        <div class="card-header"><h3><i class="fas fa-star"></i> Sistema Híbrido</h3></div>
+        <div class="card-content">
+          <div class="result-item"><span>Sistema:</span><span><strong>${datos.sistema.nombre}</strong></span></div>
+          <div class="result-item"><span>Tipo:</span><span>Híbrido</span></div>
+          <div class="result-item"><span>Potencia:</span><span>${datos.sistema.potencia} kW</span></div>
+          <div class="result-item"><span>Inversión:</span><span class="cost-primary">${formatearMoneda(datos.sistema.precioConIVA || datos.sistema.precio)}</span></div>
+          <div class="result-item"><span>Producción mensual:</span><span>${formatearNumero(datos.sistema.produccionMensual, 0)} kWh</span></div>
+          <div class="result-item"><span>Cantidad de paneles:</span><span>${datos.sistema.cantidadPaneles} unidades</span></div>
+          <div class="result-item"><span>Área requerida:</span><span>${formatearNumero(datos.sistema.areaRequerida)} m²</span></div>
+        </div>
+      </div>
+
+      <!-- Análisis de Ahorro -->
+      <div class="result-card">
+        <div class="card-header"><h3><i class="fas fa-piggy-bank"></i> Análisis de Ahorro</h3></div>
+        <div class="card-content">
+          <div class="result-item"><span>Consumo actual:</span><span>${formatearNumero(datos.consumo, 0)} kWh/mes</span></div>
+          <div class="result-item"><span>Costo actual:</span><span class="cost-negative">${formatearMoneda(datos.costoMensualSinSFV)}/mes</span></div>
+          <div class="result-item"><span>Nuevo consumo:</span><span>${formatearNumero(datos.nuevoConsumoMensual, 0)} kWh/mes</span></div>
+          <div class="result-item"><span>Nuevo costo:</span><span>${formatearMoneda(datos.nuevoCostoMensualSFV)}/mes</span></div>
+          <div class="result-item"><span><strong>Ahorro mensual:</strong></span><span class="cost-positive"><strong>${formatearMoneda(datos.ahorroMensual)}</strong></span></div>
+          <div class="result-item"><span><strong>Ahorro anual:</strong></span><span class="cost-positive"><strong>${formatearMoneda(datos.ahorroAnual)}</strong></span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="retorno-card">
+      <div class="retorno-content">
+        <div class="retorno-header"><i class="fas fa-clock"></i><h3>Tiempo de Retorno</h3></div>
+        <div class="retorno-value">${formatearNumero(datos.tiempoRetorno, 1)} años</div>
+        <p>Tu inversión se recuperará en aproximadamente <strong>${datos.tiempoRetorno.toFixed(1)} años</strong>.</p>
+      </div>
+    </div>
+  `;
+  elementos.contenedorHibrido.style.display = "block";
+}
+
+function formatearMoneda(valor) {
+  return new Intl.NumberFormat("es-EC", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 2,
+  }).format(valor)
+}
+
+function formatearNumero(valor, decimales = 2) {
+  return new Intl.NumberFormat("es-EC", {
+    minimumFractionDigits: decimales,
+    maximumFractionDigits: decimales,
+  }).format(valor)
 }
 
 // 📤 FUNCIÓN PARA ENVIAR DATOS A POWER AUTOMATE
@@ -379,20 +934,32 @@ async function enviarDatosAPowerAutomate(datos) {
   try {
     const payload = {
       fechaCalculo: new Date().toISOString(),
-      nombre: datos.nombre || "Prueba",
-      tipoCliente: datos.tipoCliente || "Residencial",
-      celular: datos.celular || "593999999999",
-      email: datos.email || "prueba@test.com",
-      ciudad: datos.ciudad || "Quito",
-      consumoMensual: datos.consumo || 0,
-      ahorroAnual: datos.ahorroAnual || 0,
-      tiempoRetorno: datos.tiempoRetorno || 0,
-      timestampPrueba: Date.now(),
+      nombre: datos.nombre,
+      tipoCliente: datos.tipoCliente,
+      celular: datos.celular.toString(),
+      email: datos.email,
+      ciudad: datos.ciudad,
+      consumoMensual: Number.parseInt(datos.consumo),
+      consumoAnual: Number.parseInt(datos.consumoAnualSinSFV),
+      costoMensualActual: Number.parseFloat(datos.costoMensualSinSFV),
+      costoAnualActual: Number.parseInt(datos.costoAnualSinSFV),
+      tamanoSistema: Number.parseFloat(datos.sistema.potencia),
+      precioInversion: Number.parseInt(datos.sistema.precioConIVA || datos.sistema.precio),
+      produccionAnual: Number.parseInt(datos.sistema.produccionMensual * 12),
+      produccionMensual: Number.parseInt(datos.sistema.produccionMensual),
+      cantidadPaneles: Number.parseInt(datos.sistema.cantidadPaneles),
+      areaRequerida: Number.parseFloat(datos.sistema.areaRequerida),
+      nuevoConsumoMensual: Number.parseInt(datos.nuevoConsumoMensual),
+      nuevoCostoMensual: Number.parseFloat(datos.nuevoCostoMensualSFV),
+      ahorroMensual: Number.parseFloat(datos.ahorroMensual),
+      ahorroAnual: Number.parseFloat(datos.ahorroAnual),
+      ahorroAnualPorcentaje: Number.parseFloat(datos.ahorroAnualPorcentaje),
+      tiempoRetorno: Number.parseFloat(datos.tiempoRetorno),
     }
 
-    mostrarNotificacion("📤 Guardando cotización...", "info")
+    console.log("🔄 Enviando cálculo completo:", payload)
 
-    fetch(POWER_AUTOMATE_URL, {
+    const response = await fetch(POWER_AUTOMATE_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -400,47 +967,27 @@ async function enviarDatosAPowerAutomate(datos) {
       },
       body: JSON.stringify(payload),
     })
-      .then(async (response) => {
-        if (response.ok) {
-          mostrarNotificacion("✅ Cotización guardada exitosamente", "success")
-        } else {
-          mostrarNotificacion("⚠️ Error al guardar cotización", "error")
-        }
-      })
-      .catch((error) => {
-        console.error("Error:", error)
-        mostrarNotificacion("⚠️ Error de conexión al guardar", "error")
-      })
+
+    if (response.ok) {
+      console.log("✅ Cotización completa guardada exitosamente")
+    } else {
+      const errorText = await response.text()
+      console.error("❌ Error al guardar cálculo completo:", response.status, errorText)
+    }
   } catch (error) {
-    console.error("Error general:", error)
-    mostrarNotificacion("❌ Error general en el proceso", "error")
+    console.error("❌ Error general al enviar cálculo completo:", error)
   }
 }
 
-// 🔔 FUNCIÓN PARA MOSTRAR NOTIFICACIONES
-function mostrarNotificacion(mensaje, tipo) {
-  const notificacion = document.createElement("div")
-  notificacion.className = `notificacion notificacion-${tipo}`
-  notificacion.innerHTML = `
-    <div class="notificacion-content">
-      <span>${mensaje}</span>
-      <button class="notificacion-close">&times;</button>
-    </div>
-  `
+// 🖼️ FUNCIONES DEL MODAL DE AYUDA
+function mostrarModalConsumo() {
+  elementos.consumoModal.style.display = "block"
+  document.body.style.overflow = "hidden"
+}
 
-  document.body.appendChild(notificacion)
-
-  setTimeout(() => {
-    if (notificacion.parentNode) {
-      notificacion.parentNode.removeChild(notificacion)
-    }
-  }, 5000)
-
-  notificacion.querySelector(".notificacion-close").addEventListener("click", () => {
-    if (notificacion.parentNode) {
-      notificacion.parentNode.removeChild(notificacion)
-    }
-  })
+function cerrarModalConsumo() {
+  elementos.consumoModal.style.display = "none"
+  document.body.style.overflow = "auto"
 }
 
 function calcularCostoProgresivo(consumo) {
@@ -553,141 +1100,57 @@ function ocultarErrores() {
   elementos.errorAlert.style.display = "none"
 }
 
-async function calcularAhorro() {
-  if (!validarFormulario()) return
+// ========== MOBILE MENU FUNCTIONALITY ==========
+document.addEventListener("DOMContentLoaded", () => {
+  const mobileMenuBtn = document.getElementById("mobileMenuBtn")
+  const mobileMenu = document.getElementById("mobileMenu")
 
-  const nombre = elementos.nombre.value.trim()
-  const tipoCliente = elementos.tipoCliente.value
-  const celular = elementos.celular.value.trim()
-  const email = elementos.email.value.trim()
-  const ciudad = elementos.ciudad.value.trim()
-  const consumo = Number.parseFloat(elementos.consumoMensual.value)
+  if (mobileMenuBtn && mobileMenu) {
+    mobileMenuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("active")
 
-  // Cálculos
-  const costoMensualSinSFV = calcularCostoProgresivo(consumo)
-  const consumoAnualSinSFV = consumo * 12
-  const costoAnualSinSFV = costoMensualSinSFV * 12
-  const tamanoSFV = (consumoAnualSinSFV / 18000) * 13.75
-  const precioInversion = tamanoSFV * 1000 * 1.1
-  const produccionAnualSFV = tamanoSFV * 1080
-  const produccionMensualSFV = produccionAnualSFV / 12
-  const nuevoConsumoMensual = Math.max(0, consumo - produccionMensualSFV)
-  const nuevoCostoMensualSFV = calcularCostoProgresivo(nuevoConsumoMensual)
-  const nuevoCostoAnualSFV = nuevoCostoMensualSFV * 12
-  const ahorroAnual = costoAnualSinSFV - nuevoCostoAnualSFV
-  const ahorroMensual = costoMensualSinSFV - nuevoCostoMensualSFV
-  const ahorroAnualPorcentaje = costoAnualSinSFV > 0 ? (ahorroAnual / costoAnualSinSFV) * 100 : 0
-  const tiempoRetorno = ahorroAnual > 0 ? precioInversion / ahorroAnual : 0
-  const cantidadPaneles = Math.ceil((tamanoSFV * 1000) / 480)
-  const areaRequerida = cantidadPaneles * 2.2
+      const icon = mobileMenuBtn.querySelector("i")
+      if (mobileMenu.classList.contains("active")) {
+        icon.className = "fas fa-times"
+      } else {
+        icon.className = "fas fa-bars"
+      }
+    })
 
-  // Guardar datos calculados globalmente
-  datosCalculados = {
-    nombre,
-    tipoCliente,
-    celular,
-    email,
-    ciudad,
-    consumo,
-    costoMensualSinSFV,
-    tamanoSFV,
-    precioInversion,
-    consumoAnualSinSFV,
-    costoAnualSinSFV,
-    produccionAnualSFV,
-    produccionMensualSFV,
-    nuevoConsumoMensual,
-    nuevoCostoMensualSFV,
-    ahorroMensual,
-    ahorroAnual,
-    ahorroAnualPorcentaje,
-    tiempoRetorno,
+    const mobileLinks = mobileMenu.querySelectorAll("a")
+    mobileLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.remove("active")
+        const icon = mobileMenuBtn.querySelector("i")
+        icon.className = "fas fa-bars"
+      })
+    })
+
+    document.addEventListener("click", (e) => {
+      if (!mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+        mobileMenu.classList.remove("active")
+        const icon = mobileMenuBtn.querySelector("i")
+        icon.className = "fas fa-bars"
+      }
+    })
+  }
+})
+
+
+// 🧮 CÁLCULO DE CANTIDAD DE PANELES (para consumo ≥ 201 kWh)
+function calcularCantidadPaneles(consumoKwh) {
+  if (consumoKwh < 201) return null;
+
+  const tamanoSugeridoExacto = Math.ceil(((consumoKwh / 30) / 4) * 100) / 100;
+  const cantidadPaneles = Math.ceil((tamanoSugeridoExacto * 1000) / 2.60);
+  const espacioRequerido = cantidadPaneles * 2.60 * 1.3;
+
+  return {
+    tamanoSugeridoExacto,
     cantidadPaneles,
-    areaRequerida,
-  }
-
-  // Enviar datos a Power Automate
-  await enviarDatosAPowerAutomate(datosCalculados)
-
-  // Mostrar resultados
-  mostrarResultados(datosCalculados)
+    espacioRequerido: Math.ceil(espacioRequerido * 100) / 100
+  };
 }
 
-function mostrarResultados(datos) {
-  // Header de resultados con información del cliente
-  elementos.clienteInfo.innerHTML = `
-    <div style="margin-bottom: 0.5rem;">
-      <strong>${datos.nombre}</strong> - Cliente ${datos.tipoCliente}
-    </div>
-    <div class="cliente-info-grid">
-      <div class="cliente-info-item">
-        <div class="cliente-info-label">Celular</div>
-        <div class="cliente-info-value">${datos.celular}</div>
-      </div>
-      <div class="cliente-info-item">
-        <div class="cliente-info-label">Email</div>
-        <div class="cliente-info-value">${datos.email}</div>
-      </div>
-      <div class="cliente-info-item">
-        <div class="cliente-info-label">Ciudad</div>
-        <div class="cliente-info-value">${datos.ciudad}</div>
-      </div>
-    </div>
-  `
-
-  // Situación Actual
-  elementos.consumoMensualDisplay.textContent = `${formatearNumero(datos.consumo, 0)} kWh`
-  elementos.costoMensualSinSfv.textContent = formatearMoneda(datos.costoMensualSinSFV)
-  elementos.consumoAnual.textContent = `${formatearNumero(datos.consumoAnualSinSFV, 0)} kWh`
-  elementos.costoAnualSinSfv.textContent = formatearMoneda(datos.costoAnualSinSFV)
-
-  // Sistema Fotovoltaico
-  elementos.tamanoSfv.textContent = `${formatearNumero(datos.tamanoSFV)} kWp`
-  elementos.precioInversion.textContent = formatearMoneda(datos.precioInversion)
-  elementos.produccionAnual.textContent = `${formatearNumero(datos.produccionAnualSFV, 0)} kWh`
-  elementos.produccionMensual.textContent = `${formatearNumero(datos.produccionMensualSFV, 0)} kWh`
-  elementos.cantidadPaneles.textContent = `${datos.cantidadPaneles} unidades`
-  elementos.areaRequerida.textContent = `${formatearNumero(datos.areaRequerida)} m²`
-
-  // Con Sistema Solar
-  elementos.nuevoConsumoMensual.textContent = `${formatearNumero(datos.nuevoConsumoMensual, 0)} kWh`
-  elementos.nuevoCostoMensual.textContent = formatearMoneda(datos.nuevoCostoMensualSFV)
-  elementos.ahorroMensual.textContent = formatearMoneda(datos.ahorroMensual)
-  elementos.ahorroAnual.textContent = formatearMoneda(datos.ahorroAnual)
-  elementos.ahorroporcentaje.textContent = `${formatearNumero(datos.ahorroAnualPorcentaje, 1)}%`
-
-  // Tiempo de Retorno
-  if (datos.tiempoRetorno > 0) {
-    elementos.tiempoRetorno.textContent = `${formatearNumero(datos.tiempoRetorno, 1)} años`
-    elementos.retornoDescription.innerHTML = `Tu inversión se recuperará en aproximadamente <strong>${datos.tiempoRetorno.toFixed(1)} años</strong>`
-  } else {
-    elementos.tiempoRetorno.textContent = "NA"
-    elementos.retornoDescription.innerHTML = `<strong>No aplica</strong> - El sistema no genera suficiente ahorro`
-  }
-
-  // Métricas
-  elementos.metricPorcentaje.textContent = `${formatearNumero(datos.ahorroAnualPorcentaje, 1)}%`
-  elementos.metricAhorro.textContent = formatearMoneda(datos.ahorroAnual)
-  elementos.metricArea.textContent = `${formatearNumero(datos.areaRequerida)} m²`
-
-  // Mostrar sección de resultados
-  elementos.resultados.style.display = "block"
-
-  // Scroll suave a los resultados
-  elementos.resultados.scrollIntoView({ behavior: "smooth", block: "start" })
-}
-
-function formatearMoneda(valor) {
-  return new Intl.NumberFormat("es-EC", {
-    style: "currency",
-    currency: "USD",
-    minimumFractionDigits: 2,
-  }).format(valor)
-}
-
-function formatearNumero(valor, decimales = 2) {
-  return new Intl.NumberFormat("es-EC", {
-    minimumFractionDigits: decimales,
-    maximumFractionDigits: decimales,
-  }).format(valor)
-}
+// 🔍 Prueba de cálculo en consola para confirmar funcionamiento
+console.log("🧪 Test consumo 300kWh:", calcularCantidadPaneles(300));
