@@ -122,13 +122,13 @@
                     </div>
                     <div class="modal-body">
                         <p>En tu planilla de luz, busca el valor de <strong>"Consumo kWh"</strong> o <strong>"Energía Consumida"</strong>:</p>
-                        <div class="image-container" >
-                            <img src="https://i.ibb.co/svG6mTSF/FOTO-DE-PLANILLA.png" alt="FOTO-DE-PLANILLA" 
-                                 alt="FOTO DE PLANILLA.png"
+                        <div class="image-container">
+                            <img src="https://i.ibb.co/svG6mTSF/FOTO-DE-PLANILLA.png" 
+                                 alt="Ejemplo de planilla de luz mostrando consumo en kWh" 
                                  id="planillaImage">
                             <p class="image-note">
                                 <i class="fas fa-info-circle"></i>
-                                <strong>Busca en tu planilla:</strong> El consumo aparece como "kWh" o "Energía Consumida"
+                                <strong>Busca en tu planilla:</strong> El consumo aparece como: "Consumo total ajuste"
                             </p>
                         </div>
                         <div class="help-tips">
@@ -151,22 +151,23 @@
                     <!-- El contenido se genera dinámicamente en JavaScript -->
                 </div>
 
-                <!-- CONTENEDOR PARA SISTEMAS DE RESPALDO (OFF GRID) -->
-                <div id="contenedor-respaldo" style="display: none;">
-                    <!-- El contenido se genera dinámicamente en JavaScript -->
-                </div>
-
                 <!-- CONTENEDOR PARA SISTEMAS HÍBRIDOS -->
                 <div id="contenedor-hibrido" style="display: none;">
                     <!-- El contenido se genera dinámicamente en JavaScript -->
                 </div>
 
-                <!-- Botones de Acción -->
+                <!-- SISTEMAS RECOMENDADOS -->
+                <div id="sistemas-recomendados" class="sistemas-recomendados-section" style="display: none;">
+                    
+                    <div id="sistemas-grid" class="sistemas-grid">
+                        <!-- Los sistemas se generarán dinámicamente aquí -->
+                    </div>
+                    
+                </div>
+
+                <!-- Botón de Contacto -->
                 <div class="action-buttons">
-                    <button id="generarPdfBtn" class="btn-pdf">
-                        <i class="fas fa-file-pdf"></i> Descargar Informe PDF
-                    </button>
-                    <button id="whatsappBtn" class="btn-whatsapp">
+                    <button id="whatsappBtn" class="btn-whatsapp-full">
                         <i class="fab fa-whatsapp"></i> Contáctanos
                     </button>
                 </div>
