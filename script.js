@@ -29,8 +29,8 @@ const systemsData = [
         price: 770.75,
         priceWithIVA: 886.36,
         panels: 0,
-        monthlySavings: 25,
-        annualSavings: 300,
+        monthlySavings: 00,
+        annualSavings: 00,
       },
     ],
   },
@@ -45,8 +45,8 @@ const systemsData = [
         price: 770.75,
         priceWithIVA: 886.36,
         panels: 0,
-        monthlySavings: 25,
-        annualSavings: 300,
+        monthlySavings: 00,
+        annualSavings: 00,
       },
     ],
   },
@@ -61,8 +61,8 @@ const systemsData = [
         price: 1250.0,
         priceWithIVA: 1437.5,
         panels: 0,
-        monthlySavings: 45,
-        annualSavings: 540,
+        monthlySavings: 00,
+        annualSavings: 00,
       },
     ],
   },
@@ -73,7 +73,7 @@ const systemsData = [
         name: "BLUESUN 1KW",
         description: "SISTEMA OFF GRID - INVERSOR 110VAC 1KW + 2 BATERIA LITIO LIFEPO4 1.33KWH",
         roi: null,
-        type: "OFF GRID",
+        type: "OFF GRID - El ahorro depende del uso de la bateria",
         price: 1329.0,
         priceWithIVA: null,
         panels: 2,
@@ -89,7 +89,7 @@ const systemsData = [
         name: "BLUESUN 3KW",
         description: "SISTEMA OFF GRID - INVERSOR SPLIT PHASE 3KW (PV INPUT 2880W) + 1 BATERIA LIFEPO4 LITIO 5.12KWH",
         roi: null,
-        type: "OFF GRID",
+        type: "OFF GRID - El ahorro depende del uso de la bateria",
         price: 2589.0,
         priceWithIVA: null,
         panels: 4,
@@ -100,7 +100,7 @@ const systemsData = [
         name: "SOSEN 5K",
         description: "SISTEMA OFF GRID - INVERSOR SINGLE PHASE 5KW PV (INPUT 5000W) + 1 BATERIA LITIO LIFEPO4 5KWH",
         roi: null,
-        type: "OFF GRID",
+        type: "OFF GRID - El ahorro depende del uso de la bateria",
         price: 2589.0,
         priceWithIVA: null,
         panels: 6,
@@ -116,7 +116,7 @@ const systemsData = [
         name: "BLUESUN 3KW",
         description: "SISTEMA OFF GRID - INVERSOR SPLIT PHASE 3KW (PV INPUT 2880W) + 1 BATERIA LIFEPO4 LITIO 5.12KWH",
         roi: null,
-        type: "OFF GRID",
+        type: "OFF GRID - El ahorro depende del uso de la bateria",
         price: 2589.0,
         priceWithIVA: null,
         panels: 4,
@@ -127,7 +127,7 @@ const systemsData = [
         name: "AIO 6KW - 10 kWh",
         description: "SISTEMA ALL IN ONE - INVERSOR SPLIT PHASE 6KW (PV INPUT 3000W) C/ BATERIA LITIO LIFEPO4 10KWH",
         roi: null,
-        type: "OFF GRID",
+        type: "OFF GRID - El ahorro depende del uso de la bateria",
         price: 3949.0,
         priceWithIVA: null,
         panels: 8,
@@ -138,7 +138,7 @@ const systemsData = [
         name: "SOSEN 5K",
         description: "SISTEMA OFF GRID - INVERSOR SINGLE PHASE 5KW PV (INPUT 5000W) + 1 BATERIA LITIO LIFEPO4 5KWH",
         roi: null,
-        type: "OFF GRID",
+        type: "OFF GRID - El ahorro depende del uso de la bateria",
         price: 2589.0,
         priceWithIVA: null,
         panels: 6,
@@ -154,7 +154,7 @@ const systemsData = [
         name: "BLUESUN 5KW",
         description: "SISTEMA OFF GRID - INVERSOR SPLIT PHASE 5KW (PV INPUT 2880W) + 1 BATERIA LITIO LIFEPO4 10.85KWH",
         roi: null,
-        type: "OFF GRID",
+        type: "OFF GRID - El ahorro depende del uso de la bateria",
         price: 3989.0,
         priceWithIVA: null,
         panels: 6,
@@ -165,7 +165,7 @@ const systemsData = [
         name: "AIO 6KW - 10 kWh",
         description: "SISTEMA ALL IN ONE - INVERSOR SPLIT PHASE 6KW (PV INPUT 3000W) C/ BATERIA LITIO LIFEPO4 10KWH",
         roi: null,
-        type: "OFF GRID",
+        type: "OFF GRID - El ahorro depende del uso de la bateria",
         price: 3949.0,
         priceWithIVA: null,
         panels: 8,
@@ -176,7 +176,7 @@ const systemsData = [
         name: "SOSEN 5K",
         description: "SISTEMA OFF GRID - INVERSOR SINGLE PHASE 5KW PV (INPUT 5000W) + 1 BATERIA LITIO LIFEPO4 5KWH",
         roi: null,
-        type: "OFF GRID",
+        type: "OFF GRID - El ahorro depende del uso de la bateria",
         price: 2589.0,
         priceWithIVA: null,
         panels: 6,
@@ -192,7 +192,7 @@ const systemsData = [
         name: "BLUESUN 5KW",
         description: "SISTEMA OFF GRID - INVERSOR SPLIT PHASE 5KW (PV INPUT 2880W) + 1 BATERIA LITIO LIFEPO4 10.85KWH",
         roi: null,
-        type: "OFF GRID",
+        type: "OFF GRID - El ahorro depende del uso de la bateria",
         price: 3989.0,
         priceWithIVA: null,
         panels: 6,
@@ -203,7 +203,7 @@ const systemsData = [
         name: "AIO 6KW - 15 kWh",
         description: "SISTEMA ALL IN ONE - INVERSOR SPLIT PHASE 6KW (PV INPUT 3000W) C/ BATERIA LITIO LIFEPO4 15KWH",
         roi: null,
-        type: "OFF GRID",
+        type: "OFF GRID - El ahorro depende del uso de la bateria",
         price: 4949.0,
         priceWithIVA: null,
         panels: 10,
@@ -214,7 +214,7 @@ const systemsData = [
         name: "SOSEN 5K",
         description: "SISTEMA OFF GRID - INVERSOR SINGLE PHASE 5KW PV (INPUT 5000W) + 1 BATERIA LITIO LIFEPO4 5KWH",
         roi: null,
-        type: "OFF GRID",
+        type: "OFF GRID - El ahorro depende del uso de la bateria",
         price: 2589.0,
         priceWithIVA: null,
         panels: 6,
@@ -239,10 +239,9 @@ const systemsData = [
       },
       {
         name: "BLUESUN 5KW + 4 PANELES",
-        description:
-          "SISTEMA OFF GRID - INVERSOR SPLIT PHASE 5KW (PV INPUT 2880W) + 1 BATERIA LITIO LIFEPO4 10.85KWH + SISTEMA DE 4 PANELES",
+        description: "SISTEMA OFF GRID - INVERSOR SPLIT PHASE 5KW (PV INPUT 2880W) + 1 BATERIA LITIO LIFEPO4 10.85KWH + SISTEMA DE 4 PANELES",
         roi: null,
-        type: "OFF GRID",
+        type: "OFF GRID - El ahorro depende del uso de la bateria",
         price: 4839.0,
         priceWithIVA: null,
         panels: 4,
@@ -253,7 +252,7 @@ const systemsData = [
         name: "AIO 6KW - 15 kWh",
         description: "SISTEMA ALL IN ONE - INVERSOR SPLIT PHASE 6KW (PV INPUT 3000W) C/ BATERIA LITIO LIFEPO4 15KWH",
         roi: null,
-        type: "OFF GRID",
+        type: "OFF GRID - El ahorro depende del uso de la bateria",
         price: 4949.0,
         priceWithIVA: null,
         panels: 10,
@@ -281,7 +280,7 @@ const systemsData = [
         description:
           "SISTEMA OFF GRID - INVERSOR SPLIT PHASE 5KW (PV INPUT 2880W) + 1 BATERIA LITIO LIFEPO4 10.85KWH + SISTEMA DE 4 PANELES SOLARES",
         roi: null,
-        type: "OFF GRID",
+        type: "OFF GRID - El ahorro depende del uso de la bateria",
         price: 4839.0,
         priceWithIVA: null,
         panels: 4,
@@ -292,7 +291,7 @@ const systemsData = [
         name: "AIO 6KW - 15 kWh",
         description: "SISTEMA ALL IN ONE - INVERSOR SPLIT PHASE 6KW (PV INPUT 3000W) C/ BATERIA LITIO LIFEPO4 15KWH",
         roi: null,
-        type: "OFF GRID",
+        type: "OFF GRID - El ahorro depende del uso de la bateria",
         price: 4949.0,
         priceWithIVA: null,
         panels: 10,
@@ -307,7 +306,7 @@ const systemsData = [
       {
         name: "ON GRID 5KW + 10 PANELES",
         description: "SISTEMA ON GRID - INVERSOR SINGLE PHASE 5KW + SISTEMA 10 PANELES SOLARES",
-        roi: "4",
+        roi: "4 ",
         type: "ON GRID",
         price: 4653.0,
         priceWithIVA: null,
@@ -359,7 +358,7 @@ const systemsData = [
         name: "SOSEN 10 KW + 15 PANELES",
         description:
           "SISTEMA HIBRIDO - INVERSOR SPLIT PHASE 10KW (PV INPUT 15000W) + 1 BATERIA LITIO LIFEPO4 10KWH + SISTEMA DE 15 PANELES SOLARES",
-        roi: "5",
+        roi: "5)",
         type: "HIBRIDO",
         price: 10524.0,
         priceWithIVA: null,
@@ -763,8 +762,8 @@ function generarPDFSistema(sistema, datosCliente) {
     // Agregar marca de agua mejorada
     function agregarMarcaDeAgua() {
       doc.saveGraphicsState()
-      doc.setTextColor(245, 245, 245) // Color más claro para mejor legibilidad
-      doc.setFontSize(50) // Tamaño reducido
+      doc.setTextColor(200, 200, 200) // Color más oscuro para mejor visibilidad
+      doc.setFontSize(60) // Tamaño más grande
       doc.setFont("helvetica", "bold")
 
       const pageWidth = doc.internal.pageSize.width
@@ -773,7 +772,7 @@ function generarPDFSistema(sistema, datosCliente) {
       const centerY = pageHeight / 2
       const angle = -45 * (Math.PI / 180)
 
-      // Solo una marca de agua centrada para evitar superposición
+      // Marca de agua centrada con "MARRIOTT SOLUTIONS"
       doc.text("MARRIOTT SOLUTIONS", centerX, centerY, {
         angle: angle,
         align: "center",
@@ -792,34 +791,50 @@ function generarPDFSistema(sistema, datosCliente) {
     const logoImg = new Image()
     logoImg.crossOrigin = "anonymous"
     logoImg.onload = () => {
-      doc.addImage(logoImg, "PNG", 10, 5, 50, 25)
+      doc.addImage(logoImg, "PNG", 10, 5, 40, 20)
 
-      // Agregar texto "MARRIOTT SOLUTIONS" en blanco
+      // Agregar marca de agua PRIMERO (para que quede detrás del contenido)
+      agregarMarcaDeAgua()
+
+      // MARRIOTT SOLUTIONS como título principal
       doc.setTextColor(255, 255, 255)
-      doc.setFontSize(16)
+      doc.setFontSize(20)
       doc.setFont("helvetica", "bold")
-      doc.text("MARRIOTT SOLUTIONS", 70, 15)
+      doc.text("MARRIOTT SOLUTIONS", 60, 15)
 
-      doc.setFontSize(18)
-      doc.setFont("helvetica", "bold")
-      doc.text("COTIZACIÓN SISTEMA SOLAR", 70, 25)
+      doc.setFontSize(14)
+      doc.setFont("helvetica", "normal")
+      doc.text("COTIZACIÓN SISTEMAS FOTOVOLTAICOS", 60, 25)
 
       doc.setFontSize(10)
-      doc.setFont("helvetica", "normal")
-      doc.text(`Sistema: ${sistema.name}`, 70, 32)
+      doc.text(`Sistema: ${sistema.name}`, 60, 32)
 
       const fecha = new Date().toLocaleDateString("es-EC", {
         year: "numeric",
         month: "long",
         day: "numeric",
       })
-      doc.text(`Fecha: ${fecha}`, 70, 37)
+      doc.text(`Fecha: ${fecha}`, 60, 37)
 
       continuarGeneracionPDF()
     }
 
     logoImg.onerror = () => {
       console.warn("No se pudo cargar el logo, continuando sin él")
+
+      // Agregar marca de agua PRIMERO
+      agregarMarcaDeAgua()
+
+      // Si no hay logo, centrar el texto
+      doc.setTextColor(255, 255, 255)
+      doc.setFontSize(20)
+      doc.setFont("helvetica", "bold")
+      doc.text("MARRIOTT SOLUTIONS", 105, 15, { align: "center" })
+
+      doc.setFontSize(14)
+      doc.setFont("helvetica", "normal")
+      doc.text("COTIZACIÓN SISTEMA SOLAR", 105, 25, { align: "center" })
+
       continuarGeneracionPDF()
     }
 
@@ -845,12 +860,20 @@ function generarPDFSistema(sistema, datosCliente) {
       doc.text(`Ciudad: ${datosCliente.ciudad}`, 110, yPos)
 
       yPos += 7
-      doc.text(`Email: ${datosCliente.email}`, 20, yPos)
+      // Dividir email largo si es necesario
+      const emailText = `Email: ${datosCliente.email}`
+      if (emailText.length > 40) {
+        doc.text("Email:", 20, yPos)
+        doc.text(datosCliente.email, 20, yPos + 5)
+        yPos += 5
+      } else {
+        doc.text(emailText, 20, yPos)
+      }
 
       // SISTEMA COTIZADO
       yPos += 20
       doc.setFillColor(255, 247, 237)
-      doc.rect(15, yPos - 5, 180, 60, "F")
+      doc.rect(15, yPos - 5, 180, 70, "F")
 
       doc.setFontSize(16)
       doc.setFont("helvetica", "bold")
@@ -858,11 +881,20 @@ function generarPDFSistema(sistema, datosCliente) {
       doc.text("SISTEMA COTIZADO", 20, yPos + 5)
 
       yPos += 15
-      doc.setFontSize(14)
+      doc.setFontSize(12)
       doc.setTextColor(...textColor)
-      doc.text(`${sistema.description}`, 20, yPos)
 
-      yPos += 10
+      // Dividir descripción larga en múltiples líneas
+      const descripcion = sistema.description
+      const maxWidth = 170
+      const lines = doc.splitTextToSize(descripcion, maxWidth)
+
+      for (let i = 0; i < lines.length; i++) {
+        doc.text(lines[i], 20, yPos + i * 6)
+      }
+      yPos += lines.length * 6
+
+      yPos += 5
       doc.setFontSize(11)
       doc.text(`Tipo: ${sistema.type}`, 20, yPos)
       if (sistema.panels > 0) {
@@ -1091,7 +1123,8 @@ function mostrarSistemasRecomendados(consumo) {
           <div class="sistema-type-badge ${getBadgeClass(sistema.type)}">
             ${getSystemIcon(sistema.type)}
             ${sistema.type}
-            ${sistema.roi ? `<span class="roi-badge">ROI: ${sistema.roi} años</span>` : ""}
+
+            ${sistema.roi ? `<span class="roi-badge">ROI: ${sistema.roi} años - El retorno de la inversión estará sujeto a la disponibilidad del medidor bidireccional.</span>` : ""}
           </div>
           <h3 class="sistema-title">${sistema.description}</h3>
         </div>
@@ -1112,18 +1145,22 @@ function mostrarSistemasRecomendados(consumo) {
           `
               : ""
           }
-          
-          <div class="sistema-savings">
-            <div class="savings-item">
-              <span class="savings-label">Ahorro mensual:</span>
-              <span class="savings-value">${formatearMoneda(sistema.monthlySavings)}</span>
-            </div>
-            <div class="savings-item">
-              <span class="savings-label">Ahorro anual:</span>
-              <span class="savings-value">${formatearMoneda(sistema.annualSavings)}</span>
-            </div>
-          </div>
-          
+          ${ 
+  sistema.type !== "OFF GRID"
+    ? `
+      <div class="sistema-savings">
+        <div class="savings-item">
+          <span class="savings-label">Ahorro mensual:</span>
+          <span class="savings-value">${formatearMoneda(sistema.monthlySavings)}</span>
+        </div>
+        <div class="savings-item">
+          <span class="savings-label">Ahorro anual:</span>
+          <span class="savings-value">${formatearMoneda(sistema.annualSavings)}</span>
+        </div>
+      </div>
+      `
+    : ""
+}          
           <div class="sistema-price">
             <div class="price-item">
               <span class="price-label">Precio de Inversión:</span>
