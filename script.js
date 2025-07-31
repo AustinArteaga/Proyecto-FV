@@ -1124,7 +1124,7 @@ function mostrarSistemasRecomendados(consumo) {
             ${getSystemIcon(sistema.type)}
             ${sistema.type}
 
-            ${sistema.roi ? `<span class="roi-badge">ROI: ${sistema.roi} años - El retorno de la inversión estará sujeto a la disponibilidad del medidor bidireccional.</span>` : ""}
+            ${sistema.roi ? `<span class="roi-badge">ROI: ${sistema.roi} años - El retorno de la inversión estará sujeto a la disponibilidad del medidor bidireccional / El ahorro depende del uso de la bateria</span>` : ""}
           </div>
           <h3 class="sistema-title">${sistema.description}</h3>
         </div>
