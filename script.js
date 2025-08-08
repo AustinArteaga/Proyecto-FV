@@ -29,8 +29,8 @@ const systemsData = [
         price: 770.75,
         priceWithIVA: 886.36,
         panels: 0,
-        monthlySavings: 00,
-        annualSavings: 00,
+        monthlySavings: 0,
+        annualSavings: 0,
       },
     ],
   },
@@ -45,8 +45,8 @@ const systemsData = [
         price: 770.75,
         priceWithIVA: 886.36,
         panels: 0,
-        monthlySavings: 00,
-        annualSavings: 00,
+        monthlySavings: 0,
+        annualSavings: 0,
       },
     ],
   },
@@ -61,8 +61,8 @@ const systemsData = [
         price: 1250.0,
         priceWithIVA: 1437.5,
         panels: 0,
-        monthlySavings: 00,
-        annualSavings: 00,
+        monthlySavings: 0,
+        annualSavings: 0,
       },
     ],
   },
@@ -73,7 +73,7 @@ const systemsData = [
         name: "BLUESUN 1KW",
         description: "SISTEMA OFF GRID - INVERSOR 110VAC 1KW + 2 BATERIA LITIO LIFEPO4 1.33KWH",
         roi: null,
-        type: "OFF GRID - El ahorro depende del uso de la bateria",
+        type: "OFF GRID",
         price: 1329.0,
         priceWithIVA: null,
         panels: 2,
@@ -87,9 +87,10 @@ const systemsData = [
     systems: [
       {
         name: "BLUESUN 3KW",
-        description: "SISTEMA OFF GRID - INVERSOR SPLIT PHASE 3KW (PV INPUT 2880W) + 1 BATERIA LIFEPO4 LITIO 5.12KWH",
+        description:
+          "SISTEMA OFF GRID - INVERSOR SPLIT PHASE 3KW (PV INPUT 2880W) + 1 BATERIA LIFEPO4 LITIO 5.12KWH",
         roi: null,
-        type: "OFF GRID - El ahorro depende del uso de la bateria",
+        type: "OFF GRID",
         price: 2589.0,
         priceWithIVA: null,
         panels: 4,
@@ -100,7 +101,7 @@ const systemsData = [
         name: "SOSEN 5K",
         description: "SISTEMA OFF GRID - INVERSOR SINGLE PHASE 5KW PV (INPUT 5000W) + 1 BATERIA LITIO LIFEPO4 5KWH",
         roi: null,
-        type: "OFF GRID - El ahorro depende del uso de la bateria",
+        type: "OFF GRID",
         price: 2589.0,
         priceWithIVA: null,
         panels: 6,
@@ -114,9 +115,10 @@ const systemsData = [
     systems: [
       {
         name: "BLUESUN 3KW",
-        description: "SISTEMA OFF GRID - INVERSOR SPLIT PHASE 3KW (PV INPUT 2880W) + 1 BATERIA LIFEPO4 LITIO 5.12KWH",
+        description:
+          "SISTEMA OFF GRID - INVERSOR SPLIT PHASE 3KW (PV INPUT 2880W) + 1 BATERIA LIFEPO4 LITIO 5.12KWH",
         roi: null,
-        type: "OFF GRID - El ahorro depende del uso de la bateria",
+        type: "OFF GRID",
         price: 2589.0,
         priceWithIVA: null,
         panels: 4,
@@ -127,7 +129,7 @@ const systemsData = [
         name: "AIO 6KW - 10 kWh",
         description: "SISTEMA ALL IN ONE - INVERSOR SPLIT PHASE 6KW (PV INPUT 3000W) C/ BATERIA LITIO LIFEPO4 10KWH",
         roi: null,
-        type: "OFF GRID - El ahorro depende del uso de la bateria",
+        type: "OFF GRID",
         price: 3949.0,
         priceWithIVA: null,
         panels: 8,
@@ -138,7 +140,7 @@ const systemsData = [
         name: "SOSEN 5K",
         description: "SISTEMA OFF GRID - INVERSOR SINGLE PHASE 5KW PV (INPUT 5000W) + 1 BATERIA LITIO LIFEPO4 5KWH",
         roi: null,
-        type: "OFF GRID - El ahorro depende del uso de la bateria",
+        type: "OFF GRID",
         price: 2589.0,
         priceWithIVA: null,
         panels: 6,
@@ -152,9 +154,10 @@ const systemsData = [
     systems: [
       {
         name: "BLUESUN 5KW",
-        description: "SISTEMA OFF GRID - INVERSOR SPLIT PHASE 5KW (PV INPUT 2880W) + 1 BATERIA LITIO LIFEPO4 10.85KWH",
+        description:
+          "SISTEMA OFF GRID - INVERSOR SPLIT PHASE 5KW (PV INPUT 2880W) + 1 BATERIA LITIO LIFEPO4 10.85KWH",
         roi: null,
-        type: "OFF GRID - El ahorro depende del uso de la bateria",
+        type: "OFF GRID",
         price: 3989.0,
         priceWithIVA: null,
         panels: 6,
@@ -165,7 +168,7 @@ const systemsData = [
         name: "AIO 6KW - 10 kWh",
         description: "SISTEMA ALL IN ONE - INVERSOR SPLIT PHASE 6KW (PV INPUT 3000W) C/ BATERIA LITIO LIFEPO4 10KWH",
         roi: null,
-        type: "OFF GRID - El ahorro depende del uso de la bateria",
+        type: "OFF GRID",
         price: 3949.0,
         priceWithIVA: null,
         panels: 8,
@@ -176,7 +179,7 @@ const systemsData = [
         name: "SOSEN 5K",
         description: "SISTEMA OFF GRID - INVERSOR SINGLE PHASE 5KW PV (INPUT 5000W) + 1 BATERIA LITIO LIFEPO4 5KWH",
         roi: null,
-        type: "OFF GRID - El ahorro depende del uso de la bateria",
+        type: "OFF GRID",
         price: 2589.0,
         priceWithIVA: null,
         panels: 6,
@@ -190,9 +193,10 @@ const systemsData = [
     systems: [
       {
         name: "BLUESUN 5KW",
-        description: "SISTEMA OFF GRID - INVERSOR SPLIT PHASE 5KW (PV INPUT 2880W) + 1 BATERIA LITIO LIFEPO4 10.85KWH",
+        description:
+          "SISTEMA OFF GRID - INVERSOR SPLIT PHASE 5KW (PV INPUT 2880W) + 1 BATERIA LITIO LIFEPO4 10.85KWH",
         roi: null,
-        type: "OFF GRID - El ahorro depende del uso de la bateria",
+        type: "OFF GRID",
         price: 3989.0,
         priceWithIVA: null,
         panels: 6,
@@ -203,7 +207,7 @@ const systemsData = [
         name: "AIO 6KW - 15 kWh",
         description: "SISTEMA ALL IN ONE - INVERSOR SPLIT PHASE 6KW (PV INPUT 3000W) C/ BATERIA LITIO LIFEPO4 15KWH",
         roi: null,
-        type: "OFF GRID - El ahorro depende del uso de la bateria",
+        type: "OFF GRID",
         price: 4949.0,
         priceWithIVA: null,
         panels: 10,
@@ -214,7 +218,7 @@ const systemsData = [
         name: "SOSEN 5K",
         description: "SISTEMA OFF GRID - INVERSOR SINGLE PHASE 5KW PV (INPUT 5000W) + 1 BATERIA LITIO LIFEPO4 5KWH",
         roi: null,
-        type: "OFF GRID - El ahorro depende del uso de la bateria",
+        type: "OFF GRID",
         price: 2589.0,
         priceWithIVA: null,
         panels: 6,
@@ -239,9 +243,10 @@ const systemsData = [
       },
       {
         name: "BLUESUN 5KW + 4 PANELES",
-        description: "SISTEMA OFF GRID - INVERSOR SPLIT PHASE 5KW (PV INPUT 2880W) + 1 BATERIA LITIO LIFEPO4 10.85KWH + SISTEMA DE 4 PANELES",
+        description:
+          "SISTEMA OFF GRID - INVERSOR SPLIT PHASE 5KW (PV INPUT 2880W) + 1 BATERIA LITIO LIFEPO4 10.85KWH + SISTEMA DE 4 PANELES",
         roi: null,
-        type: "OFF GRID - El ahorro depende del uso de la bateria",
+        type: "OFF GRID",
         price: 4839.0,
         priceWithIVA: null,
         panels: 4,
@@ -252,10 +257,10 @@ const systemsData = [
         name: "AIO 6KW - 15 kWh",
         description: "SISTEMA ALL IN ONE - INVERSOR SPLIT PHASE 6KW (PV INPUT 3000W) C/ BATERIA LITIO LIFEPO4 15KWH",
         roi: null,
-        type: "OFF GRID - El ahorro depende del uso de la bateria",
+        type: "OFF GRID",
         price: 4949.0,
         priceWithIVA: null,
-        panels: 10,
+        panels: 0,
         monthlySavings: 280,
         annualSavings: 3360,
       },
@@ -280,7 +285,7 @@ const systemsData = [
         description:
           "SISTEMA OFF GRID - INVERSOR SPLIT PHASE 5KW (PV INPUT 2880W) + 1 BATERIA LITIO LIFEPO4 10.85KWH + SISTEMA DE 4 PANELES SOLARES",
         roi: null,
-        type: "OFF GRID - El ahorro depende del uso de la bateria",
+        type: "OFF GRID",
         price: 4839.0,
         priceWithIVA: null,
         panels: 4,
@@ -291,10 +296,10 @@ const systemsData = [
         name: "AIO 6KW - 15 kWh",
         description: "SISTEMA ALL IN ONE - INVERSOR SPLIT PHASE 6KW (PV INPUT 3000W) C/ BATERIA LITIO LIFEPO4 15KWH",
         roi: null,
-        type: "OFF GRID - El ahorro depende del uso de la bateria",
+        type: "OFF GRID",
         price: 4949.0,
         priceWithIVA: null,
-        panels: 10,
+        panels: 0,
         monthlySavings: 280,
         annualSavings: 3360,
       },
@@ -327,14 +332,13 @@ const systemsData = [
         annualSavings: 6240,
       },
       {
-        name: "SOSEN FOX 11KW + 10 PANELES",
-        description:
-          "SISTEMA HIBRIDO - INVERSOR SPLIT PHASE 11.4KW (PV INPUT 17000W) + 2 BATERIAS LITIO LIFEPO4 11KWH + SISTEMA DE 10 PANELES SOLARES",
-        roi: "11",
-        type: "HIBRIDO",
-        price: 12849.0,
+        name: "AIO 6KW - 15 kWh",
+        description: "SISTEMA ALL IN ONE - INVERSOR SPLIT PHASE 6KW (PV INPUT 3000W) C/ BATERIA LITIO LIFEPO4 15KWH",
+        roi: null,
+        type: "OFF GRID",
+        price: 4949.0,
         priceWithIVA: null,
-        panels: 10,
+        panels: 0,
         monthlySavings: 580,
         annualSavings: 6960,
       },
@@ -358,7 +362,7 @@ const systemsData = [
         name: "SOSEN 10 KW + 15 PANELES",
         description:
           "SISTEMA HIBRIDO - INVERSOR SPLIT PHASE 10KW (PV INPUT 15000W) + 1 BATERIA LITIO LIFEPO4 10KWH + SISTEMA DE 15 PANELES SOLARES",
-        roi: "5)",
+        roi: "5",
         type: "HIBRIDO",
         price: 10524.0,
         priceWithIVA: null,
@@ -369,7 +373,7 @@ const systemsData = [
       {
         name: "SOSEN FOX 11KW + 15 PANELES",
         description:
-          "SISTEMA HIBRIDO - INVERSOR SPLIT PHASE 11.4KW (PV INPUT 17000W) + 2 BATERIAS LITIO LIFEPO4 11KWH + SISTEMA DE 15 PANELES SOLARES",
+          "SISTEMA HIBRIDO - INVERSOR SPLIT PHASE 11.4KW (PV INPUT 17000W) +  2 BATERIAS LITIO LIFEPO4 11KWH + SISTEMA DE 15 PANELES SOLARES",
         roi: "6.5",
         type: "HIBRIDO",
         price: 13824.0,
@@ -395,6 +399,18 @@ const systemsData = [
         annualSavings: 10200,
       },
       {
+        name: "SOSEN FOX 11KW  + 20 PANELES",
+        description:
+          "SISTEMA HIBRIDO - INVERSOR SPLIT PHASE 11.4KW (PV INPUT 17000W) +  2 BATERIAS LITIO LIFEPO4 11KWH + SISTEMA DE 20 PANELES SOLARES",
+        roi: "5.2",
+        type: "HIBRIDO",
+        price: 14949.0,
+        priceWithIVA: null,
+        panels: 20,
+        monthlySavings: 920,
+        annualSavings: 11040,
+      },
+      {
         name: "SOSEN 15 KW + 20 PANELES",
         description:
           "SISTEMA HIBRIDO - INVERSOR SPLIT PHASE 15KW (PV INPUT 22500W) + 1 BATERIA LITIO LIFEPO4 15KWH + SISTEMA DE 20 PANELES SOLARES",
@@ -417,6 +433,18 @@ const systemsData = [
         roi: "2.8",
         type: "ON GRID",
         price: 8775.0,
+        priceWithIVA: null,
+        panels: 20,
+        monthlySavings: 850,
+        annualSavings: 10200,
+      },
+      {
+        name: "SOSEN FOX 11KW  + 20 PANELES",
+        description:
+          "SISTEMA HIBRIDO - INVERSOR SPLIT PHASE 11.4KW (PV INPUT 17000W) +  2 BATERIAS LITIO LIFEPO4 11KWH + SISTEMA DE 20 PANELES SOLARES",
+        roi: "4.7",
+        type: "HIBRIDO",
+        price: 14949.0,
         priceWithIVA: null,
         panels: 20,
         monthlySavings: 850,
@@ -451,6 +479,18 @@ const systemsData = [
         annualSavings: 10200,
       },
       {
+        name: "SOSEN FOX 11KW  + 20 PANELES",
+        description:
+          "SISTEMA HIBRIDO - INVERSOR SPLIT PHASE 11.4KW (PV INPUT 17000W) +  2 BATERIAS LITIO LIFEPO4 11KWH + SISTEMA DE 20 PANELES SOLARES",
+        roi: "4",
+        type: "hIBRIDO",
+        price: 14949.0,
+        priceWithIVA: null,
+        panels: 20,
+        monthlySavings: 850,
+        annualSavings: 10200,
+      },
+      {
         name: "SOSEN 15 KW + 20 PANELES",
         description:
           "SISTEMA HIBRIDO - INVERSOR SPLIT PHASE 15KW (PV INPUT 22500W) + 1 BATERIA LITIO LIFEPO4 15KWH + SISTEMA DE 20 PANELES SOLARES",
@@ -479,10 +519,22 @@ const systemsData = [
         annualSavings: 12600,
       },
       {
+        name: "SOSEN FOX 11KW  + 30 PANELES",
+        description:
+          "SISTEMA HIBRIDO - INVERSOR SPLIT PHASE 11.4KW (PV INPUT 17000W) +  2 BATERIAS LITIO LIFEPO4 11KWH + SISTEMA DE 30 PANELES SOLARES",
+        roi: "2.7",
+        type: "HIBRIDO",
+        price: 17199.0,
+        priceWithIVA: null,
+        panels: 30,
+        monthlySavings: 1200,
+        annualSavings: 14400,
+      },
+      {
         name: "SOSEN 15 KW + 30 PANELES",
         description:
           "SISTEMA HIBRIDO - INVERSOR SPLIT PHASE 15KW (PV INPUT 22500W) + 1 BATERIA LITIO LIFEPO4 15KWH + SISTEMA DE 30 PANELES SOLARES",
-        roi: "2.8",
+        roi: "2.6",
         type: "HIBRIDO",
         price: 16699.0,
         priceWithIVA: null,
@@ -502,7 +554,7 @@ const systemsData = [
         type: "ON GRID",
         price: 18870.0,
         priceWithIVA: null,
-        panels: 48,
+        panels: 24,
         monthlySavings: 1800,
         annualSavings: 21600,
       },
@@ -518,7 +570,7 @@ const systemsData = [
         type: "ON GRID",
         price: 18870.0,
         priceWithIVA: null,
-        panels: 48,
+        panels: 24,
         monthlySavings: 1800,
         annualSavings: 21600,
       },
@@ -540,6 +592,7 @@ let elementos = {}
 let datosCalculados = null
 let autoSaveTimeout = null
 let registroGuardado = false
+
 const gtag = window.gtag || (() => {})
 
 // Función para mostrar notificaciones
@@ -551,7 +604,6 @@ function mostrarNotificacion(mensaje, tipo) {
 function getRecommendedSystems(consumption) {
   // Encontrar el rango correspondiente
   const matchingRange = systemsData.find((range) => consumption >= range.range[0] && consumption <= range.range[1])
-
   if (matchingRange) {
     return matchingRange.systems.slice(0, 3) // Máximo 3 sistemas
   } else {
@@ -611,11 +663,9 @@ function configurarEventListeners() {
   // 🚀 AUTO-GUARDADO INMEDIATO AL ESCRIBIR EL NOMBRE
   elementos.nombre.addEventListener("input", (e) => {
     const nombre = e.target.value.trim()
-
     if (autoSaveTimeout) {
       clearTimeout(autoSaveTimeout)
     }
-
     if (nombre.length >= 3 && !registroGuardado) {
       autoSaveTimeout = setTimeout(() => {
         guardarRegistroInmediato(nombre)
@@ -646,7 +696,7 @@ function configurarEventListeners() {
   })
 
   elementos.planillaImage.addEventListener("click", () => {
-    window.open("/images/FOTO_DE_PLANILLA.png", "_blank")
+    window.open("", "_blank")
   })
 
   // Enter key en campos de input
@@ -711,7 +761,6 @@ async function guardarRegistroInmediato(nombre) {
     if (response.ok) {
       registroGuardado = true
       console.log("✅ LEAD CAPTURADO - Registro automático guardado:", nombre)
-
       gtag("event", "lead_captured", {
         event_category: "Solar Calculator",
         event_label: "Auto Save Name",
@@ -724,7 +773,6 @@ async function guardarRegistroInmediato(nombre) {
     }
   } catch (error) {
     console.error("❌ Error detallado al guardar registro automático:", error)
-
     setTimeout(() => {
       console.log("🔄 Reintentando guardado automático...")
       registroGuardado = false
@@ -751,7 +799,73 @@ function validarEmail(email) {
   return regex.test(email)
 }
 
-// 📄 FUNCIÓN PARA GENERAR PDF INDIVIDUAL POR SISTEMA
+// 🆕 NUEVA FUNCIÓN PARA MOSTRAR AHORROS O MENSAJE DE EMERGENCIA
+function getSavingsOrEmergencyMessage(sistema, consumo) {
+  // Si el consumo es menor a 200 kWh y es un Power Station, mostrar mensaje especial
+  if (consumo < 200 && sistema.type === "POWER STATION") {
+    return `
+      <div class="emergency-message">
+        <div class="emergency-icon">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <div class="emergency-content">
+          <h4>⚡ Energía de Respaldo Garantizada</h4>
+          <p><strong>¡Nunca más te quedes sin energía!</strong></p>
+          <ul class="emergency-benefits">
+            <li>✅ <strong>Protección</strong> durante apagones</li>
+            <li>✅ <strong>Energía instantánea</strong> para tus equipos esenciales</li>
+            <li>✅ <strong>Portátil y fácil de usar</strong> - plug & play</li>
+          </ul>
+          <div class="emergency-highlight">
+            <i class="fas fa-lightbulb"></i>
+            <span>Inversión en seguridad energética - No genera ahorro en factura.</span>
+          </div>
+        </div>
+      </div>
+    `
+  }
+
+  // Para sistemas OFF GRID menores a 200 kWh, también mostrar mensaje especial
+  if (consumo < 200 && sistema.type.includes("OFF GRID")) {
+    return `
+      <div class="emergency-message off-grid">
+        <div class="emergency-icon">
+          <i class="fas fa-battery-full"></i>
+        </div>
+        <div class="emergency-content">
+          <h4>⚡ Sistema de Respaldo Inteligente</h4>
+          <p><strong>¡Energía limpia cuando más la necesitas!</strong></p>
+          <ul class="emergency-benefits">
+            <li>✅ <strong>Respaldo automático</strong> durante cortes de luz</li>
+            <li>✅ <strong>Energía solar gratuita</strong> durante el día</li>
+            <li>✅ <strong>Batería de litio</strong> de larga duración</li>
+            <li>✅ <strong>Reduce dependencia</strong> de la red eléctrica</li>
+          </ul>
+          <div class="emergency-highlight">
+            <i class="fas fa-sun"></i>
+            <span><strong>Ahorro variable</strong> según uso de batería - <strong>Seguridad energética garantizada</strong></span>
+          </div>
+        </div>
+      </div>
+    `
+  }
+
+  // Para todos los demás sistemas, mostrar ahorros normales
+  return `
+    <div class="sistema-savings">
+      <div class="savings-item">
+        <span class="savings-label">Ahorro mensual:</span>
+        <span class="savings-value">${formatearMoneda(sistema.monthlySavings)}</span>
+      </div>
+      <div class="savings-item">
+        <span class="savings-label">Ahorro anual:</span>
+        <span class="savings-value">${formatearMoneda(sistema.annualSavings)}</span>
+      </div>
+    </div>
+  `
+}
+
+// 📄 FUNCIÓN PARA GENERAR PDF INDIVIDUAL POR SISTEMA - MODIFICADA SIN FONDOS DE COLOR
 function generarPDFSistema(sistema, datosCliente) {
   try {
     mostrarNotificacion("📄 Generando cotización PDF...", "info")
@@ -759,24 +873,56 @@ function generarPDFSistema(sistema, datosCliente) {
     const { jsPDF } = window.jspdf
     const doc = new jsPDF()
 
-    // Agregar marca de agua mejorada
-    function agregarMarcaDeAgua() {
+    // 🎨 FUNCIÓN MEJORADA PARA AGREGAR MARCA DE AGUA MÁS VISIBLE
+    function agregarMarcaDeAguaMejorada() {
       doc.saveGraphicsState()
-      doc.setTextColor(200, 200, 200) // Color más oscuro para mejor visibilidad
-      doc.setFontSize(60) // Tamaño más grande
+      // Configurar opacidad para que sea visible pero no interfiera
+      doc.setGState(new doc.GState({ opacity: 0.15 }))
+      // Color más oscuro para mejor visibilidad
+      doc.setTextColor(100, 100, 100) // Gris más oscuro
+      doc.setFontSize(45) // Tamaño más manejable
       doc.setFont("helvetica", "bold")
 
       const pageWidth = doc.internal.pageSize.width
       const pageHeight = doc.internal.pageSize.height
-      const centerX = pageWidth / 2
-      const centerY = pageHeight / 2
-      const angle = -45 * (Math.PI / 180)
 
-      // Marca de agua centrada con "MARRIOTT SOLUTIONS"
-      doc.text("MARRIOTT SOLUTIONS", centerX, centerY, {
-        angle: angle,
-        align: "center",
+      // Múltiples marcas de agua en diferentes posiciones
+      const positions = [
+        { x: pageWidth * 0.3, y: pageHeight * 0.3 },
+        { x: pageWidth * 0.7, y: pageHeight * 0.5 },
+        { x: pageWidth * 0.5, y: pageHeight * 0.7 },
+      ]
+
+      const angle = -25 * (Math.PI / 180) // Ángulo menos pronunciado
+
+      positions.forEach((pos) => {
+        doc.text("MARRIOTT SOLUTIONS", pos.x, pos.y, {
+          angle: angle,
+          align: "center",
+        })
       })
+
+      doc.restoreGraphicsState()
+    }
+
+    // 🌟 FUNCIÓN ALTERNATIVA PARA MARCA DE AGUA EN EL FONDO CON PATRÓN
+    function agregarMarcaDeAguaPatron() {
+      doc.saveGraphicsState()
+      // Opacidad muy sutil para el patrón
+      doc.setGState(new doc.GState({ opacity: 0.08 }))
+      doc.setTextColor(120, 120, 120)
+      doc.setFontSize(20)
+      doc.setFont("helvetica", "normal")
+
+      const pageWidth = doc.internal.pageSize.width
+      const pageHeight = doc.internal.pageSize.height
+
+      // Crear patrón repetitivo
+      for (let y = 30; y < pageHeight; y += 40) {
+        for (let x = 20; x < pageWidth; x += 80) {
+          doc.text("MARRIOTT", x, y, { angle: -15 * (Math.PI / 180) })
+        }
+      }
 
       doc.restoreGraphicsState()
     }
@@ -793,8 +939,9 @@ function generarPDFSistema(sistema, datosCliente) {
     logoImg.onload = () => {
       doc.addImage(logoImg, "PNG", 10, 5, 40, 20)
 
-      // Agregar marca de agua PRIMERO (para que quede detrás del contenido)
-      agregarMarcaDeAgua()
+      // 🎨 APLICAR AMBAS MARCAS DE AGUA PARA MEJOR EFECTO
+      agregarMarcaDeAguaPatron() // Patrón sutil de fondo
+      agregarMarcaDeAguaMejorada() // Marcas principales más visibles
 
       // MARRIOTT SOLUTIONS como título principal
       doc.setTextColor(255, 255, 255)
@@ -821,9 +968,9 @@ function generarPDFSistema(sistema, datosCliente) {
 
     logoImg.onerror = () => {
       console.warn("No se pudo cargar el logo, continuando sin él")
-
-      // Agregar marca de agua PRIMERO
-      agregarMarcaDeAgua()
+      // 🎨 APLICAR MARCAS DE AGUA INCLUSO SIN LOGO
+      agregarMarcaDeAguaPatron()
+      agregarMarcaDeAguaMejorada()
 
       // Si no hay logo, centrar el texto
       doc.setTextColor(255, 255, 255)
@@ -843,7 +990,7 @@ function generarPDFSistema(sistema, datosCliente) {
     function continuarGeneracionPDF() {
       let yPos = 55
 
-      // INFORMACIÓN DEL CLIENTE
+      // 📋 INFORMACIÓN DEL CLIENTE - SIN FONDO DE COLOR
       doc.setTextColor(...textColor)
       doc.setFontSize(16)
       doc.setFont("helvetica", "bold")
@@ -870,11 +1017,8 @@ function generarPDFSistema(sistema, datosCliente) {
         doc.text(emailText, 20, yPos)
       }
 
-      // SISTEMA COTIZADO
+      // 🔧 SISTEMA COTIZADO - SIN FONDO DE COLOR
       yPos += 20
-      doc.setFillColor(255, 247, 237)
-      doc.rect(15, yPos - 5, 180, 70, "F")
-
       doc.setFontSize(16)
       doc.setFont("helvetica", "bold")
       doc.setTextColor(...primaryColor)
@@ -892,28 +1036,35 @@ function generarPDFSistema(sistema, datosCliente) {
       for (let i = 0; i < lines.length; i++) {
         doc.text(lines[i], 20, yPos + i * 6)
       }
-      yPos += lines.length * 6
 
+      yPos += lines.length * 6
       yPos += 5
+
       doc.setFontSize(11)
       doc.text(`Tipo: ${sistema.type}`, 20, yPos)
+
+      // 🔧 MODIFICACIÓN: Mostrar paneles o "No aplica" según el consumo
       if (sistema.panels > 0) {
         doc.text(`Paneles: ${sistema.panels} unidades`, 110, yPos)
+      } else if (datosCliente.consumo > 201) {
+        doc.text(`Paneles: No aplica`, 110, yPos)
       }
 
       yPos += 7
+
+      // 🔧 MODIFICACIÓN: Mostrar área o "No requiere" según paneles y consumo
       if (sistema.panels > 0) {
         doc.text(`Área requerida: ${calculateArea(sistema.panels).toFixed(1)} m²`, 20, yPos)
+      } else if (datosCliente.consumo > 201) {
+        doc.text(`Área requerida: No requiere`, 20, yPos)
       }
+
       if (sistema.roi) {
         doc.text(`ROI: ${sistema.roi} años`, 110, yPos)
       }
 
-      // PRECIOS
+      // 💰 PRECIOS - SIN FONDO DE COLOR
       yPos += 25
-      doc.setFillColor(240, 253, 244)
-      doc.rect(15, yPos - 5, 180, 35, "F")
-
       doc.setFontSize(16)
       doc.setFont("helvetica", "bold")
       doc.setTextColor(...primaryColor)
@@ -929,11 +1080,8 @@ function generarPDFSistema(sistema, datosCliente) {
         doc.text(`Precio + IVA: ${formatearMoneda(sistema.priceWithIVA)}`, 20, yPos)
       }
 
-      // BENEFICIOS
+      // 🎯 BENEFICIOS - SIN FONDO DE COLOR
       yPos += 25
-      doc.setFillColor(239, 246, 255)
-      doc.rect(15, yPos - 5, 180, 35, "F")
-
       doc.setFontSize(16)
       doc.setFont("helvetica", "bold")
       doc.setTextColor(...primaryColor)
@@ -942,10 +1090,52 @@ function generarPDFSistema(sistema, datosCliente) {
       yPos += 15
       doc.setFontSize(12)
       doc.setTextColor(...textColor)
-      doc.text(`Ahorro mensual: ${formatearMoneda(sistema.monthlySavings)}`, 20, yPos)
-      doc.text(`Ahorro anual: ${formatearMoneda(sistema.annualSavings)}`, 110, yPos)
 
-      // FOOTER
+      // Verificar si es sistema de emergencia
+      if (sistema.type === "POWER STATION" || (sistema.monthlySavings === 0 && sistema.annualSavings === 0)) {
+        doc.text("✓ Sistema de respaldo energético", 20, yPos)
+        doc.text("✓ Energía limpia y confiable", 20, yPos + 7)
+        doc.text("✓ Reducción de dependencia eléctrica", 20, yPos + 14)
+      } else {
+        doc.text(`Ahorro mensual: ${formatearMoneda(sistema.monthlySavings)}`, 20, yPos)
+        doc.text(`Ahorro anual: ${formatearMoneda(sistema.annualSavings)}`, 110, yPos)
+      }
+
+      // 📝 NOTA ADICIONAL - AGREGAR ANTES DEL FOOTER
+      yPos += 25
+      doc.setFontSize(12) // Mismo tamaño que "Ahorro mensual"
+      doc.setTextColor(...textColor)
+      doc.setFont("helvetica", "normal")
+
+      // Mensaje de nota con las especificaciones solicitadas
+      const mensajaNota =
+        "Notas:\n• La cantidad final de paneles será confirmada luego de un análisis gratuito realizado por nuestros expertos.\n• Las horas de respaldo estarán sujetas a la configuración de batería recomendada por nuestro equipo técnico.\n• El ahorro estimado dependerá de la correcta disposición y configuración del medidor bidireccional."
+
+      // Dividir el mensaje en líneas si es muy largo
+      const maxWidthNota = 170
+      const lineasNota = doc.splitTextToSize(mensajaNota, maxWidthNota)
+
+      // Mostrar cada línea del mensaje
+      for (let i = 0; i < lineasNota.length; i++) {
+        doc.text(lineasNota[i], 20, yPos + i * 6)
+      }
+
+      // Ajustar yPos según el número de líneas
+      yPos += lineasNota.length * 6
+
+      // 🎨 AGREGAR MARCA DE AGUA ADICIONAL EN LA PARTE INFERIOR
+      doc.saveGraphicsState()
+      doc.setGState(new doc.GState({ opacity: 0.1 }))
+      doc.setTextColor(150, 150, 150)
+      doc.setFontSize(60)
+      doc.setFont("helvetica", "bold")
+      doc.text("MARRIOTT", 105, 250, {
+        angle: -45 * (Math.PI / 180),
+        align: "center",
+      })
+      doc.restoreGraphicsState()
+
+      // 📞 FOOTER
       yPos = 285
       doc.setFillColor(...primaryColor)
       doc.rect(0, yPos, 210, 17, "F")
@@ -955,8 +1145,8 @@ function generarPDFSistema(sistema, datosCliente) {
       doc.text("MARRIOTT SOLUTIONS - Para más información: +593 98 091 0905", 20, yPos + 10)
 
       const nombreArchivo = `Cotizacion_${sistema.name.replace(/\s+/g, "_")}_${datosCliente.nombre.replace(/\s+/g, "_")}_${new Date().toISOString().split("T")[0]}.pdf`
-      doc.save(nombreArchivo)
 
+      doc.save(nombreArchivo)
       mostrarNotificacion("✅ Cotización PDF generada exitosamente", "success")
     }
   } catch (error) {
@@ -1098,11 +1288,10 @@ function mostrarContenedorHibrido(datos) {
   elementos.contenedorHibrido.style.display = "block"
 }
 
-// 🏷️ FUNCIÓN PARA MOSTRAR SISTEMAS RECOMENDADOS (IGUAL AL TSX)
+// 🏷️ FUNCIÓN PARA MOSTRAR SISTEMAS RECOMENDADOS (MODIFICADA)
 function mostrarSistemasRecomendados(consumo) {
   // Obtener sistemas recomendados usando la misma lógica del TSX
   const sistemasRecomendados = getRecommendedSystems(consumo)
-
   console.log(`🔍 Para consumo ${consumo} kWh, sistemas encontrados:`, sistemasRecomendados)
 
   if (sistemasRecomendados.length === 0) {
@@ -1123,8 +1312,7 @@ function mostrarSistemasRecomendados(consumo) {
           <div class="sistema-type-badge ${getBadgeClass(sistema.type)}">
             ${getSystemIcon(sistema.type)}
             ${sistema.type}
-
-            ${sistema.roi ? `<span class="roi-badge">ROI: ${sistema.roi} años - El retorno de la inversión estará sujeto a la disponibilidad del medidor bidireccional.</span>` : ""}
+            ${sistema.roi ? `<span class="roi-badge">ROI: ${sistema.roi} años</span>` : ""}
           </div>
           <h3 class="sistema-title">${sistema.description}</h3>
         </div>
@@ -1143,24 +1331,24 @@ function mostrarSistemasRecomendados(consumo) {
             </div>
           </div>
           `
-              : ""
+              : consumo > 201
+                ? `
+          <div class="sistema-specs">
+            <div class="spec-item">
+              <span class="spec-label">Paneles solares:</span>
+              <span class="spec-value">No aplica</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Área requerida:</span>
+              <span class="spec-value">No requiere</span>
+            </div>
+          </div>
+          `
+                : ""
           }
-          ${ 
-  sistema.type !== "OFF GRID"
-    ? `
-      <div class="sistema-savings">
-        <div class="savings-item">
-          <span class="savings-label">Ahorro mensual:</span>
-          <span class="savings-value">${formatearMoneda(sistema.monthlySavings)}</span>
-        </div>
-        <div class="savings-item">
-          <span class="savings-label">Ahorro anual:</span>
-          <span class="savings-value">${formatearMoneda(sistema.annualSavings)}</span>
-        </div>
-      </div>
-      `
-    : ""
-}          
+                                        
+          ${getSavingsOrEmergencyMessage(sistema, consumo)}
+                                                  
           <div class="sistema-price">
             <div class="price-item">
               <span class="price-label">Precio de Inversión:</span>
@@ -1177,7 +1365,7 @@ function mostrarSistemasRecomendados(consumo) {
                 : ""
             }
           </div>
-          
+                                                  
           <button class="btn-cotizar" onclick="generarPDFSistema(${JSON.stringify(sistema).replace(/"/g, "&quot;")}, ${JSON.stringify(datosCalculados).replace(/"/g, "&quot;")})">
             <i class="fas fa-file-pdf"></i>
             Descargar Cotización PDF
@@ -1345,7 +1533,6 @@ function calcularCostoProgresivo(consumo) {
       return costoTotal
     }
   }
-
   return 0
 }
 
@@ -1415,7 +1602,6 @@ document.addEventListener("DOMContentLoaded", () => {
   if (mobileMenuBtn && mobileMenu) {
     mobileMenuBtn.addEventListener("click", () => {
       mobileMenu.classList.toggle("active")
-
       const icon = mobileMenuBtn.querySelector("i")
       if (mobileMenu.classList.contains("active")) {
         icon.className = "fas fa-times"
@@ -1442,3 +1628,255 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   }
 })
+
+// ========== BACKUP CALCULATOR FUNCTIONALITY ==========
+
+// Datos de equipos para calculadora de respaldo
+const EQUIPOS_BACKUP = [
+  {nombre:'Luz LED de domicilio',W:10,kwhH:0.01},
+  {nombre:'Tomacorrientes uso general (carga ligera)',W:150,kwhH:0.15},
+  {nombre:'Bomba de agua 1HP*',W:750,kwhH:0.75},
+  {nombre:'Cámaras IP',W:10,kwhH:0.01},
+  {nombre:'Switch/Router WiFi',W:15,kwhH:0.015},
+  {nombre:'Laptop',W:65,kwhH:0.065},
+  {nombre:'Computador de escritorio',W:200,kwhH:0.20},
+  {nombre:'TV 42"',W:80,kwhH:0.08},
+  {nombre:'TV 55"',W:120,kwhH:0.12},
+  {nombre:'Cocina de inducción',W:2000,kwhH:2.00},
+  {nombre:'Cafetera',W:1000,kwhH:1.00},
+  {nombre:'Microondas',W:1200,kwhH:1.20},
+  {nombre:'Lavadora*',W:500,kwhH:0.50},
+  {nombre:'Secadora*',W:3000,kwhH:3.00},
+  {nombre:'Congelador*',W:150,kwhH:0.15},
+  {nombre:'Nevera 1 puerta*',W:200,kwhH:0.20},
+  {nombre:'Nevera 2 puertas*',W:350,kwhH:0.35},
+  {nombre:'A/C split 9000 BTU*',W:900,kwhH:0.90},
+  {nombre:'A/C split 12000 BTU*',W:1200,kwhH:1.20},
+  {nombre:'A/C split 18000 BTU*',W:1800,kwhH:1.80},
+  {nombre:'A/C split 24000 BTU*',W:2400,kwhH:2.40},
+  {nombre:'A/C split 36000 BTU*',W:3500,kwhH:3.50},
+  {nombre:'A/C central 48000 BTU*',W:5000,kwhH:5.00},
+  {nombre:'A/C central 60000 BTU*',W:6500,kwhH:6.50},
+];
+
+// Recomendaciones de sistemas para respaldo
+const RECOMENDACIONES_BACKUP = [
+  {min:1201,max:1500,sistemas:['OFF GRID = AIO 6KW - 15 kWh']},
+  {min:1001,max:1200,sistemas:['OFF GRID = AIO 6KW - 15 kWh']},
+  {min:901,max:1000,sistemas:['OFF GRID = BLUESUN 5KW + 4 PANELES','OFF GRID = AIO 6KW - 15 kWh']},
+  {min:801,max:900,sistemas:['OFF GRID = BLUESUN 5KW','OFF GRID = AIO 6KW - 15 kWh','OFF GRID = SOSEN 5K']},
+  {min:701,max:800,sistemas:['OFF GRID = BLUESUN 5KW','OFF GRID = AIO 6KW - 10 kWh','OFF GRID = SOSEN 5K']},
+  {min:601,max:700,sistemas:['OFF GRID = BLUESUN 3KW','OFF GRID = AIO 6KW - 10 kWh','OFF GRID = SOSEN 5K']},
+  {min:501,max:600,sistemas:['OFF GRID = BLUESUN 3KW','OFF GRID = SOSEN 5K']},
+  {min:401,max:500,sistemas:['OFF GRID = BLUESUN 3KW','OFF GRID = SOSEN 5K']},
+  {min:301,max:400,sistemas:['OFF GRID = BLUESUN 1KW']},
+  {min:201,max:300,sistemas:['OFF GRID = BLUESUN 1KW']},
+];
+
+const HORAS_BACKUP = [0, 2, 4, 6, 8];
+
+// Variables globales para la calculadora de respaldo
+let backupSeleccion = new Array(EQUIPOS_BACKUP.length).fill(0);
+let backupElementos = {};
+
+// Inicializar calculadora de respaldo cuando el DOM esté listo
+document.addEventListener("DOMContentLoaded", () => {
+  inicializarBackupCalculator();
+});
+
+function inicializarBackupCalculator() {
+  backupElementos = {
+    toggleBtn: document.getElementById('backupToggleBtn'),
+    modal: document.getElementById('backupModal'),
+    closeBtn: document.getElementById('closeBackupModal'),
+    tbody: document.getElementById('backupTbody'),
+    total: document.getElementById('backupTotal'),
+    recsList: document.getElementById('backupRecsList'),
+    clearBtn: document.getElementById('btnBackupClear'),
+    exportBtn: document.getElementById('btnBackupExport')
+  };
+
+  // Event listeners
+  backupElementos.toggleBtn.addEventListener('click', mostrarModalBackup);
+  backupElementos.closeBtn.addEventListener('click', cerrarModalBackup);
+  backupElementos.clearBtn.addEventListener('click', limpiarSeleccionBackup);
+  backupElementos.exportBtn.addEventListener('click', exportarCSVBackup);
+
+  // Cerrar modal al hacer clic fuera
+  backupElementos.modal.addEventListener('click', (e) => {
+    if (e.target === backupElementos.modal) {
+      cerrarModalBackup();
+    }
+  });
+
+  // Cerrar modal con Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && backupElementos.modal.style.display === 'block') {
+      cerrarModalBackup();
+    }
+  });
+
+  // Renderizar tabla inicial
+  renderBackupTable();
+  actualizarTotalBackup();
+}
+
+function mostrarModalBackup(e) {
+  e.preventDefault();
+  backupElementos.modal.style.display = 'block';
+  document.body.style.overflow = 'hidden';
+}
+
+function cerrarModalBackup() {
+  backupElementos.modal.style.display = 'none';
+  document.body.style.overflow = 'auto';
+}
+
+function renderBackupTable() {
+  backupElementos.tbody.innerHTML = '';
+  
+  EQUIPOS_BACKUP.forEach((equipo, index) => {
+    const tr = document.createElement('tr');
+    
+    // Columna equipo
+    const tdEquipo = document.createElement('td');
+    tdEquipo.textContent = equipo.nombre;
+    
+    // Columna potencia
+    const tdPotencia = document.createElement('td');
+    tdPotencia.className = 'text-right';
+    tdPotencia.textContent = formatearNumero(equipo.W, 0);
+    
+    // Columna consumo 1h
+    const tdConsumo1h = document.createElement('td');
+    tdConsumo1h.className = 'text-right backup-kwh-cell';
+    tdConsumo1h.textContent = formatearNumero(equipo.kwhH, 3);
+    
+    // Columna horas
+    const tdHoras = document.createElement('td');
+    const horasContainer = document.createElement('div');
+    horasContainer.className = 'backup-hours';
+    
+    HORAS_BACKUP.forEach(horas => {
+      const label = document.createElement('label');
+      label.className = 'backup-hour-chip';
+      
+      const input = document.createElement('input');
+      input.type = 'radio';
+      input.name = `backup-h-${index}`;
+      input.value = horas;
+      input.checked = horas === 0;
+      
+      const span = document.createElement('span');
+      span.textContent = `${horas} h`;
+      
+      input.addEventListener('change', () => {
+        backupSeleccion[index] = horas;
+        actualizarFilaBackup(index);
+        actualizarTotalBackup();
+      });
+      
+      label.appendChild(input);
+      label.appendChild(span);
+      horasContainer.appendChild(label);
+    });
+    
+    tdHoras.appendChild(horasContainer);
+    
+    // Columna consumo seleccionado
+    const tdSeleccionado = document.createElement('td');
+    tdSeleccionado.className = 'text-right backup-kwh-cell';
+    tdSeleccionado.id = `backup-sel-${index}`;
+    tdSeleccionado.textContent = formatearNumero(0, 2);
+    
+    tr.appendChild(tdEquipo);
+    tr.appendChild(tdPotencia);
+    tr.appendChild(tdConsumo1h);
+    tr.appendChild(tdHoras);
+    tr.appendChild(tdSeleccionado);
+    
+    backupElementos.tbody.appendChild(tr);
+  });
+}
+
+function actualizarFilaBackup(index) {
+  const kwh = EQUIPOS_BACKUP[index].kwhH * (backupSeleccion[index] || 0);
+  const cell = document.getElementById(`backup-sel-${index}`);
+  if (cell) {
+    cell.textContent = formatearNumero(kwh, 2);
+  }
+}
+
+function buscarRecsBackup(total) {
+  return RECOMENDACIONES_BACKUP
+    .filter(r => total >= r.min && total <= r.max)
+    .flatMap(r => r.sistemas);
+}
+
+function renderRecsBackup(total) {
+  const items = buscarRecsBackup(total);
+  
+  if (items.length > 0) {
+    backupElementos.recsList.innerHTML = items
+      .map(sistema => `<span class="backup-rec-pill">${sistema}</span>`)
+      .join('');
+  } else {
+    backupElementos.recsList.innerHTML = 
+      '<span style="color: var(--color-secondary);">No hay una recomendación directa para este total. Ajusta horas o consulta con un asesor.</span>';
+  }
+}
+
+function actualizarTotalBackup() {
+  const total = backupSeleccion.reduce((acc, horas, index) => {
+    return acc + (EQUIPOS_BACKUP[index].kwhH * horas);
+  }, 0);
+  
+  backupElementos.total.textContent = formatearNumero(total, 2);
+  renderRecsBackup(total);
+}
+
+function limpiarSeleccionBackup() {
+  backupSeleccion.fill(0);
+  
+  EQUIPOS_BACKUP.forEach((_, index) => {
+    const radios = document.querySelectorAll(`input[name="backup-h-${index}"]`);
+    radios.forEach(radio => {
+      if (radio.value === '0') {
+        radio.checked = true;
+      }
+    });
+    actualizarFilaBackup(index);
+  });
+  
+  actualizarTotalBackup();
+}
+
+function exportarCSVBackup() {
+  const encabezado = ['Equipo', 'Potencia (W)', 'Consumo 1h (kWh)', 'Horas', 'Consumo equipo (kWh)'];
+  
+  const filas = EQUIPOS_BACKUP.map((equipo, index) => {
+    const horas = backupSeleccion[index] || 0;
+    const kwh = equipo.kwhH * horas;
+    return [equipo.nombre, equipo.W, equipo.kwhH, horas, kwh];
+  });
+  
+  const total = filas.reduce((acc, fila) => acc + Number(fila[4]), 0);
+  filas.push(['TOTAL', '', '', '', total]);
+  
+  const csv = [encabezado, ...filas]
+    .map(row => row.map(value => 
+      typeof value === 'string' ? `"${value.replace(/"/g, '""')}"` : value
+    ).join(','))
+    .join('\n');
+  
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'respaldo_por_equipo.csv';
+  a.click();
+  
+  URL.revokeObjectURL(url);
+  mostrarNotificacion('📄 Archivo CSV exportado exitosamente', 'success');
+}

@@ -7,21 +7,17 @@
     <link rel="icon" type="image/png" href="https://images.grupomarriott.com/wp-content/uploads/2022/11/17141425/cropped-favicon-32x32-1-32x32.png">
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <!-- jsPDF Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
-    <!-- Header Navigation -->
     <header class="main-header">
         <div class="header-container">
-            <!-- Logo Section -->
             <div class="header-logo">
                 <a href="https://www.grupomarriott.com/solution/">
                 <img src="https://images.grupomarriott.com/wp-content/uploads/2022/10/31083332/LOGO_SOLAR-1.png" height="56" width="115" alt="Logo Marriott Solar">
                 </a>
             </div>
-            
-            <!-- Navigation Menu -->
+                        
             <nav class="header-nav">
                 <ul class="nav-menu">
                     <li><a href="https://www.grupomarriott.com/solution/#mste-nosotros">NOSOTROS</a></li>
@@ -29,15 +25,13 @@
                     <li><a href="https://almacenesmarriott.com/locales/">PUNTOS DE VENTA</a></li>
                     <li><a href="https://www.grupomarriott.com/solution/#mste-contactenos">CONTÁCTENOS</a></li>
                 </ul>
-                
-                <!-- Mobile Menu Button -->
+                                
                 <button class="mobile-menu-btn" id="mobileMenuBtn">
                     <i class="fas fa-bars"></i>
                 </button>
             </nav>
         </div>
-        
-        <!-- Mobile Menu -->
+                
         <div class="mobile-menu" id="mobileMenu">
             <ul class="mobile-nav-menu">
                 <li><a href="#nosotros">NOSOTROS</a></li>
@@ -48,28 +42,84 @@
         </div>
     </header>
 
-    <!-- Main Content -->
     <main class="main-content">
         <div class="container">
-            <!-- Formulario -->
+            <div class="backup-calculator-section" style="margin-bottom: 2rem;">
+    <div class="backup-toggle-container">
+        <a href="#" id="backupToggleBtn" class="backup-toggle-link">
+            <i class="fas fa-calculator"></i>
+            ¿Respaldo por equipo? Elige las horas AQUÍ
+        </a>
+    </div>
+</div>
+
+<!-- Modal para calculadora de respaldo -->
+<div id="backupModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3><i class="fas fa-shield-alt"></i> Solo quieres respaldo en ciertos equipos</h3>
+            <button class="modal-close" id="closeBackupModal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p>Marca las horas por equipo (0/2/4/6/8). Calculamos el <strong>total kWh</strong> para tu inversor/batería y te sugerimos sistemas.</p>
+            
+            <div class="backup-controls">
+                <button class="btn-backup-primary" id="btnBackupClear">Limpiar selección</button>
+                <button class="btn-backup-secondary" id="btnBackupExport">Exportar CSV</button>
+                <span class="backup-help-text">Opciones exclusivas por equipo.</span>
+            </div>
+            
+            <div class="backup-table-container">
+                <table id="backupTable" class="backup-table">
+                    <thead>
+                        <tr>
+                            <th>Equipo</th>
+                            <th class="text-right">Potencia (W)</th>
+                            <th class="text-right">Consumo 1 h (kWh)</th>
+                            <th>Horas de respaldo</th>
+                            <th class="text-right">Consumo seleccionado (kWh)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="backupTbody"></tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4" class="text-right backup-total-label">Total kWh seleccionados</td>
+                            <td class="text-right backup-total-value">
+                                <span id="backupTotal">0.00</span> <span class="backup-accent">kWh</span>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            
+            <div class="backup-recommendations" id="backupRecs">
+                <div class="backup-recs-title">Sistemas recomendados según el total seleccionado:</div>
+                <div id="backupRecsList"></div>
+            </div>
+            
+            <div class="backup-footer">
+                <div class="backup-formula">Fórmula: <code>kWh = (Consumo 1h) × (Horas)</code></div>
+            </div>
+        </div>
+    </div>
+</div>
+
             <div class="form-card">
                 <div class="card-header">
                     <h2><i class="fas fa-user"></i> Datos del Cliente</h2>
                     <p>Ingresa la información para calcular tu potencial de ahorro energético</p>
                 </div>
                 <div class="card-content">
-                    <!-- Alertas de Error -->
                     <div id="error-alert" class="alert alert-error" style="display: none;">
                         <ul id="error-list"></ul>
                     </div>
 
-                    <!-- Campos del Formulario -->
                     <div class="form-grid">
                         <div class="form-group">
                             <label for="nombre">Nombre del Cliente *</label>
                             <input type="text" id="nombre" placeholder="Ingresa el nombre completo">
                         </div>
-                        
+                                                
                         <div class="form-group">
                             <label for="tipoCliente">Tipo de Cliente *</label>
                             <select id="tipoCliente">
@@ -106,14 +156,13 @@
                             </div>
                         </div>
                     </div>
-                    
+                                        
                     <button id="calcularBtn" class="btn-primary">
                         <i class="fas fa-bolt"></i> Calcular Ahorro
                     </button>
                 </div>
             </div>
 
-            <!-- Modal para mostrar imagen de ayuda -->
             <div id="consumoModal" class="modal" style="display: none;">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -123,61 +172,47 @@
                     <div class="modal-body">
                         <p>En tu planilla de luz, busca el valor de <strong>"Consumo kWh"</strong> o <strong>"Energía Consumida"</strong>:</p>
                         <div class="image-container">
-                            <img src="/placeholder.svg?height=400&width=600&text=Ejemplo+de+Planilla+de+Luz+-+Busca+el+valor+en+kWh" 
-                                 alt="Ejemplo de planilla de luz mostrando consumo en kWh" 
+                            <img src="https://i.ibb.co/svG6mTSF/FOTO-DE-PLANILLA.png"
+                                 alt="Ejemplo de planilla de luz mostrando consumo en kWh"
                                  id="planillaImage">
                             <p class="image-note">
                                 <i class="fas fa-info-circle"></i>
-                                <strong>Busca en tu planilla:</strong> El consumo aparece como "kWh" o "Energía Consumida"
+                                <strong>Busca en tu planilla:</strong> El consumo aparece como: "Consumo Total Ajuste"
                             </p>
                         </div>
                         <div class="help-tips">
-                            <div class="tip-item">
-                                <i class="fas fa-lightbulb"></i>
-                                <span>El consumo aparece en <strong>kWh</strong> (kilovatios hora)</span>
-                            </div>
-                            <div class="tip-item">
-                                <i class="fas fa-calendar-alt"></i>
-                                <span>Usa el consumo del <strong>último mes completo</strong></span>
-                            </div>
-                            <div class="tip-item">
-                                <i class="fas fa-search"></i>
-                                <span>Busca en la sección de <strong>"Detalle del Consumo"</strong></span>
-                            </div>
+                                                    
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Resultados -->
             <div id="resultados" class="resultados" style="display: none;">
-                <!-- Header de Resultados -->
                 <div class="result-header">
                     <h2><i class="fas fa-chart-line"></i> Análisis de Sistema Solar</h2>
                     <div id="cliente-info"></div>
                 </div>
 
-                <!-- CONTENEDOR PARA SISTEMAS DE AHORRO (ON GRID) -->
                 <div id="contenedor-ahorro" style="display: none;">
-                    <!-- El contenido se genera dinámicamente en JavaScript -->
                 </div>
 
-                <!-- CONTENEDOR PARA SISTEMAS HÍBRIDOS -->
                 <div id="contenedor-hibrido" style="display: none;">
-                    <!-- El contenido se genera dinámicamente en JavaScript -->
                 </div>
 
-                <!-- SISTEMAS RECOMENDADOS -->
                 <div id="sistemas-recomendados" class="sistemas-recomendados-section" style="display: none;">
-                    
                     <div id="sistemas-grid" class="sistemas-grid">
-                        <!-- Los sistemas se generarán dinámicamente aquí -->
                     </div>
-                    
                 </div>
 
-                <!-- Botón de Contacto -->
                 <div class="action-buttons">
+                    <p>Notas:
+                    • La cantidad final de paneles será confirmada luego de un análisis gratuito realizado por
+                    nuestros expertos.<br>
+                    • Las horas de respaldo estarán sujetas a la configuración de batería recomendada por
+                    nuestro equipo técnico.<br>
+                    • El ahorro estimado dependerá de la correcta disposición y configuración del medidor
+                    bidireccional.
+                    </p>
                     <button id="whatsappBtn" class="btn-whatsapp-full">
                         <i class="fab fa-whatsapp"></i> Contáctanos
                     </button>
