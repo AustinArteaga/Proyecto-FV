@@ -57,16 +57,16 @@
 <div id="backupModal" class="modal" style="display: none;">
     <div class="modal-content">
         <div class="modal-header">
-            <h3><i class="fas fa-shield-alt"></i> Solo quieres respaldo en ciertos equipos</h3>
+            <h3><i class="fas fa-shield-alt"></i> Calculadora de Respaldo por Equipos</h3>
             <button class="modal-close" id="closeBackupModal">&times;</button>
         </div>
         <div class="modal-body">
-            <p>Marca las horas por equipo (0/2/4/6/8). Calculamos el <strong>total kWh</strong> para tu inversor/batería y te sugerimos sistemas.</p>
+            <p>Selecciona tus equipos y las horas de respaldo que necesitas. Te calcularemos el sistema ideal.</p>
             
             <div class="backup-controls">
-                <button class="btn-backup-primary" id="btnBackupClear">Limpiar selección</button>
+                <button class="btn-backup-primary" id="btnBackupClear">Limpiar Todo</button>
                 <button class="btn-backup-secondary" id="btnBackupExport">Exportar CSV</button>
-                <span class="backup-help-text">Opciones exclusivas por equipo.</span>
+                <span class="backup-help-text">Configura cada equipo según tus necesidades.</span>
             </div>
             
             <div class="backup-table-container">
@@ -75,17 +75,21 @@
                         <tr>
                             <th>Equipo</th>
                             <th class="text-right">Potencia (W)</th>
-                            <th class="text-right">Consumo 1 h (kWh)</th>
-                            <th>Horas de respaldo</th>
-                            <th class="text-right">Consumo seleccionado (kWh)</th>
+                            <th class="text-right">Cantidad</th>
+                            <th class="text-right">Horas</th>
+                            <th class="text-right">Picos (W)</th>
+                            <th class="text-right">Energía (kWh)</th>
                         </tr>
                     </thead>
                     <tbody id="backupTbody"></tbody>
                     <tfoot>
-                        <tr>
-                            <td colspan="4" class="text-right backup-total-label">Total kWh seleccionados</td>
+                        <tr class="backup-total-row">
+                            <td colspan="4" class="text-right backup-total-label">TOTALES</td>
                             <td class="text-right backup-total-value">
-                                <span id="backupTotal">0.00</span> <span class="backup-accent">kWh</span>
+                                <span id="backupTotalPicos">0</span> <span class="backup-accent">W</span>
+                            </td>
+                            <td class="text-right backup-total-value">
+                                <span id="backupTotalEnergia">0</span> <span class="backup-accent">kWh</span>
                             </td>
                         </tr>
                     </tfoot>
@@ -93,12 +97,16 @@
             </div>
             
             <div class="backup-recommendations" id="backupRecs">
-                <div class="backup-recs-title">Sistemas recomendados según el total seleccionado:</div>
-                <div id="backupRecsList"></div>
+                <div class="backup-recs-title">Sistema Recomendado:</div>
+                <div id="backupRecsList" class="backup-recommended-system"></div>
             </div>
             
             <div class="backup-footer">
-                <div class="backup-formula">Fórmula: <code>kWh = (Consumo 1h) × (Horas)</code></div>
+                <div class="backup-formula">
+                    <strong>Fórmulas:</strong> 
+                    <code>Picos = Cantidad × Potencia × Factor</code> | 
+                    <code>Energía = Horas × Potencia × FC × Coincidencia</code>
+                </div>
             </div>
         </div>
     </div>
