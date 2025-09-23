@@ -1353,7 +1353,7 @@ const POWER_AUTOMATE_URL =
   "https://default7235b983940447368527b8c69d3ffe.77.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/b87208e2a51c40489cbc3acd2fb8358a/triggers/manual/paths/invoke/?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=xnRomK-ltbqgaIBOYCWDNE0udC8m6551o6hACuG9CKY"
 
 // 📱 CONFIGURACIÓN DE WHATSAPP
-const WHATSAPP_NUMBER = "593980910905"
+const WHATSAPP_NUMBER = "593983606821"
 const WHATSAPP_MESSAGE =
   "¡Hola! Estoy interesado en recibir más información de los sistemas fotovoltaicos. ¿Me pueden ayudar?"
 
@@ -1707,7 +1707,7 @@ function generarPDFSistema(sistema, datosCliente) {
     doc.rect(0, yPos, 210, 17, "F")
     doc.setTextColor(255, 255, 255)
     doc.setFontSize(10)
-    doc.text("MARRIOTT SOLUTIONS - Para más información: +593 98 091 0905", 20, yPos + 10)
+    doc.text("MARRIOTT SOLUTIONS - Para más información: +593 98 360 6821", 20, yPos + 10)
 
     // Generar nombre del archivo
     const nombreArchivo = `Cotizacion_${sistema.name.replace(/\s+/g, "_")}_${datosCliente.nombre.replace(
