@@ -754,13 +754,14 @@ const BACKUP_SYSTEMS_DATA = [
     systems: [
       {
         name: "Sistema de Respaldo 1kW",
+        //SISTEMA OFF GRID - INVERSOR 110VAC 1KW + 2 BATERIA LITIO LIFEPO4 1.33KWH
         type: "OFF GRID",
         inv_kW: 1,
         batt_kWh: 1.33,
         potenciaMinima: 0.01,
         potenciaMaxima: 1,
         maxBaterias: 1,
-        description: "Ideal para respaldo básico de luces y electrodomésticos esenciales.",
+        description: "Precio: $901,55 (No incluye instalación) ",
       },
     ],
   },
@@ -769,13 +770,14 @@ const BACKUP_SYSTEMS_DATA = [
     systems: [
       {
         name: "Sistema de Respaldo 3kW",
+        //SISTEMA OFF GRID - INVERSOR 110VAC 1KW + 2 BATERIA LITIO LIFEPO4 1.33KWH
         type: "OFF GRID",
         inv_kW: 3,
         batt_kWh: 5.12,
         potenciaMinima: 1.01,
         potenciaMaxima: 3,
         maxBaterias: 1,
-        description: "Soporta cargas medias como refrigerador, bomba de agua y luces.",
+        description: "Precio: $1804,05 (No incluye instalación)",
       },
     ],
   },
@@ -784,23 +786,25 @@ const BACKUP_SYSTEMS_DATA = [
     systems: [
       {
         name: "Sistema de Respaldo 5kW - 5kWh",
+        //SISTEMA OFF GRID - INVERSOR SINGLE PHASE 5KW PV (INPUT 5000W) + 1 BATERIA LITIO LIFEPO4 5KWH
         type: "OFF GRID",
         inv_kW: 5,
         batt_kWh: 5,
         potenciaMinima: 3.01,
         potenciaMaxima: 5,
         maxBaterias: 1,
-        description: "Excelente para hogares con consumo moderado, soporta múltiples electrodomésticos.",
+        description: "Precio: 1804,05 (No incluye instalación)",
       },
       {
         name: "Sistema de Respaldo 5kW - 10.85kWh",
+        //SISTEMA OFF GRID - INVERSOR SPLIT PHASE 5KW (PV INPUT 2880W) + 1  BATERIA LITIO LIFEPO4 10.85KWH
         type: "OFF GRID",
         inv_kW: 5,
         batt_kWh: 10.85,
         potenciaMinima: 3.01,
         potenciaMaxima: 5,
         maxBaterias: 2,
-        description: "Mayor autonomía para hogares con mayor demanda de energía durante cortes prolongados.",
+        description: "Precio: 3134,05 (No incluye instalación)",
       },
     ],
   },
@@ -809,6 +813,7 @@ const BACKUP_SYSTEMS_DATA = [
     systems: [
       {
         name: "Sistema de Respaldo 6kW - 10kWh",
+        //SISTEMA ALL IN ONE - INVERSOR SPLIT PHASE 6KW (PV INPUT 3000W) C/ BATERIA LITIO LIFEPO4 10KWH
         type: "ALL IN ONE",
         inv_kW: 6,
         batt_kWh: 10,
@@ -816,17 +821,18 @@ const BACKUP_SYSTEMS_DATA = [
         potenciaMaxima: 6,
         maxBaterias: 2,
         description:
-          "Solución integrada para hogares con alto consumo, combina potencia y capacidad de almacenamiento.",
+          "Precio: 3134,05 (No incluye instalación)",
       },
       {
         name: "Sistema de Respaldo 6kW - 15kWh",
+        //SISTEMA ALL IN ONE - INVERSOR SPLIT PHASE 6KW (PV INPUT 3000W) C/ BATERIA LITIO LIFEPO4 15KWH
         type: "ALL IN ONE",
         inv_kW: 6,
         batt_kWh: 15,
         potenciaMinima: 5.01,
         potenciaMaxima: 6,
         maxBaterias: 3,
-        description: "Máxima autonomía para necesidades energéticas elevadas, ideal para uso continuo.",
+        description: "Precio: 4084,05 (No incluye instalación)",
       },
     ],
   },
@@ -834,34 +840,37 @@ const BACKUP_SYSTEMS_DATA = [
     range: [6.01, 11],
     systems: [
       {
-        name: "Sistema de Respaldo 11kW - 10kWh",
+        name: "Sistema de Respaldo 11.4kW - 11kWh",
+        //SISTEMA HIBRIDO - INVERSOR SPLIT PHASE 11.4KW (PV INPUT 17000W) +  2 BATERIAS LITIO LIFEPO4 11KWH
         type: "OFF GRID",
-        inv_kW: 11,
+        inv_kW: 11.4,
+        batt_kWh: 20,
+        potenciaMinima: 11.01,
+        potenciaMaxima: 14.3,
+        maxBaterias: 2,
+        description: "Precio: 5129,05 (No incluye instalación)",
+      },
+      {
+        name: "Sistema de Respaldo 10kW - 10kWh",
+        //SISTEMA HIBRIDO - INVERSOR SPLIT PHASE 10KW (PV INPUT 15000W) + 1 BATERIA LITIO LIFEPO4 10KWH 
+        type: "OFF GRID",
+        inv_kW: 10,
         batt_kWh: 10,
         potenciaMinima: 6.01,
         potenciaMaxima: 11,
         maxBaterias: 2,
-        description: "Potente sistema para cargas pesadas y múltiples aparatos, con buena capacidad de respaldo.",
-      },
-      {
-        name: "Sistema de Respaldo 11kW - 11kWh",
-        type: "OFF GRID",
-        inv_kW: 11,
-        batt_kWh: 11,
-        potenciaMinima: 6.01,
-        potenciaMaxima: 11,
-        maxBaterias: 2,
-        description: "Mayor capacidad de batería para extender el respaldo en consumos elevados.",
+        description: "Precio: 5224,05 (No incluye instalación)",
       },
       {
         name: "Sistema de Respaldo 15kW - 15kWh",
+        //SISTEMA HIBRIDO - INVERSOR SPLIT PHASE 15KW (PV INPUT 22500W) + 1 BATERIA LITIO LIFEPO4 15KWH 
         type: "OFF GRID",
         inv_kW: 15,
         batt_kWh: 15,
         potenciaMinima: 11.01,
         potenciaMaxima: 15,
         maxBaterias: 3,
-        description: "Solución robusta para demandas energéticas muy altas, asegurando continuidad.",
+        description: "Precio: 7789,05 (No incluye instalación)",
       },
     ],
   },
@@ -869,10 +878,10 @@ const BACKUP_SYSTEMS_DATA = [
     range: [11.01, 16.5],
     systems: [
       {
-        name: "Sistema de Respaldo 11kW - 11kWh",
+        name: "Sistema de Respaldo 10kW - 10kWh",
         type: "OFF GRID",
-        inv_kW: 11,
-        batt_kWh: 11,
+        inv_kW: 10,
+        batt_kWh: 10,
         potenciaMinima: 6.01,
         potenciaMaxima: 11,
         maxBaterias: 2,
@@ -880,6 +889,7 @@ const BACKUP_SYSTEMS_DATA = [
       },
       {
         name: "Sistema de Respaldo 15kW - 15kWh",
+        //SISTEMA HIBRIDO - INVERSOR SPLIT PHASE 15KW (PV INPUT 22500W) + 1 BATERIA LITIO LIFEPO4 15KWH 
         type: "OFF GRID",
         inv_kW: 15,
         batt_kWh: 15,
