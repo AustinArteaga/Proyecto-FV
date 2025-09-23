@@ -1353,7 +1353,7 @@ const POWER_AUTOMATE_URL =
   "https://default7235b983940447368527b8c69d3ffe.77.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/b87208e2a51c40489cbc3acd2fb8358a/triggers/manual/paths/invoke/?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=xnRomK-ltbqgaIBOYCWDNE0udC8m6551o6hACuG9CKY"
 
 // 📱 CONFIGURACIÓN DE WHATSAPP
-const WHATSAPP_NUMBER = "593983606821"
+const WHATSAPP_NUMBER = "+593983606821"
 const WHATSAPP_MESSAGE =
   "¡Hola! Estoy interesado en recibir más información de los sistemas fotovoltaicos. ¿Me pueden ayudar?"
 
