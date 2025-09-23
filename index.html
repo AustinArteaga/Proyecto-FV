@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solutions - Grupo Marriott</title>
+    <link rel="icon" type="image/png" href="https://images.grupomarriott.com/wp-content/uploads/2022/11/17141425/cropped-favicon-32x32-1-32x32.png">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-container">
+            <div class="header-logo">
+                <a href="https://www.grupomarriott.com/solution/">
+                <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/LOGO_SOLAR-1-bzTaBC8xCGwTeoEraiyuFQP45ei6wi.png" height="56" width="115" alt="Logo Marriott Solar">
+                </a>
+            </div>
+                        
+            <nav class="header-nav">
+                <ul class="nav-menu">
+                    <li><a href="https://www.grupomarriott.com/solution/#mste-nosotros">NOSOTROS</a></li>
+                    <li><a href="https://b2b.grupomarriott.com/shop/category/equipos-fotovoltaicos-1292">PRODUCTOS</a></li>
+                    <li><a href="https://almacenesmarriott.com/locales/">PUNTOS DE VENTA</a></li>
+                    <li><a href="https://www.grupomarriott.com/solution/#mste-contactenos">CONTÁCTENOS</a></li>
+                </ul>
+                                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+                
+        <div class="mobile-menu" id="mobileMenu">
+            <ul class="mobile-nav-menu">
+                <li><a href="#nosotros">NOSOTROS</a></li>
+                <li><a href="#productos">PRODUCTOS</a></li>
+                <li><a href="#puntos-venta">PUNTOS DE VENTA</a></li>
+                <li><a href="#contactenos">CONTÁCTENOS</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="form-card">
+                <div class="card-header">
+                    <h2><i class="fas fa-user"></i> Datos del Cliente</h2>
+                    <p>Ingresa la información para calcular tu potencial de ahorro energético</p>
+                </div>
+                <div class="card-content">
+                    <div id="error-alert" class="alert alert-error" style="display: none;">
+                        <ul id="error-list"></ul>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="nombre">Nombre del Cliente *</label>
+                            <input type="text" id="nombre" placeholder="Ingresa el nombre completo">
+                        </div>
+                                                
+                        <div class="form-group">
+                            <label for="tipoCliente">Tipo de Cliente *</label>
+                            <select id="tipoCliente">
+                                <option value="Residencial">🏠 Residencial</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="celular">Número Celular *</label>
+                            <input type="tel" id="celular" placeholder="593987654321" maxlength="12">
+                            <small class="field-help">Formato: 593 + 9 dígitos (sin espacios)</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Correo Electrónico *</label>
+                            <input type="email" id="email" placeholder="cliente@ejemplo.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ciudad">Ciudad *</label>
+                            <input type="text" id="ciudad" placeholder="Ingresa la ciudad">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="consumoMensual">Consumo Mensual (kWh) *</label>
+                            <input type="number" id="consumoMensual" placeholder="Ej: 3501" min="1" step="1">
+                            <div class="consumo-help">
+                                <small class="field-help">Ingresa el consumo en kWh de tu planilla de luz</small>
+                                <a href="#" id="verConsumoLink" class="consumo-link">
+                                    <i class="fas fa-eye"></i> ¿Cómo ver mi consumo?
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                                        
+                    <button id="calcularBtn" class="btn-primary">
+                        <i class="fas fa-bolt"></i> Calcular Ahorro
+                    </button>
+                </div>
+            </div>
+
+            <div id="consumoModal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3><i class="fas fa-file-invoice"></i> ¿Cómo encontrar mi consumo mensual?</h3>
+                        <button class="modal-close" id="closeModal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <p>En tu planilla de luz, busca el valor de <strong>"Consumo kWh"</strong> o <strong>"Energía Consumida"</strong>:</p>
+                        <div class="image-container">
+                            <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/design-mode-images/image-xjWoRDid8AYioFAPkh8QNDNqq29VAY.png"
+                                 alt="Ejemplo de planilla de luz mostrando consumo en kWh"
+                                 id="planillaImage">
+                            <p class="image-note">
+                                <i class="fas fa-info-circle"></i>
+                                <strong>Busca en tu planilla:</strong> El consumo aparece como: "Consumo"
+                            </p>
+                        </div>
+                        <div class="help-tips">
+                                                    
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="resultados" class="resultados" style="display: none;">
+                <div class="result-header">
+                    <h2><i class="fas fa-chart-line"></i> Análisis de Sistema Solar</h2>
+                    <div id="cliente-info"></div>
+                </div>
+
+                <div id="contenedor-ahorro" style="display: none;">
+                </div>
+
+                <div id="contenedor-hibrido" style="display: none;">
+                </div>
+
+                <div id="sistemas-recomendados" class="sistemas-recomendados-section" style="display: none;">
+                    <div id="sistemas-grid" class="sistemas-grid">
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <p>
+                        Notas:<br>
+                        • La cantidad final de paneles será confirmada luego de un análisis gratuito realizado por
+                        nuestros expertos.<br>
+                        • Las horas de respaldo estarán sujetas a la configuración de batería recomendada por
+                        nuestro equipo técnico.<br>
+                        • El ahorro estimado dependerá de la correcta disposición y configuración del medidor
+                        bidireccional.
+                        <br>
+                        • El ahorro estimado también dependerá del uso que se le dé a la batería.
+                    </p>
+                    <button id="whatsappBtn" class="btn-whatsapp-full">
+                        <i class="fab fa-whatsapp"></i> Contáctanos
+                    </button>
+                </div>
+            </div>
+
+            <!-- Moved backup calculator section to be more visible after main form -->
+            <div class="backup-calculator-section" style="margin-top: 2rem;">
+                <div class="backup-toggle-container">
+                    <a href="#" id="backupToggleBtn" class="backup-toggle-link">
+                        <i class="fas fa-calculator"></i>
+                        ¿Respaldo por equipo? Elige las horas AQUÍ
+                        <i class="fas fa-chevron-down backup-chevron" id="backupChevron"></i>
+                    </a>
+                </div>
+
+                <!-- Added validation message for required user data -->
+                <div id="backupValidationAlert" class="alert alert-warning" style="display: none; margin-top: 1rem;">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <strong>Información requerida:</strong> Debes completar tu nombre, correo y teléfono antes de usar la calculadora de respaldo.
+                </div>
+
+                <div id="backupDropdown" class="backup-dropdown" style="display: none;">
+                    <div class="backup-dropdown-content">
+                        <div class="backup-dropdown-header">
+                            <h3><i class="fas fa-shield-alt"></i> Calculadora de Respaldo por Equipos</h3>
+                            <p>Selecciona tus equipos y las horas de respaldo que necesitas. Te calcularemos el sistema ideal.</p>
+                        </div>
+
+                        <div class="backup-equipment-selector">
+                            <div class="equipment-selector-row">
+                                <div class="form-group">
+                                    <label for="equipmentSelect">Seleccionar Equipo:</label>
+                                    <select id="equipmentSelect" class="equipment-dropdown">
+                                        <option value="">-- Selecciona un equipo --</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="equipmentQuantity">Cantidad:</label>
+                                    <input type="number" id="equipmentQuantity" min="1" value="1" class="equipment-input">
+                                </div>
+                                <div class="form-group">
+                                    <label for="equipmentHours">Horas:</label>
+                                    <input type="number" id="equipmentHours" min="0" step="0.25" value="1" class="equipment-input">
+                                </div>
+                                <button id="addEquipmentBtn" class="btn-add-equipment">
+                                    <i class="fas fa-plus"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="backup-controls">
+                            <button class="btn-backup-primary" id="btnBackupClear">Limpiar Todo</button>
+                            <button class="btn-backup-secondary" id="btnBackupExport">Exportar CSV</button>
+                            <span class="backup-help-text">Configura cada equipo según tus necesidades.</span>
+                        </div>
+
+                        <div class="backup-table-container">
+                            <table id="backupTable" class="backup-table">
+                                <thead>
+                                    <tr>
+                                        <th>Equipo</th>
+                                        <th class="text-right">Potencia (W)</th>
+                                        <th class="text-right">Cantidad</th>
+                                        <th class="text-right">Horas</th>
+                                        <th class="text-right">Picos (W)</th>
+                                        <th class="text-right">Energía (kWh)</th>
+                                        <th class="text-center">Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="backupTbody">
+                                    <tr id="noEquipmentRow">
+                                        <td colspan="7" class="text-center no-equipment-message">
+                                            <i class="fas fa-info-circle"></i>
+                                            No hay equipos agregados. Selecciona un equipo arriba para comenzar.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr class="backup-total-row">
+                                        <td colspan="4" class="text-right backup-total-label">TOTALES</td>
+                                        <td class="text-right backup-total-value">
+                                            <span id="backupTotalPicos">0</span> <span class="backup-accent">W</span>
+                                        </td>
+                                        <td class="text-right backup-total-value">
+                                            <span id="backupTotalEnergia">0</span> <span class="backup-accent">kWh</span>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+
+                        <div class="backup-footer">
+                            <div class="backup-recommendation" id="backupRecommendationContainer" style="display: none;">
+                                <div class="recommendation-header">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <strong>Sistema Recomendado:</strong>
+                                </div>
+                                <div id="backupRecommendationContent" class="recommendation-content">
+                                    <!-- La recomendación del sistema aparecerá aquí -->
+                                </div>
+                            </div>
+                            
+                            <!-- Hidden formulas section (kept for reference but not displayed) -->
+                            <div class="backup-formula" style="display: none;">
+                                <strong>Fórmulas:</strong> 
+                                <code>Picos = Cantidad × Potencia × Factor</code> | 
+                                <code>Energía = Horas × Potencia × FC × Coincidencia</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Agregando modal para mostrar imágenes ampliadas de los productos -->
+    <div id="modalImagen" class="modal-imagen" style="display: none;">
+        <div class="modal-imagen-content">
+            <span class="modal-imagen-close" onclick="cerrarModalImagen()">&times;</span>
+            <img id="imagenModal" class="modal-imagen-img">
+            <div id="captionModal" class="modal-imagen-caption"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
